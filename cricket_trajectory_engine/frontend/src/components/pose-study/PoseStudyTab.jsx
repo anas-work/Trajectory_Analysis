@@ -704,17 +704,20 @@ export default function PoseStudyTab() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             {/* Video Player */}
             <div className="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl relative">
-              <div className="aspect-[9/16] max-h-[640px] mx-auto bg-black flex items-center justify-center">
+              <div className="aspect-video w-full bg-black flex items-center justify-center">
                 <video
                   key={current.id}
-                  src={`/assets/pose_study/annotated_shot_del${current.id}.mp4`}
                   controls
                   autoPlay
                   loop
                   muted
                   playsInline
+                  preload="auto"
                   className="w-full h-full object-contain"
-                />
+                >
+                  <source src={`/assets/pose_study/annotated_shot_del${current.id}.mp4`} type="video/mp4" />
+                  Your browser does not support HTML5 video playback.
+                </video>
               </div>
               <div className="p-3 bg-slate-950/80 border-t border-slate-800/80 text-[11px] font-mono text-slate-400 flex items-center justify-between">
                 <span>📹 Overlay: 17 Keypoint Skeleton + Class HUD + Phase Tracker</span>

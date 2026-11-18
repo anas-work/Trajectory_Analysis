@@ -770,7 +770,23 @@ def main():
             vid_writer.write(resized_hud)
         cap_render.release()
         vid_writer.release()
-        print(f"  -> Saved annotated video: {out_vid_path.name}")
+
+        # Transcode to web-standard H.264 (avc1) with yuv420p and faststart for browser playback
+        try:
+            import imageio_ffmpeg, subprocess, shutil
+            ffmpeg_exe = imageio_ffmpeg.get_ffmpeg_exe()
+            h264_tmp = out_vid_path.parent / f"tmp_{out_vid_path.name}"
+            cmd = [
+                ffmpeg_exe, "-y", "-i", str(out_vid_path),
+                "-c:v", "libx264", "-pix_fmt", "yuv420p", "-movflags", "+faststart",
+                str(h264_tmp)
+            ]
+            subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+            shutil.move(str(h264_tmp), str(out_vid_path))
+        except Exception as e:
+            print(f"  -> Web H.264 transcoding skipped: {e}")
+
+        print(f"  -> Saved web-compatible annotated video: {out_vid_path.name}")
 
         # Pass 6: Plot Movement Graphs
         plot_path = PLOTS_DIR / f"kinematics_del{del_id}.png"
