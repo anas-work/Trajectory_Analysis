@@ -8,6 +8,7 @@ import {
   FolderClock, 
   Scale, 
   Video,
+  Activity,
   X 
 } from 'lucide-react';
 
@@ -18,6 +19,7 @@ export default function Sidebar() {
     { id: 'tab-dashboard', label: 'Dashboard', icon: BarChart3 },
     { id: 'tab-new-experiment', label: 'New Experiment', icon: Settings2 },
     { id: 'tab-ground-view', label: '3D Ground View', icon: Compass },
+    { id: 'tab-pose-study', label: 'Pose & Shot Analysis', icon: Activity },
     { id: 'tab-formulas', label: 'Formula Trace', icon: FileCode2 },
     { id: 'tab-history', label: 'Experiment History', icon: FolderClock },
     { id: 'tab-compare', label: 'Comparison & Delta', icon: Scale },

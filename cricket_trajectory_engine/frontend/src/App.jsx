@@ -8,6 +8,7 @@ import FormulasTab from './components/formulas/FormulasTab';
 import HistoryTab from './components/history/HistoryTab';
 import ComparisonTab from './components/comparison/ComparisonTab';
 import VideosTab from './components/videos/VideosTab';
+import PoseStudyTab from './components/pose-study/PoseStudyTab';
 
 function TabContent() {
   const { activeTab } = useApp();
@@ -27,6 +28,8 @@ function TabContent() {
       return <ComparisonTab />;
     case 'tab-videos':
       return <VideosTab />;
+    case 'tab-pose-study':
+      return <PoseStudyTab />;
     default:
       return <DashboardTab />;
   }
