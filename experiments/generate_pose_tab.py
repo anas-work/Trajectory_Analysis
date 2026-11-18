@@ -443,7 +443,7 @@ export default function PoseStudyTab() {{
                 <div className="space-y-2 text-xs font-mono text-slate-300">
                   <div>• <strong>Batter-Relative Azimuth:</strong> {{current.batterAzimuth > 0 ? `+${{current.batterAzimuth}}` : current.batterAzimuth}}°</div>
                   <div>• <strong>Fielding Sector:</strong> {{current.sectorName}}</div>
-                  <div>• <strong>Side / Depth:</strong> {{current.shotDirection}}</div>
+                  <div>• <strong>Direction / Region:</strong> {{current.shotDirection}}</div>
                   <div>• <strong>Off-Side vs Leg-Side:</strong> {{current.batterAzimuth > 0 ? "Off-Side (> 0°)" : "Leg-Side (< 0°)"}}</div>
                   <div>• <strong>Launch Speed:</strong> {{current.ballSpeed}} km/h</div>
                   <div>• <strong>Elevation Angle:</strong> {{current.ballElevation > 0 ? `+${{current.ballElevation}}` : current.ballElevation}}° ({{current.trajectoryCategory}})</div>

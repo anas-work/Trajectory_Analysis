@@ -29,8 +29,27 @@ def determine_shot_direction_sector(phi: float) -> Dict[str, Any]:
     Map batter-relative azimuth to tactical cricket ground sectors.
     """
     abs_phi = abs(phi)
-    side = "Off side" if phi > 5.0 else ("Leg side" if phi < -5.0 else "Straight")
-    depth = "Behind square" if abs_phi > 90.0 else "In front of square"
+    
+    # Cricket tactical side and direction label
+    if abs_phi <= 12.0:
+        side = "Straight"
+        direction_label = "Straight"
+    elif phi > 0:
+        side = "Off side"
+        if phi <= 75.0:
+            direction_label = "Off side"
+        elif phi <= 105.0:
+            direction_label = "Square (Off side)"
+        else:
+            direction_label = "Behind square (Off side)"
+    else:
+        side = "Leg side"
+        if abs_phi <= 75.0:
+            direction_label = "Leg side"
+        elif abs_phi <= 105.0:
+            direction_label = "Square leg"
+        else:
+            direction_label = "Behind square (Leg side)"
     
     if -10.0 <= phi <= 10.0:
         sector_name = "Straight down the pitch (Long-off / Long-on)"
@@ -61,7 +80,7 @@ def determine_shot_direction_sector(phi: float) -> Dict[str, Any]:
 
     return {
         "side": side,
-        "depth": depth,
+        "direction_label": direction_label,
         "sector_name": sector_name,
         "is_straight": abs_phi <= 12.0,
         "is_off_side": phi > 5.0,
@@ -292,7 +311,7 @@ def classify_shot_fusion(
         "alternative_shot": alt_shot,
         "footwork": footwork,
         "trajectory_category": trajectory_category,
-        "shot_direction": f"{direction_info['side']} ({direction_info['depth']})",
+        "shot_direction": direction_info["direction_label"],
         "batter_azimuth_deg": round(phi_batter, 1),
         "ball_speed_kmh": round(ball_speed_kmh, 1),
         "ball_elevation_deg": round(ball_elevation_deg, 1),

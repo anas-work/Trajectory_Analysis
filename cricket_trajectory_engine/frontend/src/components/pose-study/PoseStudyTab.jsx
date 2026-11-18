@@ -25,7 +25,7 @@ const DELIVERIES_DATA = {
     "alternativeShot": "Forward Defensive Push",
     "footwork": "Front-foot",
     "trajectoryCategory": "Grounded",
-    "shotDirection": "Leg side (In front of square)",
+    "shotDirection": "Straight",
     "batterAzimuth": -5.2,
     "ballSpeed": 19.8,
     "ballElevation": -36.0,
@@ -56,7 +56,7 @@ const DELIVERIES_DATA = {
     "alternativeShot": "Forward Defensive Push",
     "footwork": "Front-foot",
     "trajectoryCategory": "Grounded",
-    "shotDirection": "Leg side (In front of square)",
+    "shotDirection": "Leg side",
     "batterAzimuth": -23.9,
     "ballSpeed": 20.3,
     "ballElevation": -24.1,
@@ -87,7 +87,7 @@ const DELIVERIES_DATA = {
     "alternativeShot": "Off Drive",
     "footwork": "Neutral",
     "trajectoryCategory": "Grounded",
-    "shotDirection": "Off side (In front of square)",
+    "shotDirection": "Straight",
     "batterAzimuth": 5.1,
     "ballSpeed": 52.7,
     "ballElevation": -0.9,
@@ -118,7 +118,7 @@ const DELIVERIES_DATA = {
     "alternativeShot": "Forward Defensive Push",
     "footwork": "Front-foot",
     "trajectoryCategory": "Grounded",
-    "shotDirection": "Off side (In front of square)",
+    "shotDirection": "Off side",
     "batterAzimuth": 16.9,
     "ballSpeed": 18.0,
     "ballElevation": -58.5,
@@ -149,7 +149,7 @@ const DELIVERIES_DATA = {
     "alternativeShot": "Off Drive",
     "footwork": "Front-foot",
     "trajectoryCategory": "Grounded",
-    "shotDirection": "Off side (In front of square)",
+    "shotDirection": "Straight",
     "batterAzimuth": 6.9,
     "ballSpeed": 34.4,
     "ballElevation": -5.4,
@@ -180,7 +180,7 @@ const DELIVERIES_DATA = {
     "alternativeShot": "Forward Defensive Push",
     "footwork": "Front-foot",
     "trajectoryCategory": "Grounded",
-    "shotDirection": "Leg side (In front of square)",
+    "shotDirection": "Straight",
     "batterAzimuth": -9.7,
     "ballSpeed": 21.1,
     "ballElevation": -9.5,
@@ -211,7 +211,7 @@ const DELIVERIES_DATA = {
     "alternativeShot": "Flick",
     "footwork": "Front-foot",
     "trajectoryCategory": "Grounded",
-    "shotDirection": "Leg side (In front of square)",
+    "shotDirection": "Leg side",
     "batterAzimuth": -17.1,
     "ballSpeed": 39.2,
     "ballElevation": -14.0,
@@ -242,7 +242,7 @@ const DELIVERIES_DATA = {
     "alternativeShot": "On Drive",
     "footwork": "Neutral",
     "trajectoryCategory": "Grounded",
-    "shotDirection": "Straight (In front of square)",
+    "shotDirection": "Straight",
     "batterAzimuth": -1.0,
     "ballSpeed": 28.0,
     "ballElevation": -40.4,
@@ -273,7 +273,7 @@ const DELIVERIES_DATA = {
     "alternativeShot": "Lofted On-Drive",
     "footwork": "Front-foot",
     "trajectoryCategory": "Lofted",
-    "shotDirection": "Off side (In front of square)",
+    "shotDirection": "Straight",
     "batterAzimuth": 5.6,
     "ballSpeed": 50.2,
     "ballElevation": 39.4,
@@ -304,7 +304,7 @@ const DELIVERIES_DATA = {
     "alternativeShot": "Cover Drive",
     "footwork": "Front-foot",
     "trajectoryCategory": "Grounded",
-    "shotDirection": "Off side (In front of square)",
+    "shotDirection": "Off side",
     "batterAzimuth": 13.8,
     "ballSpeed": 30.8,
     "ballElevation": -25.3,
@@ -686,7 +686,7 @@ export default function PoseStudyTab() {
                 <div className="space-y-2 text-xs font-mono text-slate-300">
                   <div>• <strong>Batter-Relative Azimuth:</strong> {current.batterAzimuth > 0 ? `+${current.batterAzimuth}` : current.batterAzimuth}°</div>
                   <div>• <strong>Fielding Sector:</strong> {current.sectorName}</div>
-                  <div>• <strong>Side / Depth:</strong> {current.shotDirection}</div>
+                  <div>• <strong>Direction / Region:</strong> {current.shotDirection}</div>
                   <div>• <strong>Off-Side vs Leg-Side:</strong> {current.batterAzimuth > 0 ? "Off-Side (> 0°)" : "Leg-Side (< 0°)"}</div>
                   <div>• <strong>Launch Speed:</strong> {current.ballSpeed} km/h</div>
                   <div>• <strong>Elevation Angle:</strong> {current.ballElevation > 0 ? `+${current.ballElevation}` : current.ballElevation}° ({current.trajectoryCategory})</div>
