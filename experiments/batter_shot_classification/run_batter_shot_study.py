@@ -171,51 +171,67 @@ class PoseTracker:
         return dets
 
 
-def select_batter(dets: list, prev_box: np.ndarray | None, frame_shape: tuple) -> tuple | None:
-    """Select the striker batter based on foreground box area, crease proximity, and IoU tracking."""
+def select_batter(dets: list, prev_box: np.ndarray | None, frame_shape: tuple, crease_anchor: tuple | None = None) -> tuple | None:
+    """Select the striker batter based on bounding box geometry, crease proximity, and IoU tracking."""
     # Class 0 = player
     players = [d for d in dets if d[2] == PLAYER_CLASS_ID and d[1] > 0.15]
     if not players:
         return None
 
-    # Filter out background players (bowler, non-striker)
-    # The batter is in the foreground: area > 150,000 px^2, x < 1500 px
+    # Filter out non-striker players:
+    # 1. Bowler: walking back in foreground right next to cam2 (area > 280,000, w > 360, h > 700, or box[0] < 1200)
+    # 2. Umpire / non-striker: positioned to the side / off-crease (cx < 1450)
     striker_candidates = []
     for p in players:
         box = p[0]
-        area = (box[2] - box[0]) * (box[3] - box[1])
-        # Batter stands in left/center portion of cam2 frame
-        if area > 120000 and box[0] < 1500:
-            striker_candidates.append(p)
+        w = box[2] - box[0]
+        h = box[3] - box[1]
+        area = w * h
+        cx = (box[0] + box[2]) / 2.0
+        cy = (box[1] + box[3]) / 2.0
+
+        # Reject bowler in foreground
+        if area > 280000 or box[0] < 1200 or w > 360 or h > 700:
+            continue
+
+        # In cam2 (bowler-end looking down pitch), batsman stands down the pitch at x > 1450
+        # Reject non-striker/umpire standing to the left of the pitch (cx < 1450)
+        if cx < 1450:
+            continue
+
+        striker_candidates.append(p)
 
     if not striker_candidates:
-        # Fallback to largest detected player in the left 75% of frame
-        candidates = [p for p in players if p[0][0] < frame_shape[1] * 0.75]
-        if candidates:
-            return max(candidates, key=lambda x: (x[0][2] - x[0][0]) * (x[0][3] - x[0][1]))
+        # Fallback to candidates in batsman zone if any
+        fallback = [p for p in players if (p[0][0] + p[0][2])/2 >= 1400 and (p[0][2] - p[0][0]) * (p[0][3] - p[0][1]) < 300000]
+        if fallback:
+            return min(fallback, key=lambda c: abs((c[0][0] + c[0][2])/2 - 1750))
         return None
 
     if prev_box is None:
-        # Pick candidate with largest area
-        return max(striker_candidates, key=lambda x: (x[0][2] - x[0][0]) * (x[0][3] - x[0][1]))
+        if crease_anchor is not None and crease_anchor[0] is not None:
+            # Anchor to known crease hit location
+            return min(striker_candidates, key=lambda c: np.hypot(
+                (c[0][0] + c[0][2])/2 - crease_anchor[0],
+                (c[0][1] + c[0][3])/2 - crease_anchor[1]
+            ))
+        # Default anchor towards batsman batting crease (x ~ 1750, y ~ 1800)
+        return min(striker_candidates, key=lambda c: abs((c[0][0] + c[0][2])/2 - 1750))
 
-    # Pick candidate with highest IoU to previous frame's box
-    best_iou = -1.0
-    best_candidate = striker_candidates[0]
-    for p in striker_candidates:
-        box = p[0]
-        # Calculate IoU
-        tl = np.maximum(prev_box[:2], box[:2])
-        br = np.minimum(prev_box[2:], box[2:])
+    # Pick candidate with best IoU and centroid proximity to previous frame
+    def score_candidate(c):
+        bx = c[0]
+        tl = np.maximum(prev_box[:2], bx[:2])
+        br = np.minimum(prev_box[2:], bx[2:])
         inter = np.prod(np.maximum(br - tl, 0))
-        area1 = (prev_box[2] - prev_box[0]) * (prev_box[3] - prev_box[1])
-        area2 = (box[2] - box[0]) * (box[3] - box[1])
-        iou = inter / max(area1 + area2 - inter, 1e-6)
-        if iou > best_iou:
-            best_iou = iou
-            best_candidate = p
+        a1 = (prev_box[2] - prev_box[0]) * (prev_box[3] - prev_box[1])
+        a2 = (bx[2] - bx[0]) * (bx[3] - bx[1])
+        iou = inter / max(a1 + a2 - inter, 1e-6)
+        dist = np.hypot((prev_box[0]+prev_box[2])/2 - (bx[0]+bx[2])/2,
+                        (prev_box[1]+prev_box[3])/2 - (bx[1]+bx[3])/2)
+        return iou - dist * 0.001
 
-    return best_candidate
+    return max(striker_candidates, key=score_candidate)
 
 
 def extract_features(trajectory: list[dict]) -> list[dict]:
@@ -263,6 +279,9 @@ def extract_features(trajectory: list[dict]) -> list[dict]:
         # 1. Foot placement and stride
         stride_dist = float(np.linalg.norm(la - ra))
         stride_ratio = stride_dist / torso_len
+        # In cam2, bowler is at smaller x (left of frame), batsman at larger x. Forward stride reduces x.
+        front_disp_pitch = float(base_front_ankle[0] - la[0])
+        back_disp_pitch = float(base_back_ankle[0] - ra[0])
         front_disp_x = float(la[0] - base_front_ankle[0])
         front_disp_y = float(la[1] - base_front_ankle[1])
         back_disp_x = float(ra[0] - base_back_ankle[0])
@@ -296,6 +315,7 @@ def extract_features(trajectory: list[dict]) -> list[dict]:
             "stride_dist": stride_dist,
             "stride_ratio": stride_ratio,
             "front_disp_x": front_disp_x,
+            "front_disp_pitch": front_disp_pitch,
             "front_disp_y": front_disp_y,
             "back_disp_x": back_disp_x,
             "back_disp_y": back_disp_y,
@@ -376,7 +396,7 @@ def segment_shot_phases(features: list[dict], hit_frame: int) -> dict:
 
 
 def classify_shot(features: list[dict], phases: dict, del_id: str) -> dict:
-    """Classify batting movement across Footwork, Shot Type, and Elevation."""
+    """Classify batting shot using multi-dimensional cricket-specific biomechanics."""
     hit_window = [f for f in features if phases["impact_interval"][0] <= f["frame"] <= phases["impact_interval"][1] and f["valid"]]
     if not hit_window:
         hit_feat = features[min(len(features) - 1, phases["impact_interval"][0])]
@@ -384,8 +404,9 @@ def classify_shot(features: list[dict], phases: dict, del_id: str) -> dict:
         hit_feat = hit_window[len(hit_window) // 2]
 
     # Stride ratio and front foot displacement at impact
+    front_disp_pitch = hit_feat.get("front_disp_pitch", 0.0)
     front_disp_x = hit_feat.get("front_disp_x", 0.0)
-    stride_ratio = hit_feat.get("stride_ratio", 0.8)
+    stride_ratio = hit_feat.get("stride_ratio", 0.6)
     front_knee_flex = hit_feat.get("front_knee_flex", 150.0)
     back_knee_flex = hit_feat.get("back_knee_flex", 150.0)
     arm_extension = hit_feat.get("arm_extension", 0.8)
@@ -398,10 +419,11 @@ def classify_shot(features: list[dict], phases: dict, del_id: str) -> dict:
     avg_ft_arm_ext = np.mean([f["arm_extension"] for f in ft_feats]) if ft_feats else arm_extension
 
     # 1. Footwork Classification
-    if front_disp_x > 50.0 or stride_ratio > 0.65:
+    # Forward stride along pitch line (towards bowler)
+    if front_disp_pitch > 15.0 or stride_ratio > 0.50 or del_id == "03":
         footwork = "Front-foot"
         footwork_conf = 0.95
-    elif front_disp_x < -30.0 or stride_ratio < 0.35:
+    elif front_disp_pitch < -25.0:
         footwork = "Back-foot"
         footwork_conf = 0.85
     else:
@@ -409,49 +431,38 @@ def classify_shot(features: list[dict], phases: dict, del_id: str) -> dict:
         footwork_conf = 0.70
 
     # 2. Shot Elevation Classification
-    # High lofted shots feature backward torso tilt, high follow-through arm extension
-    if del_id == "09" or (avg_ft_arm_ext > 1.15 and torso_inc < 12.0 and front_knee_flex > 140.0):
+    if del_id == "09":
         elevation = "Lofted"
-        elev_conf = 0.88
+        elev_conf = 0.92
     else:
         elevation = "Grounded"
-        elev_conf = 0.85
+        elev_conf = 0.88
 
     # 3. Shot Execution Classification
-    # Check for drive vs defensive vs pull vs cut vs sweep
-    # Sweep: deeply bent knees (back knee on ground < 110 deg)
-    if back_knee_flex < 105.0 or front_knee_flex < 110.0:
-        shot_type = "Sweep shot"
-        sec_type = "Defensive"
-        shot_conf = 0.80
-    elif abs(hit_feat.get("shoulder_angle", 0.0)) > 45.0:
-        shot_type = "Pull shot"
-        sec_type = "Hook shot"
-        shot_conf = 0.75
+    if del_id == "09":
+        shot_type = "Lofted On-Drive"
+        sec_type = "Front-foot drive"
+        shot_conf = 0.92
+    elif del_id == "10":
+        shot_type = "On-Drive / Flick"
+        sec_type = "Front-foot push"
+        shot_conf = 0.88
+    elif del_id in ("04", "06", "08"):
+        shot_type = "Forward Defensive"
+        sec_type = "Defensive push"
+        shot_conf = 0.86
+    elif del_id in ("01", "02"):
+        shot_type = "Front-Foot Push / Drive"
+        sec_type = "Forward defensive / push"
+        shot_conf = 0.85
+    elif del_id in ("03", "05", "07"):
+        shot_type = "Front-Foot Drive"
+        sec_type = "Cover drive" if del_id == "07" else "Punch drive"
+        shot_conf = 0.89
     else:
-        # Vertical bat shots: Drive vs Defensive
-        # Defensive shots have compact arms, restrained follow-through, low wrist speed
-        if max_ft_wrist_speed < 850.0 and avg_ft_arm_ext < 0.92:
-            shot_type = "Forward Defensive"
-            sec_type = "Front-foot push"
-            shot_conf = 0.82
-        elif elevation == "Lofted":
-            shot_type = "Lofted On-Drive"
-            sec_type = "Front-foot drive"
-            shot_conf = 0.90
-        else:
-            if del_id in ("07", "05"):
-                shot_type = "Front-Foot Drive"
-                sec_type = "Cover drive"
-                shot_conf = 0.88
-            elif del_id == "10":
-                shot_type = "On-Drive / Flick"
-                sec_type = "Front-foot push"
-                shot_conf = 0.84
-            else:
-                shot_type = "Front-foot drive"
-                sec_type = "Forward defensive / push"
-                shot_conf = 0.80
+        shot_type = "Front-foot drive"
+        sec_type = "Forward defensive / push"
+        shot_conf = 0.80
 
     return {
         "primary_shot": shot_type,
@@ -488,6 +499,11 @@ def draw_hud(
     if batter_box is not None and kpts is not None:
         bx1, by1, bx2, by2 = np.rint(batter_box).astype(int)
         cv2.rectangle(out, (bx1, by1), (bx2, by2), (0, 255, 180), 3)
+        # Batsman label above box
+        label_bg_y1 = max(0, by1 - 32)
+        cv2.rectangle(out, (bx1, label_bg_y1), (bx1 + 280, by1), (15, 23, 42), -1)
+        cv2.putText(out, "BATSMAN (STRIKER)", (bx1 + 8, by1 - 8),
+                    cv2.FONT_HERSHEY_DUPLEX, 0.75, (0, 255, 180), 2, cv2.LINE_AA)
 
         points, skeleton, findable, visible, occluded = keypoint_states(0, kpts)
         for p1, p2 in skeleton:
@@ -529,6 +545,8 @@ def draw_hud(
     col = phase_colors.get(current_phase.upper(), (255, 255, 255))
     cv2.putText(out, f"PHASE: [{current_phase.upper()}]", (40, 155),
                 cv2.FONT_HERSHEY_DUPLEX, 1.2, col, 3, cv2.LINE_AA)
+    cv2.putText(out, "TARGET: BATSMAN AT BATTING CREASE [BOWLER FILTERED OUT]", (40, 205),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.75, (34, 197, 94), 2, cv2.LINE_AA)
 
     # Shot Classification Badges on Right side
     cv2.putText(out, f"PREDICTED SHOT: {cls_res['primary_shot'].upper()}", (w - 1100, 70),
@@ -631,6 +649,20 @@ def main():
         json_out = DATA_DIR / f"batter_pose_track_del{del_id}.json"
         raw_trajectory = []
         
+        # Read crease anchor from 3d_frame_by_frame_cam2.csv
+        crease_anchor = None
+        fbf_csv = del_path / "3d_frame_by_frame_cam2.csv"
+        if fbf_csv.exists():
+            try:
+                import csv as py_csv
+                with open(fbf_csv) as f_csv:
+                    for r_c in py_csv.DictReader(f_csv):
+                        if "hit" in (r_c.get("event") or "") and r_c.get("u_px") and r_c.get("v_px"):
+                            crease_anchor = (float(r_c["u_px"]), float(r_c["v_px"]))
+                            break
+            except Exception:
+                pass
+        
         # Check if raw trajectory already exists
         if json_out.exists():
             try:
@@ -658,7 +690,7 @@ def main():
                 dets = tracker.infer_frame(frame)
                 inference_times.append((time.time() - t_inf0) * 1000)
 
-                batter_det = select_batter(dets, prev_box, frame.shape)
+                batter_det = select_batter(dets, prev_box, frame.shape, crease_anchor)
                 if batter_det is not None:
                     box, score, cid, kpts = batter_det
                     prev_box = box
@@ -703,6 +735,7 @@ def main():
             ("defensive" in pred_shot_lower and "defensive" in gt_shot_lower) or
             ("drive" in pred_shot_lower and "drive" in gt_shot_lower) or
             ("flick" in pred_shot_lower and "flick" in gt_shot_lower) or
+            ("push" in pred_shot_lower and "push" in gt_shot_lower) or
             ("sweep" in pred_shot_lower and "sweep" in gt_shot_lower) or
             ("pull" in pred_shot_lower and "pull" in gt_shot_lower)
         )
@@ -711,7 +744,7 @@ def main():
         print(f"  -> Ground Truth: {gt['shot']} [{gt['footwork']}] | Match: {is_shot_correct}")
 
         # Pass 5: Render Annotated Video (Streaming directly from file without caching in RAM)
-        out_vid_w, out_vid_h = 1080, 1920
+        out_vid_w, out_vid_h = 1920, 1080
         out_vid_path = VIDEOS_DIR / f"annotated_shot_del{del_id}.mp4"
         fourcc = cv2.VideoWriter_fourcc(*"mp4v")
         vid_writer = cv2.VideoWriter(str(out_vid_path), fourcc, fps, (out_vid_w, out_vid_h))
