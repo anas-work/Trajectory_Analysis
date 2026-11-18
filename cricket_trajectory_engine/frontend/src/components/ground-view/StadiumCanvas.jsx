@@ -47,7 +47,7 @@ function createTelemetrySprite(lines = [], options = {}) {
     if (lineW > maxW) maxW = lineW;
   });
 
-  const width = Math.max(options.width || 0, Math.ceil(maxW + 28));
+  const width = Math.max(options.width || 0, Math.ceil(maxW + 36));
 
   const canvas = document.createElement('canvas');
   canvas.width = width * 2;
@@ -246,7 +246,7 @@ function buildRegulationWickets(group, x, z) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Photo-Realistic Batsman Camera-Facing Sprite (Virat Kohli Lofted Shot)
+// Photo-Realistic Batsman Camera-Facing Sprite (MS Dhoni Cutout)
 // ─────────────────────────────────────────────────────────────────────────────
 function buildPhotoBatsman(group, x, z, texture) {
   const batsmanGroup = new THREE.Group();
@@ -265,7 +265,7 @@ function buildPhotoBatsman(group, x, z, texture) {
   shadow.position.set(0, 0.022, 0);
   batsmanGroup.add(shadow);
 
-  // 3D Sprite with anchor at bottom center (Feet on turf)
+  // 3D Sprite with anchor at bottom center (Feet firmly on turf)
   const mat = new THREE.SpriteMaterial({
     map: texture,
     transparent: true,
@@ -273,21 +273,22 @@ function buildPhotoBatsman(group, x, z, texture) {
   });
   const sprite = new THREE.Sprite(mat);
   sprite.center.set(0.5, 0.0);
-  sprite.scale.set(1.11, 1.90, 1.0);
+  // Cropped Dhoni image aspect ratio: 288x487 -> width = 1.85 * (288 / 487) = 1.09m
+  sprite.scale.set(1.10, 1.85, 1.0);
   sprite.position.set(0, 0.025, 0);
   batsmanGroup.add(sprite);
 
   // Sleek Batsman & Dhoni Badge floating comfortably above head (clear of face)
   const nameSprite = createTelemetrySprite('MS Dhoni (Batsman)', {
-    fontSize: 11,
+    fontSize: 10,
     bgColor: 'rgba(8, 14, 26, 0.92)',
     borderColor: 'rgba(234, 179, 8, 0.90)',
     highlightColor: '#eab308',
     textColor: '#f1f5f9',
-    height: 24,
-    worldHeight: 0.32,
+    height: 22,
+    worldHeight: 0.20,
   });
-  nameSprite.position.set(0, 2.38, 0);
+  nameSprite.position.set(0, 2.05, 0);
   batsmanGroup.add(nameSprite);
 
   group.add(batsmanGroup);
@@ -1278,22 +1279,23 @@ export default function StadiumCanvas() {
       'LAUNCH ORIGIN',
       `V₀ = ${speedKmh.toFixed(1)} km/h  |  z = ${(pt0[3] || 0.9).toFixed(2)} m`,
     ], {
-      fontSize: 11,
+      fontSize: 10,
       bgColor: 'rgba(8, 14, 26, 0.94)',
       borderColor: 'rgba(0, 229, 255, 0.9)',
       textColor: '#e0f2fe',
       highlightColor: '#00e5ff',
-      height: 42,
-      worldHeight: 0.42,
+      height: 38,
+      worldHeight: 0.28,
     });
-    // Elevated comfortably above Dhoni's helmet and offset to off-side
-    launchBadge.position.set(launchPos.x - 1.8, launchPos.y + 2.15, launchPos.z);
+    // Positioned safely to the off-side and mid-elevation (leaves batsman face and top toolbar completely clear)
+    const badgeY = Math.max(1.25, launchPos.y + 0.35);
+    launchBadge.position.set(launchPos.x - 1.6, badgeY, launchPos.z);
     milestonesGroup.add(launchBadge);
 
-    // Subtle dashed plumb line from launch point up to elevated information badge
+    // Subtle dashed leader line from ball launch point to telemetry badge
     const launchPlumbGeo = new THREE.BufferGeometry().setFromPoints([
       launchPos,
-      new THREE.Vector3(launchPos.x - 1.8, launchPos.y + 1.95, launchPos.z),
+      new THREE.Vector3(launchPos.x - 1.6, badgeY, launchPos.z),
     ]);
     const launchPlumbLine = new THREE.Line(
       launchPlumbGeo,

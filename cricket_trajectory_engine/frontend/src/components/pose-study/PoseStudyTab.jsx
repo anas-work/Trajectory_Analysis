@@ -3,708 +3,550 @@ import {
   Play, 
   Activity, 
   UserCheck, 
-  ShieldAlert, 
   Compass, 
   Zap, 
   BarChart2, 
   Info, 
   ChevronRight,
   TrendingUp,
-  CheckCircle2,
-  XCircle,
-  AlertTriangle
+  ShieldCheck,
+  Target,
+  Layers,
+  Eye
 } from 'lucide-react';
 
 const DELIVERIES_DATA = {
   "01": {
-    id: "01",
-    title: "Delivery 01: Forward Defensive / Push",
-    folder: "01_Thebpca1_2026-08-19_cam1_d26_cam2_d27",
-    hitFrame: 61,
-    groundTruth: {
-      shot: "Forward Defensive / Push",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      speed: "17.7 km/h",
-      launchElevation: "+4.5°",
-      azimuth: "+10.3°"
-    },
-    posePrediction: {
-      primaryShot: "Front-Foot Push / Drive",
-      secondaryShot: "Forward defensive / push",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      confidence: "85.0%",
-      strideRatio: 0.6,
-      frontKneeAngle: "177.0°",
-      torsoLean: "29.0°",
-      armExtension: 0.88,
-      shotMatch: true,
-      footworkMatch: true
-    },
-    targetEvaluation: {
-      targetClassified: "Main Striker Batsman (Crease)",
-      boxArea: "87,824 px² (Batsman at 18m distance)",
-      boxLocation: "Batting Crease (x: 1754-2123 px, y: 1508-2013 px)",
-      confidence: "0.781",
-      bowlerFiltered: "Foreground Bowler Filtered (Area > 500,000 px², x < 1200 px)",
-      trackingStability: "100% across all 121 frames"
-    },
-    edgeDetection: {
-      swingAzimuth: "+3.2°",
-      ballExitAzimuth: "+10.3°",
-      angularDiscrepancy: "7.1°",
-      edgeStatus: "Middled Shot (No Edge)",
-      edgeProbability: "3.2%",
-      reasoning: "Swing azimuth and ball exit trajectory align within 7.1°. Low launch speed (17.7 km/h) confirms soft-handed defensive block."
-    },
-    phases: {
-      stance: "Frames 0 - 20 (Settled in batting crease)",
-      backswing: "Frames 21 - 38 (Wrists lift, trigger stride begins)",
-      stride: "Frames 39 - 50 (Front foot strides forward along pitch)",
-      execution: "Frames 51 - 60 (Downswing into ball line)",
-      impact: "Frames 60 - 62 (Ball contact window)",
-      followThrough: "Frames 63 - 120 (Follow-through)"
-    },
-    analyticalReason: "Forward defensive push shares an identical forward stride down the pitch (dx = -50.8 px) and vertical bat presentation with a drive. Cross-referencing ball exit speed (17.7 km/h) disambiguates the shot as a defensive push."
+    "id": "01",
+    "title": "Delivery 01: Forward Defence",
+    "folder": "01_Thebpca1_2026-08-19_cam1_d26_cam2_d27",
+    "hitFrame": 61,
+    "shotType": "Forward Defence",
+    "alternativeShot": "Forward Defensive Push",
+    "footwork": "Front-foot",
+    "trajectoryCategory": "Grounded",
+    "shotDirection": "Off side (In front of square)",
+    "batterAzimuth": 5.2,
+    "ballSpeed": 19.8,
+    "ballElevation": -36.0,
+    "sectorName": "Straight down the pitch (Long-off / Long-on)",
+    "confidence": "88%",
+    "strideRatio": 0.6,
+    "leadDispPitch": 51.1,
+    "torsoLean": "29.0\u00b0",
+    "shoulderRot": "55.5\u00b0",
+    "leadElbow": "22.7\u00b0",
+    "supportingEvidence": "[Signal A: Trajectory] Ball exit azimuth +5.2\u00b0 (Straight down the pitch (Long-off / Long-on)), launch speed 19.8 km/h, elevation -36.0\u00b0 (Grounded). [Signal B: Pose] Front-foot posture (pitch stride +51.1 px, ratio 0.60), torso lean 29.0\u00b0, shoulder rotation 55.5\u00b0, lead elbow 22.7\u00b0. Textbook forward stride (+51.1 px) with checked wrists and soft exit speed (19.8 km/h).",
+    "phasesStr": "Stance:0-19, Backswing:20-45, Stride:46-52, Exec:53-59, Impact:60-62, FT:63-120",
+    "targetEvaluation": {
+      "targetClassified": "Main Striker Batsman at Crease",
+      "boxArea": "87,824 px\u00b2 (18m distance)",
+      "boxLocation": "Batting Crease (x: 1754-2123 px, y: 1508-2013 px)",
+      "confidence": "0.781",
+      "bowlerFiltered": "Foreground Bowler Filtered (Area > 500,000 px\u00b2, x < 1200 px)",
+      "trackingStability": "100% across all 121 frames"
+    }
   },
   "02": {
-    id: "02",
-    title: "Delivery 02: Front-Foot Push / Drive",
-    folder: "02_Theace1_2026-08-26_cam1_d35_cam2_d36",
-    hitFrame: 50,
-    groundTruth: {
-      shot: "Front-Foot Push / Drive",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      speed: "19.2 km/h",
-      launchElevation: "-12.4°",
-      azimuth: "+14.5°"
-    },
-    posePrediction: {
-      primaryShot: "Front-Foot Push / Drive",
-      secondaryShot: "Forward defensive / push",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      confidence: "85.0%",
-      strideRatio: 0.47,
-      frontKneeAngle: "175.2°",
-      torsoLean: "30.2°",
-      armExtension: 0.88,
-      shotMatch: true,
-      footworkMatch: true
-    },
-    targetEvaluation: {
-      targetClassified: "Main Striker Batsman (Crease)",
-      boxArea: "110,685 px² (Batsman at 18m distance)",
-      boxLocation: "Batting Crease (x: 1426-1818 px, y: 2045-2618 px)",
-      confidence: "0.955",
-      bowlerFiltered: "Foreground Bowler Filtered (Area > 500,000 px², x < 1200 px)",
-      trackingStability: "100% across all 121 frames"
-    },
-    edgeDetection: {
-      swingAzimuth: "+21.8°",
-      ballExitAzimuth: "+14.5°",
-      angularDiscrepancy: "7.3°",
-      edgeStatus: "Middled Shot (No Edge)",
-      edgeProbability: "4.5%",
-      reasoning: "Trajectory exit aligns with forward drive presentation. Negative elevation (-12.4°) confirms grounded stroke."
-    },
-    phases: {
-      stance: "Frames 0 - 20 (Settled in batting crease)",
-      backswing: "Frames 21 - 38 (Wrists lift, trigger stride begins)",
-      stride: "Frames 39 - 50 (Front foot strides forward along pitch)",
-      execution: "Frames 51 - 49 (Downswing into ball line)",
-      impact: "Frames 49 - 51 (Ball contact window)",
-      followThrough: "Frames 52 - 120 (Follow-through)"
-    },
-    analyticalReason: "Large forward stride (dx = -96.4 px) towards bowler. Forward torso lean of 30.2° keeps head positioned over the ball."
+    "id": "02",
+    "title": "Delivery 02: Forward Defence",
+    "folder": "02_Theace1_2026-08-26_cam1_d35_cam2_d36",
+    "hitFrame": 50,
+    "shotType": "Forward Defence",
+    "alternativeShot": "Forward Defensive Push",
+    "footwork": "Front-foot",
+    "trajectoryCategory": "Grounded",
+    "shotDirection": "Off side (In front of square)",
+    "batterAzimuth": 23.9,
+    "ballSpeed": 20.3,
+    "ballElevation": -24.1,
+    "sectorName": "Through mid-off",
+    "confidence": "88%",
+    "strideRatio": 0.47,
+    "leadDispPitch": 93.5,
+    "torsoLean": "30.2\u00b0",
+    "shoulderRot": "160.7\u00b0",
+    "leadElbow": "98.3\u00b0",
+    "supportingEvidence": "[Signal A: Trajectory] Ball exit azimuth +23.9\u00b0 (Through mid-off), launch speed 20.3 km/h, elevation -24.1\u00b0 (Grounded). [Signal B: Pose] Front-foot posture (pitch stride +93.5 px, ratio 0.47), torso lean 30.2\u00b0, shoulder rotation 160.7\u00b0, lead elbow 98.3\u00b0. Textbook forward stride (+93.5 px) with checked wrists and soft exit speed (20.3 km/h).",
+    "phasesStr": "Stance:0-17, Backswing:18-35, Stride:36-41, Exec:42-48, Impact:49-51, FT:52-120",
+    "targetEvaluation": {
+      "targetClassified": "Main Striker Batsman at Crease",
+      "boxArea": "110,685 px\u00b2 (18m distance)",
+      "boxLocation": "Batting Crease (x: 1426-1818 px, y: 2045-2618 px)",
+      "confidence": "0.955",
+      "bowlerFiltered": "Foreground Bowler Filtered (Area > 500,000 px\u00b2, x < 1200 px)",
+      "trackingStability": "100% across all 121 frames"
+    }
   },
   "03": {
-    id: "03",
-    title: "Delivery 03: Front-Foot Drive (Firm)",
-    folder: "03_Theace9_2026-07-02_cam1_d5_cam2_d6",
-    hitFrame: 47,
-    groundTruth: {
-      shot: "Front-Foot Drive (Firm)",
-      footwork: "Front-foot",
-      elevation: "Lofted / Firm",
-      speed: "55.6 km/h",
-      launchElevation: "+12.9°",
-      azimuth: "-3.9°"
-    },
-    posePrediction: {
-      primaryShot: "Front-Foot Drive",
-      secondaryShot: "Punch drive",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      confidence: "89.0%",
-      strideRatio: 0.32,
-      frontKneeAngle: "156.6°",
-      torsoLean: "24.0°",
-      armExtension: 0.88,
-      shotMatch: true,
-      footworkMatch: true
-    },
-    targetEvaluation: {
-      targetClassified: "Main Striker Batsman (Crease)",
-      boxArea: "112,462 px² (Batsman at 18m distance)",
-      boxLocation: "Batting Crease (x: 1567-1950 px, y: 1147-1731 px)",
-      confidence: "0.955",
-      bowlerFiltered: "Foreground Bowler Filtered (Area > 500,000 px², x < 1200 px)",
-      trackingStability: "100% across all 121 frames"
-    },
-    edgeDetection: {
-      swingAzimuth: "-5.0°",
-      ballExitAzimuth: "-3.9°",
-      angularDiscrepancy: "1.1°",
-      edgeStatus: "Middled Shot (Sweet Spot)",
-      edgeProbability: "0.8%",
-      reasoning: "Sub-2° deviation between swing vector and ball exit azimuth indicates perfect middle-of-bat contact."
-    },
-    phases: {
-      stance: "Frames 0 - 20 (Settled in batting crease)",
-      backswing: "Frames 21 - 38 (Wrists lift, trigger stride begins)",
-      stride: "Frames 39 - 50 (Front foot strides forward along pitch)",
-      execution: "Frames 51 - 46 (Downswing into ball line)",
-      impact: "Frames 46 - 48 (Ball contact window)",
-      followThrough: "Frames 49 - 120 (Follow-through)"
-    },
-    analyticalReason: "Firm front-foot drive hit from batting crease line with 156.6° knee flexion and high follow-through bat speed (55.6 km/h)."
+    "id": "03",
+    "title": "Delivery 03: Straight Drive",
+    "folder": "03_Theace9_2026-07-02_cam1_d5_cam2_d6",
+    "hitFrame": 47,
+    "shotType": "Straight Drive",
+    "alternativeShot": "On Drive",
+    "footwork": "Neutral",
+    "trajectoryCategory": "Grounded",
+    "shotDirection": "Leg side (In front of square)",
+    "batterAzimuth": -5.1,
+    "ballSpeed": 52.7,
+    "ballElevation": -0.9,
+    "sectorName": "Straight down the pitch (Long-off / Long-on)",
+    "confidence": "88%",
+    "strideRatio": 0.32,
+    "leadDispPitch": -5.8,
+    "torsoLean": "24.0\u00b0",
+    "shoulderRot": "26.7\u00b0",
+    "leadElbow": "125.4\u00b0",
+    "supportingEvidence": "[Signal A: Trajectory] Ball exit azimuth -5.1\u00b0 (Straight down the pitch (Long-off / Long-on)), launch speed 52.7 km/h, elevation -0.9\u00b0 (Grounded). [Signal B: Pose] Neutral posture (pitch stride -5.8 px, ratio 0.32), torso lean 24.0\u00b0, shoulder rotation 26.7\u00b0, lead elbow 125.4\u00b0. Bat swing aligned straight in the 'V' downfield (-5.1\u00b0 azimuth) past bowler.",
+    "phasesStr": "Stance:0-14, Backswing:15-27, Stride:28-38, Exec:39-45, Impact:46-48, FT:49-120",
+    "targetEvaluation": {
+      "targetClassified": "Main Striker Batsman at Crease",
+      "boxArea": "112,462 px\u00b2 (18m distance)",
+      "boxLocation": "Batting Crease (x: 1567-1950 px, y: 1147-1731 px)",
+      "confidence": "0.955",
+      "bowlerFiltered": "Foreground Bowler Filtered (Area > 500,000 px\u00b2, x < 1200 px)",
+      "trackingStability": "100% across all 121 frames"
+    }
   },
   "04": {
-    id: "04",
-    title: "Delivery 04: Forward Defensive Block",
-    folder: "04_Theace1_2026-08-17_cam1_d41_cam2_d40",
-    hitFrame: 55,
-    groundTruth: {
-      shot: "Forward Defensive",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      speed: "19.4 km/h",
-      launchElevation: "-4.8°",
-      azimuth: "+8.2°"
-    },
-    posePrediction: {
-      primaryShot: "Forward Defensive",
-      secondaryShot: "Defensive push",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      confidence: "86.0%",
-      strideRatio: 0.14,
-      frontKneeAngle: "173.6°",
-      torsoLean: "28.4°",
-      armExtension: 0.88,
-      shotMatch: true,
-      footworkMatch: true
-    },
-    targetEvaluation: {
-      targetClassified: "Main Striker Batsman (Crease)",
-      boxArea: "77,861 px² (Batsman at 18m distance)",
-      boxLocation: "Batting Crease (x: 1626-1912 px, y: 1863-2380 px)",
-      confidence: "0.948",
-      bowlerFiltered: "Foreground Bowler Filtered (Area > 500,000 px², x < 1200 px)",
-      trackingStability: "100% across all 121 frames"
-    },
-    edgeDetection: {
-      swingAzimuth: "+12.4°",
-      ballExitAzimuth: "+8.2°",
-      angularDiscrepancy: "4.2°",
-      edgeStatus: "Middled Shot (No Edge)",
-      edgeProbability: "2.1%",
-      reasoning: "Straight bat presentation with checked wrist follow-through. Low speed confirms textbook forward defense."
-    },
-    phases: {
-      stance: "Frames 0 - 20 (Settled in batting crease)",
-      backswing: "Frames 21 - 38 (Wrists lift, trigger stride begins)",
-      stride: "Frames 39 - 50 (Front foot strides forward along pitch)",
-      execution: "Frames 51 - 54 (Downswing into ball line)",
-      impact: "Frames 54 - 56 (Ball contact window)",
-      followThrough: "Frames 57 - 120 (Follow-through)"
-    },
-    analyticalReason: "Front-foot defensive block with compact arm extension (0.84) and checked wrist speed at impact."
+    "id": "04",
+    "title": "Delivery 04: Forward Defence",
+    "folder": "04_Theace1_2026-08-17_cam1_d41_cam2_d40",
+    "hitFrame": 55,
+    "shotType": "Forward Defence",
+    "alternativeShot": "Forward Defensive Push",
+    "footwork": "Front-foot",
+    "trajectoryCategory": "Grounded",
+    "shotDirection": "Leg side (In front of square)",
+    "batterAzimuth": -16.9,
+    "ballSpeed": 18.0,
+    "ballElevation": -58.5,
+    "sectorName": "Through mid-on",
+    "confidence": "88%",
+    "strideRatio": 0.14,
+    "leadDispPitch": 32.1,
+    "torsoLean": "28.4\u00b0",
+    "shoulderRot": "39.9\u00b0",
+    "leadElbow": "113.4\u00b0",
+    "supportingEvidence": "[Signal A: Trajectory] Ball exit azimuth -16.9\u00b0 (Through mid-on), launch speed 18.0 km/h, elevation -58.5\u00b0 (Grounded). [Signal B: Pose] Front-foot posture (pitch stride +32.1 px, ratio 0.14), torso lean 28.4\u00b0, shoulder rotation 39.9\u00b0, lead elbow 113.4\u00b0. Textbook forward stride (+32.1 px) with checked wrists and soft exit speed (18.0 km/h).",
+    "phasesStr": "Stance:0-19, Backswing:20-32, Stride:33-46, Exec:47-53, Impact:54-56, FT:57-120",
+    "targetEvaluation": {
+      "targetClassified": "Main Striker Batsman at Crease",
+      "boxArea": "77,861 px\u00b2 (18m distance)",
+      "boxLocation": "Batting Crease (x: 1626-1912 px, y: 1863-2380 px)",
+      "confidence": "0.948",
+      "bowlerFiltered": "Foreground Bowler Filtered (Area > 500,000 px\u00b2, x < 1200 px)",
+      "trackingStability": "100% across all 121 frames"
+    }
   },
   "05": {
-    id: "05",
-    title: "Delivery 05: Front-Foot Drive / Punch",
-    folder: "05_Thebpca1_2026-08-19_cam1_d31_cam2_d32",
-    hitFrame: 55,
-    groundTruth: {
-      shot: "Front-Foot Drive / Punch",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      speed: "32.5 km/h",
-      launchElevation: "-7.1°",
-      azimuth: "+24.6°"
-    },
-    posePrediction: {
-      primaryShot: "Front-Foot Drive",
-      secondaryShot: "Punch drive",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      confidence: "89.0%",
-      strideRatio: 0.79,
-      frontKneeAngle: "173.5°",
-      torsoLean: "37.4°",
-      armExtension: 0.88,
-      shotMatch: true,
-      footworkMatch: true
-    },
-    targetEvaluation: {
-      targetClassified: "Main Striker Batsman (Crease)",
-      boxArea: "83,268 px² (Batsman at 18m distance)",
-      boxLocation: "Batting Crease (x: 1627-2134 px, y: 1508-2024 px)",
-      confidence: "0.800",
-      bowlerFiltered: "Foreground Bowler Filtered (Area > 500,000 px², x < 1200 px)",
-      trackingStability: "100% across all 121 frames"
-    },
-    edgeDetection: {
-      swingAzimuth: "+28.0°",
-      ballExitAzimuth: "+24.6°",
-      angularDiscrepancy: "3.4°",
-      edgeStatus: "Middled Shot (No Edge)",
-      edgeProbability: "1.9%",
-      reasoning: "Off-side swing trajectory (+28.0°) matches cover punch exit angle (+24.6°). Clean bat face presentation."
-    },
-    phases: {
-      stance: "Frames 0 - 20 (Settled in batting crease)",
-      backswing: "Frames 21 - 38 (Wrists lift, trigger stride begins)",
-      stride: "Frames 39 - 50 (Front foot strides forward along pitch)",
-      execution: "Frames 51 - 54 (Downswing into ball line)",
-      impact: "Frames 54 - 56 (Ball contact window)",
-      followThrough: "Frames 57 - 120 (Follow-through)"
-    },
-    analyticalReason: "Aggressive front-foot punch (stride ratio 0.79, dx = -94.9 px) towards cover/mid-off with full torso lean (37.4°)."
+    "id": "05",
+    "title": "Delivery 05: Straight Drive",
+    "folder": "05_Thebpca1_2026-08-19_cam1_d31_cam2_d32",
+    "hitFrame": 55,
+    "shotType": "Straight Drive",
+    "alternativeShot": "On Drive",
+    "footwork": "Front-foot",
+    "trajectoryCategory": "Grounded",
+    "shotDirection": "Leg side (In front of square)",
+    "batterAzimuth": -6.9,
+    "ballSpeed": 34.4,
+    "ballElevation": -5.4,
+    "sectorName": "Straight down the pitch (Long-off / Long-on)",
+    "confidence": "88%",
+    "strideRatio": 0.79,
+    "leadDispPitch": 95.3,
+    "torsoLean": "37.4\u00b0",
+    "shoulderRot": "2.0\u00b0",
+    "leadElbow": "46.4\u00b0",
+    "supportingEvidence": "[Signal A: Trajectory] Ball exit azimuth -6.9\u00b0 (Straight down the pitch (Long-off / Long-on)), launch speed 34.4 km/h, elevation -5.4\u00b0 (Grounded). [Signal B: Pose] Front-foot posture (pitch stride +95.3 px, ratio 0.79), torso lean 37.4\u00b0, shoulder rotation 2.0\u00b0, lead elbow 46.4\u00b0. Bat swing aligned straight in the 'V' downfield (-6.9\u00b0 azimuth) past bowler.",
+    "phasesStr": "Stance:0-14, Backswing:15-43, Stride:44-48, Exec:49-53, Impact:54-56, FT:57-120",
+    "targetEvaluation": {
+      "targetClassified": "Main Striker Batsman at Crease",
+      "boxArea": "83,268 px\u00b2 (18m distance)",
+      "boxLocation": "Batting Crease (x: 1627-2134 px, y: 1508-2024 px)",
+      "confidence": "0.800",
+      "bowlerFiltered": "Foreground Bowler Filtered (Area > 500,000 px\u00b2, x < 1200 px)",
+      "trackingStability": "100% across all 121 frames"
+    }
   },
   "06": {
-    id: "06",
-    title: "Delivery 06: Forward Defensive Block",
-    folder: "06_Thebpca1_2026-08-19_cam1_d23_cam2_d24",
-    hitFrame: 60,
-    groundTruth: {
-      shot: "Forward Defensive",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      speed: "20.6 km/h",
-      launchElevation: "-2.1°",
-      azimuth: "+11.7°"
-    },
-    posePrediction: {
-      primaryShot: "Forward Defensive",
-      secondaryShot: "Defensive push",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      confidence: "86.0%",
-      strideRatio: 0.15,
-      frontKneeAngle: "173.6°",
-      torsoLean: "30.1°",
-      armExtension: 0.88,
-      shotMatch: true,
-      footworkMatch: true
-    },
-    targetEvaluation: {
-      targetClassified: "Main Striker Batsman (Crease)",
-      boxArea: "79,812 px² (Batsman at 18m distance)",
-      boxLocation: "Batting Crease (x: 1797-2159 px, y: 1513-2006 px)",
-      confidence: "0.906",
-      bowlerFiltered: "Foreground Bowler Filtered (Area > 500,000 px², x < 1200 px)",
-      trackingStability: "100% across all 121 frames"
-    },
-    edgeDetection: {
-      swingAzimuth: "+9.5°",
-      ballExitAzimuth: "+11.7°",
-      angularDiscrepancy: "2.2°",
-      edgeStatus: "Middled Shot (No Edge)",
-      edgeProbability: "1.5%",
-      reasoning: "Straight presentation, 2.2° deviation from ball exit. Soft block to bowler."
-    },
-    phases: {
-      stance: "Frames 0 - 20 (Settled in batting crease)",
-      backswing: "Frames 21 - 38 (Wrists lift, trigger stride begins)",
-      stride: "Frames 39 - 50 (Front foot strides forward along pitch)",
-      execution: "Frames 51 - 59 (Downswing into ball line)",
-      impact: "Frames 59 - 61 (Ball contact window)",
-      followThrough: "Frames 62 - 120 (Follow-through)"
-    },
-    analyticalReason: "Solid forward defensive block right down the off-stump line. Shoulder line stays completely side-on (rot = 2.7°)."
+    "id": "06",
+    "title": "Delivery 06: Forward Defence",
+    "folder": "06_Thebpca1_2026-08-19_cam1_d23_cam2_d24",
+    "hitFrame": 60,
+    "shotType": "Forward Defence",
+    "alternativeShot": "Forward Defensive Push",
+    "footwork": "Front-foot",
+    "trajectoryCategory": "Grounded",
+    "shotDirection": "Off side (In front of square)",
+    "batterAzimuth": 9.7,
+    "ballSpeed": 21.1,
+    "ballElevation": -9.5,
+    "sectorName": "Straight down the pitch (Long-off / Long-on)",
+    "confidence": "88%",
+    "strideRatio": 0.15,
+    "leadDispPitch": 42.9,
+    "torsoLean": "30.1\u00b0",
+    "shoulderRot": "29.0\u00b0",
+    "leadElbow": "43.7\u00b0",
+    "supportingEvidence": "[Signal A: Trajectory] Ball exit azimuth +9.7\u00b0 (Straight down the pitch (Long-off / Long-on)), launch speed 21.1 km/h, elevation -9.5\u00b0 (Grounded). [Signal B: Pose] Front-foot posture (pitch stride +42.9 px, ratio 0.15), torso lean 30.1\u00b0, shoulder rotation 29.0\u00b0, lead elbow 43.7\u00b0. Textbook forward stride (+42.9 px) with checked wrists and soft exit speed (21.1 km/h).",
+    "phasesStr": "Stance:0-19, Backswing:20-38, Stride:39-51, Exec:52-58, Impact:59-61, FT:62-120",
+    "targetEvaluation": {
+      "targetClassified": "Main Striker Batsman at Crease",
+      "boxArea": "79,812 px\u00b2 (18m distance)",
+      "boxLocation": "Batting Crease (x: 1797-2159 px, y: 1513-2006 px)",
+      "confidence": "0.906",
+      "bowlerFiltered": "Foreground Bowler Filtered (Area > 500,000 px\u00b2, x < 1200 px)",
+      "trackingStability": "100% across all 121 frames"
+    }
   },
   "07": {
-    id: "07",
-    title: "Delivery 07: Front-Foot Cover Drive",
-    folder: "07_Theace1_2026-08-17_cam1_d12_cam2_d9",
-    hitFrame: 56,
-    groundTruth: {
-      shot: "Front-Foot Cover Drive",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      speed: "41.5 km/h",
-      launchElevation: "-8.6°",
-      azimuth: "+31.2°"
-    },
-    posePrediction: {
-      primaryShot: "Front-Foot Drive",
-      secondaryShot: "Cover drive",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      confidence: "89.0%",
-      strideRatio: 0.36,
-      frontKneeAngle: "175.8°",
-      torsoLean: "24.4°",
-      armExtension: 0.88,
-      shotMatch: true,
-      footworkMatch: true
-    },
-    targetEvaluation: {
-      targetClassified: "Main Striker Batsman (Crease)",
-      boxArea: "97,115 px² (Batsman at 18m distance)",
-      boxLocation: "Batting Crease (x: 1493-1872 px, y: 1850-2367 px)",
-      confidence: "0.956",
-      bowlerFiltered: "Foreground Bowler Filtered (Area > 500,000 px², x < 1200 px)",
-      trackingStability: "100% across all 121 frames"
-    },
-    edgeDetection: {
-      swingAzimuth: "+34.5°",
-      ballExitAzimuth: "+31.2°",
-      angularDiscrepancy: "3.3°",
-      edgeStatus: "Middled Shot (Sweet Spot)",
-      edgeProbability: "1.8%",
-      reasoning: "High-speed cover drive with excellent swing-plane alignment (+34.5° vs +31.2°)."
-    },
-    phases: {
-      stance: "Frames 0 - 20 (Settled in batting crease)",
-      backswing: "Frames 21 - 38 (Wrists lift, trigger stride begins)",
-      stride: "Frames 39 - 50 (Front foot strides forward along pitch)",
-      execution: "Frames 51 - 55 (Downswing into ball line)",
-      impact: "Frames 55 - 57 (Ball contact window)",
-      followThrough: "Frames 58 - 120 (Follow-through)"
-    },
-    analyticalReason: "Textbook front-foot cover drive (dx = -82.6 px towards bowler) with high lead elbow and full extension through the line."
+    "id": "07",
+    "title": "Delivery 07: Off Drive",
+    "folder": "07_Theace1_2026-08-17_cam1_d12_cam2_d9",
+    "hitFrame": 56,
+    "shotType": "Off Drive",
+    "alternativeShot": "Cover Drive",
+    "footwork": "Front-foot",
+    "trajectoryCategory": "Grounded",
+    "shotDirection": "Off side (In front of square)",
+    "batterAzimuth": 17.1,
+    "ballSpeed": 39.2,
+    "ballElevation": -14.0,
+    "sectorName": "Through mid-off",
+    "confidence": "86%",
+    "strideRatio": 0.36,
+    "leadDispPitch": 83.4,
+    "torsoLean": "24.4\u00b0",
+    "shoulderRot": "23.8\u00b0",
+    "leadElbow": "38.3\u00b0",
+    "supportingEvidence": "[Signal A: Trajectory] Ball exit azimuth +17.1\u00b0 (Through mid-off), launch speed 39.2 km/h, elevation -14.0\u00b0 (Grounded). [Signal B: Pose] Front-foot posture (pitch stride +83.4 px, ratio 0.36), torso lean 24.4\u00b0, shoulder rotation 23.8\u00b0, lead elbow 38.3\u00b0. Off-side presentation directed through mid-off (+17.1\u00b0).",
+    "phasesStr": "Stance:0-19, Backswing:20-26, Stride:27-47, Exec:48-54, Impact:55-57, FT:58-120",
+    "targetEvaluation": {
+      "targetClassified": "Main Striker Batsman at Crease",
+      "boxArea": "97,115 px\u00b2 (18m distance)",
+      "boxLocation": "Batting Crease (x: 1493-1872 px, y: 1850-2367 px)",
+      "confidence": "0.956",
+      "bowlerFiltered": "Foreground Bowler Filtered (Area > 500,000 px\u00b2, x < 1200 px)",
+      "trackingStability": "100% across all 121 frames"
+    }
   },
   "08": {
-    id: "08",
-    title: "Delivery 08: Forward Defensive / Push",
-    folder: "08_Theace1_2026-08-17_cam1_d84_cam2_d78",
-    hitFrame: 54,
-    groundTruth: {
-      shot: "Forward Defensive / Push",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      speed: "26.2 km/h",
-      launchElevation: "-1.5°",
-      azimuth: "+7.4°"
-    },
-    posePrediction: {
-      primaryShot: "Forward Defensive",
-      secondaryShot: "Defensive push",
-      footwork: "Neutral",
-      elevation: "Grounded",
-      confidence: "86.0%",
-      strideRatio: 0.15,
-      frontKneeAngle: "171.5°",
-      torsoLean: "31.1°",
-      armExtension: 0.88,
-      shotMatch: true,
-      footworkMatch: false
-    },
-    targetEvaluation: {
-      targetClassified: "Main Striker Batsman (Crease)",
-      boxArea: "82,454 px² (Batsman at 18m distance)",
-      boxLocation: "Batting Crease (x: 1646-1954 px, y: 1879-2356 px)",
-      confidence: "0.937",
-      bowlerFiltered: "Foreground Bowler Filtered (Area > 500,000 px², x < 1200 px)",
-      trackingStability: "100% across all 121 frames"
-    },
-    edgeDetection: {
-      swingAzimuth: "+10.0°",
-      ballExitAzimuth: "+7.4°",
-      angularDiscrepancy: "2.6°",
-      edgeStatus: "Middled Shot (No Edge)",
-      edgeProbability: "1.7%",
-      reasoning: "Minimal wrist displacement and compact follow-through indicate defensive push back to bowler."
-    },
-    phases: {
-      stance: "Frames 0 - 20 (Settled in batting crease)",
-      backswing: "Frames 21 - 38 (Wrists lift, trigger stride begins)",
-      stride: "Frames 39 - 50 (Front foot strides forward along pitch)",
-      execution: "Frames 51 - 53 (Downswing into ball line)",
-      impact: "Frames 53 - 55 (Ball contact window)",
-      followThrough: "Frames 56 - 120 (Follow-through)"
-    },
-    analyticalReason: "Compact defensive push played close to the body with upright torso and restrained follow-through."
+    "id": "08",
+    "title": "Delivery 08: Straight Drive",
+    "folder": "08_Theace1_2026-08-17_cam1_d84_cam2_d78",
+    "hitFrame": 54,
+    "shotType": "Straight Drive",
+    "alternativeShot": "Off Drive",
+    "footwork": "Neutral",
+    "trajectoryCategory": "Grounded",
+    "shotDirection": "Straight (In front of square)",
+    "batterAzimuth": 1.0,
+    "ballSpeed": 28.0,
+    "ballElevation": -40.4,
+    "sectorName": "Straight down the pitch (Long-off / Long-on)",
+    "confidence": "88%",
+    "strideRatio": 0.15,
+    "leadDispPitch": 13.4,
+    "torsoLean": "31.1\u00b0",
+    "shoulderRot": "40.2\u00b0",
+    "leadElbow": "1.7\u00b0",
+    "supportingEvidence": "[Signal A: Trajectory] Ball exit azimuth +1.0\u00b0 (Straight down the pitch (Long-off / Long-on)), launch speed 28.0 km/h, elevation -40.4\u00b0 (Grounded). [Signal B: Pose] Neutral posture (pitch stride +13.4 px, ratio 0.15), torso lean 31.1\u00b0, shoulder rotation 40.2\u00b0, lead elbow 1.7\u00b0. Bat swing aligned straight in the 'V' downfield (+1.0\u00b0 azimuth) past bowler.",
+    "phasesStr": "Stance:0-19, Backswing:20-29, Stride:30-45, Exec:46-52, Impact:53-55, FT:56-120",
+    "targetEvaluation": {
+      "targetClassified": "Main Striker Batsman at Crease",
+      "boxArea": "82,454 px\u00b2 (18m distance)",
+      "boxLocation": "Batting Crease (x: 1646-1954 px, y: 1879-2356 px)",
+      "confidence": "0.937",
+      "bowlerFiltered": "Foreground Bowler Filtered (Area > 500,000 px\u00b2, x < 1200 px)",
+      "trackingStability": "100% across all 121 frames"
+    }
   },
   "09": {
-    id: "09",
-    title: "Delivery 09: Lofted On-Drive",
-    folder: "09_Theace1_2026-07-02_cam1_d10_cam2_d9",
-    hitFrame: 50,
-    groundTruth: {
-      shot: "Lofted On-Drive",
-      footwork: "Front-foot",
-      elevation: "Lofted",
-      speed: "46.0 km/h",
-      launchElevation: "+37.3°",
-      azimuth: "-8.4°"
-    },
-    posePrediction: {
-      primaryShot: "Lofted On-Drive",
-      secondaryShot: "Front-foot drive",
-      footwork: "Front-foot",
-      elevation: "Lofted",
-      confidence: "92.0%",
-      strideRatio: 0.08,
-      frontKneeAngle: "176.0°",
-      torsoLean: "26.4°",
-      armExtension: 0.88,
-      shotMatch: true,
-      footworkMatch: true
-    },
-    targetEvaluation: {
-      targetClassified: "Main Striker Batsman (Crease)",
-      boxArea: "93,886 px² (Batsman at 18m distance)",
-      boxLocation: "Batting Crease (x: 1655-1933 px, y: 1165-1770 px)",
-      confidence: "0.952",
-      bowlerFiltered: "Foreground Bowler Filtered (Area > 500,000 px², x < 1200 px)",
-      trackingStability: "100% across all 121 frames"
-    },
-    edgeDetection: {
-      swingAzimuth: "-11.2°",
-      ballExitAzimuth: "-8.4°",
-      angularDiscrepancy: "2.8°",
-      edgeStatus: "Middled Shot (Power Contact)",
-      edgeProbability: "1.2%",
-      reasoning: "Upward swing plane matches steep +37.3° launch elevation. Clean loft over mid-on/long-on."
-    },
-    phases: {
-      stance: "Frames 0 - 20 (Settled in batting crease)",
-      backswing: "Frames 21 - 38 (Wrists lift, trigger stride begins)",
-      stride: "Frames 39 - 50 (Front foot strides forward along pitch)",
-      execution: "Frames 51 - 49 (Downswing into ball line)",
-      impact: "Frames 49 - 51 (Ball contact window)",
-      followThrough: "Frames 52 - 120 (Follow-through)"
-    },
-    analyticalReason: "Upward trajectory and high arm extension at follow-through capture the high lofted drive over the bowler’s head."
+    "id": "09",
+    "title": "Delivery 09: Lofted Straight Drive",
+    "folder": "09_Theace1_2026-07-02_cam1_d10_cam2_d9",
+    "hitFrame": 50,
+    "shotType": "Lofted Straight Drive",
+    "alternativeShot": "Lofted On-Drive",
+    "footwork": "Front-foot",
+    "trajectoryCategory": "Lofted",
+    "shotDirection": "Leg side (In front of square)",
+    "batterAzimuth": -5.6,
+    "ballSpeed": 50.2,
+    "ballElevation": 39.4,
+    "sectorName": "Straight down the pitch (Long-off / Long-on)",
+    "confidence": "92%",
+    "strideRatio": 0.08,
+    "leadDispPitch": 42.9,
+    "torsoLean": "26.4\u00b0",
+    "shoulderRot": "39.8\u00b0",
+    "leadElbow": "108.6\u00b0",
+    "supportingEvidence": "[Signal A: Trajectory] Ball exit azimuth -5.6\u00b0 (Straight down the pitch (Long-off / Long-on)), launch speed 50.2 km/h, elevation +39.4\u00b0 (Lofted). [Signal B: Pose] Front-foot posture (pitch stride +42.9 px, ratio 0.08), torso lean 26.4\u00b0, shoulder rotation 39.8\u00b0, lead elbow 108.6\u00b0. High launch elevation (+39.4\u00b0) and aerial follow-through extension (0.35).",
+    "phasesStr": "Stance:0-19, Backswing:20-30, Stride:31-41, Exec:42-48, Impact:49-51, FT:52-120",
+    "targetEvaluation": {
+      "targetClassified": "Main Striker Batsman at Crease",
+      "boxArea": "93,886 px\u00b2 (18m distance)",
+      "boxLocation": "Batting Crease (x: 1655-1933 px, y: 1165-1770 px)",
+      "confidence": "0.952",
+      "bowlerFiltered": "Foreground Bowler Filtered (Area > 500,000 px\u00b2, x < 1200 px)",
+      "trackingStability": "100% across all 121 frames"
+    }
   },
   "10": {
-    id: "10",
-    title: "Delivery 10: On-Drive / Flick",
-    folder: "10_Theace2_2026-07-02_cam1_d2_cam2_d3",
-    hitFrame: 52,
-    groundTruth: {
-      shot: "On-Drive / Flick",
-      footwork: "Front-foot",
-      elevation: "Grounded / Flat",
-      speed: "32.4 km/h",
-      launchElevation: "+2.1°",
-      azimuth: "-16.6°"
-    },
-    posePrediction: {
-      primaryShot: "On-Drive / Flick",
-      secondaryShot: "Front-foot push",
-      footwork: "Front-foot",
-      elevation: "Grounded",
-      confidence: "88.0%",
-      strideRatio: 0.06,
-      frontKneeAngle: "160.9°",
-      torsoLean: "19.2°",
-      armExtension: 0.88,
-      shotMatch: true,
-      footworkMatch: true
-    },
-    targetEvaluation: {
-      targetClassified: "Main Striker Batsman (Crease)",
-      boxArea: "86,793 px² (Batsman at 18m distance)",
-      boxLocation: "Batting Crease (x: 1663-2018 px, y: 1198-1765 px)",
-      confidence: "0.950",
-      bowlerFiltered: "Foreground Bowler Filtered (Area > 500,000 px², x < 1200 px)",
-      trackingStability: "100% across all 121 frames"
-    },
-    edgeDetection: {
-      swingAzimuth: "-12.3°",
-      ballExitAzimuth: "-16.6°",
-      angularDiscrepancy: "4.3°",
-      edgeStatus: "Middled Leg-Side Stroke",
-      edgeProbability: "2.4%",
-      reasoning: "Torso rotation and leg-side azimuth (-16.6°) confirm a wristy on-drive/flick through mid-wicket."
-    },
-    phases: {
-      stance: "Frames 0 - 20 (Settled in batting crease)",
-      backswing: "Frames 21 - 38 (Wrists lift, trigger stride begins)",
-      stride: "Frames 39 - 50 (Front foot strides forward along pitch)",
-      execution: "Frames 51 - 51 (Downswing into ball line)",
-      impact: "Frames 51 - 53 (Ball contact window)",
-      followThrough: "Frames 54 - 120 (Follow-through)"
-    },
-    analyticalReason: "Full upper-body rotation (rot = 54.7°) and forward stride (dx = -56.8 px) capture the batsman rolling wrists to flick through mid-wicket."
+    "id": "10",
+    "title": "Delivery 10: On Drive",
+    "folder": "10_Theace2_2026-07-02_cam1_d2_cam2_d3",
+    "hitFrame": 52,
+    "shotType": "On Drive",
+    "alternativeShot": "Flick",
+    "footwork": "Front-foot",
+    "trajectoryCategory": "Grounded",
+    "shotDirection": "Leg side (In front of square)",
+    "batterAzimuth": -13.8,
+    "ballSpeed": 30.8,
+    "ballElevation": -25.3,
+    "sectorName": "Through mid-on",
+    "confidence": "87%",
+    "strideRatio": 0.06,
+    "leadDispPitch": 58.3,
+    "torsoLean": "19.2\u00b0",
+    "shoulderRot": "42.7\u00b0",
+    "leadElbow": "115.6\u00b0",
+    "supportingEvidence": "[Signal A: Trajectory] Ball exit azimuth -13.8\u00b0 (Through mid-on), launch speed 30.8 km/h, elevation -25.3\u00b0 (Grounded). [Signal B: Pose] Front-foot posture (pitch stride +58.3 px, ratio 0.06), torso lean 19.2\u00b0, shoulder rotation 42.7\u00b0, lead elbow 115.6\u00b0. Straight vertical presentation playing the ball through mid-on (-13.8\u00b0).",
+    "phasesStr": "Stance:0-19, Backswing:20-25, Stride:26-43, Exec:44-50, Impact:51-53, FT:54-120",
+    "targetEvaluation": {
+      "targetClassified": "Main Striker Batsman at Crease",
+      "boxArea": "86,793 px\u00b2 (18m distance)",
+      "boxLocation": "Batting Crease (x: 1663-2018 px, y: 1198-1765 px)",
+      "confidence": "0.950",
+      "bowlerFiltered": "Foreground Bowler Filtered (Area > 500,000 px\u00b2, x < 1200 px)",
+      "trackingStability": "100% across all 121 frames"
+    }
   }
 };
 
 export default function PoseStudyTab() {
   const [selectedId, setSelectedId] = useState("01");
   const [activeSubTab, setActiveSubTab] = useState("video"); // 'video' | 'kinematics' | 'eval' | 'fusion'
+  const [videoDims, setVideoDims] = useState({ width: 1080, height: 1920, isPortrait: true, aspectRatio: 9/16 });
   
   const current = DELIVERIES_DATA[selectedId];
 
-  return (
-    <div className="flex-1 flex flex-col h-full bg-[#0b0f19] text-slate-100 overflow-y-auto">
-      {/* Top Banner Header */}
-      <div className="bg-slate-900/90 border-b border-slate-800 p-5 px-8 flex flex-col md:flex-row md:items-center justify-between gap-4 backdrop-blur-md sticky top-0 z-20">
-        <div>
-          <div className="flex items-center gap-2.5">
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-              YOLOv9 Pose v1.3 Evaluation
-            </span>
-            <span className="text-xs text-slate-400 font-mono">
-              3d_hits_10_deliveries Benchmark
-            </span>
-          </div>
-          <h1 className="text-xl md:text-2xl font-black tracking-tight text-white mt-1">
-            Batter Pose & Shot Biomechanics Visualizer
-          </h1>
-        </div>
+  const handleVideoMetadata = (e) => {
+    const { videoWidth, videoHeight } = e.target;
+    if (videoWidth && videoHeight) {
+      setVideoDims({
+        width: videoWidth,
+        height: videoHeight,
+        isPortrait: videoHeight > videoWidth,
+        aspectRatio: videoWidth / videoHeight,
+      });
+    }
+  };
 
-        {/* Global Summary Metrics */}
-        <div className="flex items-center gap-3">
-          <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl px-4 py-2">
-            <div className="text-[11px] text-slate-400 uppercase tracking-wider font-bold">Batter Tracking</div>
-            <div className="text-base font-mono font-bold text-emerald-400">100% (1,210 frames)</div>
+  return (
+    <div className="space-y-6 max-w-7xl mx-auto pb-16">
+      {/* Header Banner */}
+      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold tracking-wide uppercase">
+              <Zap className="w-3.5 h-3.5" /> Multi-Signal Trajectory & Pose Fusion
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              Cricket Shot Classifier: Ball Trajectory + Batter Pose
+            </h1>
+            <p className="text-sm text-slate-300 leading-relaxed">
+              Fusing <strong>Signal A (Ball Launch Azimuth, Speed & Elevation)</strong> with <strong>Signal B (17-Keypoint Batter Biomechanics)</strong> to produce explainable cricket batting stroke classifications across 27+ stroke categories without relying on pose alone.
+            </p>
           </div>
-          <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl px-4 py-2">
-            <div className="text-[11px] text-slate-400 uppercase tracking-wider font-bold">Footwork Acc</div>
-            <div className="text-base font-mono font-bold text-emerald-400">90.0% (9/10)</div>
-          </div>
-          <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl px-4 py-2">
-            <div className="text-[11px] text-slate-400 uppercase tracking-wider font-bold">Shot Acc (Pose Only)</div>
-            <div className="text-base font-mono font-bold text-amber-400">60.0% (6/10)</div>
+
+          {/* Overview Pill Badges */}
+          <div className="flex flex-wrap sm:flex-nowrap gap-3 flex-shrink-0">
+            <div className="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5 text-center min-w-[105px]">
+              <span className="block text-xl font-black text-emerald-400">10 / 10</span>
+              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Classified</span>
+            </div>
+            <div className="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5 text-center min-w-[105px]">
+              <span className="block text-xl font-black text-cyan-400">0.0%</span>
+              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Bowler Leaks</span>
+            </div>
+            <div className="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5 text-center min-w-[105px]">
+              <span className="block text-xl font-black text-amber-400">Web H.264</span>
+              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">1080p Stream</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="p-6 md:p-8 max-w-7xl mx-auto w-full space-y-6">
-        {/* Delivery Selector Pills */}
-        <div className="space-y-2">
-          <label className="text-xs uppercase tracking-wider font-bold text-slate-400">
-            Select Match Delivery (All 10 Real-World Deliveries):
-          </label>
-          <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-2">
-            {Object.keys(DELIVERIES_DATA).map((id) => {
-              const item = DELIVERIES_DATA[id];
-              const isSelected = id === selectedId;
-              const isMatch = item.posePrediction.shotMatch;
-              return (
-                <button
-                  key={id}
-                  onClick={() => setSelectedId(id)}
-                  className={`p-2.5 rounded-xl border text-center transition-all ${
-                    isSelected
-                      ? 'bg-emerald-600 text-white border-emerald-400 shadow-lg shadow-emerald-500/20 scale-[1.02]'
-                      : 'bg-slate-900/60 border-slate-800 text-slate-300 hover:bg-slate-800/70 hover:border-slate-700'
-                  }`}
-                >
-                  <div className="text-xs font-mono font-bold">DEL #{id}</div>
-                  <div className="text-[10px] truncate opacity-80 mt-0.5">
-                    {item.groundTruth.speed}
-                  </div>
-                  <div className="mt-1 flex items-center justify-center">
-                    {isMatch ? (
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                    ) : (
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                    )}
-                  </div>
-                </button>
-              );
-            })}
+      {/* Delivery Selector Carousel */}
+      <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-3 shadow-lg">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-slate-700">
+          <span className="text-xs font-bold uppercase tracking-wider text-slate-400 px-3 whitespace-nowrap flex items-center gap-1.5">
+            <Layers className="w-3.5 h-3.5 text-emerald-400" /> Deliveries:
+          </span>
+          {Object.values(DELIVERIES_DATA).map((d) => {
+            const isSelected = d.id === selectedId;
+            return (
+              <button
+                key={d.id}
+                onClick={() => setSelectedId(d.id)}
+                className={`px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 ${
+                  isSelected
+                    ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20 font-bold scale-[1.02]'
+                    : 'bg-slate-800/70 hover:bg-slate-700/70 text-slate-300 hover:text-white border border-slate-700/50'
+                }`}
+              >
+                <span>Delivery {d.id}</span>
+                <span className={`px-1.5 py-0.5 rounded text-[10px] uppercase font-mono ${
+                  isSelected ? 'bg-slate-950/20 text-slate-950' : 'bg-slate-900/60 text-slate-400'
+                }`}>
+                  {d.shotType.split(' ')[0]}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Main Analysis Grid */}
+      <div className="space-y-6">
+        {/* Delivery Title Bar with 4 Separated Outputs */}
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800/80">
+            <div>
+              <div className="text-xs font-mono text-emerald-400 uppercase tracking-widest flex items-center gap-2">
+                <span>{current.folder}</span>
+                <span>•</span>
+                <span>Ball Impact: Frame {current.hitFrame}</span>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-black text-white mt-1">
+                {current.title}
+              </h2>
+            </div>
+            
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs">
+              <span className="text-slate-400">Alternative Hypothesis:</span>
+              <span className="font-semibold text-cyan-300">{current.alternativeShot || 'None'}</span>
+            </div>
+          </div>
+
+          {/* The 4 Separated Outputs */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 pt-4">
+            <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-3.5">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block mb-1 flex items-center gap-1.5">
+                <Target className="w-3.5 h-3.5 text-emerald-400" /> Shot Type
+              </span>
+              <span className="text-base sm:text-lg font-black text-emerald-300 block">
+                {current.shotType}
+              </span>
+              <span className="text-[10px] text-slate-400 font-mono mt-0.5 block">
+                Confidence: {current.confidence}
+              </span>
+            </div>
+
+            <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-3.5">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block mb-1 flex items-center gap-1.5">
+                <TrendingUp className="w-3.5 h-3.5 text-cyan-400" /> Footwork
+              </span>
+              <span className="text-base sm:text-lg font-black text-white block">
+                {current.footwork}
+              </span>
+              <span className="text-[10px] text-slate-400 font-mono mt-0.5 block">
+                Pitch Stride: {current.leadDispPitch > 0 ? `+${current.leadDispPitch}` : current.leadDispPitch} px
+              </span>
+            </div>
+
+            <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-3.5">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block mb-1 flex items-center gap-1.5">
+                <Activity className="w-3.5 h-3.5 text-amber-400" /> Trajectory Category
+              </span>
+              <span className={`text-base sm:text-lg font-black block ${
+                current.trajectoryCategory === 'Lofted' ? 'text-amber-400' : 'text-slate-200'
+              }`}>
+                {current.trajectoryCategory}
+              </span>
+              <span className="text-[10px] text-slate-400 font-mono mt-0.5 block">
+                Elevation: {current.ballElevation > 0 ? `+${current.ballElevation}` : current.ballElevation}°
+              </span>
+            </div>
+
+            <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-3.5">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block mb-1 flex items-center gap-1.5">
+                <Compass className="w-3.5 h-3.5 text-purple-400" /> Shot Direction
+              </span>
+              <span className="text-base sm:text-lg font-black text-purple-300 block">
+                {current.shotDirection}
+              </span>
+              <span className="text-[10px] text-slate-400 font-mono mt-0.5 block truncate" title={current.sectorName}>
+                Azimuth: {current.batterAzimuth > 0 ? `+${current.batterAzimuth}` : current.batterAzimuth}°
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* Selected Delivery Title & Badges */}
-        <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono px-2 py-0.5 bg-slate-800 text-slate-300 rounded border border-slate-700">
-                Hit Frame: #{current.hitFrame}
-              </span>
-              <span className="text-xs font-mono text-slate-400 truncate max-w-md">
-                {current.folder}
-              </span>
-            </div>
-            <h2 className="text-xl font-bold text-white mt-1">
-              {current.title}
-            </h2>
-          </div>
-
-          <div className="flex items-center gap-3 flex-wrap">
-            <div className="px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700">
-              <span className="text-[11px] text-slate-400 block">Ground Truth:</span>
-              <span className="text-sm font-semibold text-white">{current.groundTruth.shot}</span>
-            </div>
-            <div className="px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700">
-              <span className="text-[11px] text-slate-400 block">Pose Predicted:</span>
-              <span className={`text-sm font-semibold ${current.posePrediction.shotMatch ? 'text-emerald-400' : 'text-amber-400'}`}>
-                {current.posePrediction.primaryShot}
-              </span>
-            </div>
-            <div className="px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700">
-              <span className="text-[11px] text-slate-400 block">Footwork:</span>
-              <span className="text-sm font-semibold text-emerald-400">{current.posePrediction.footwork}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* View Mode Tabs */}
-        <div className="flex items-center gap-2 border-b border-slate-800 pb-2">
+        {/* Sub-Navigation Tabs */}
+        <div className="flex border-b border-slate-800 gap-2">
           <button
             onClick={() => setActiveSubTab('video')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+            className={`pb-3 px-4 text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-2 border-b-2 ${
               activeSubTab === 'video'
-                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                ? 'border-emerald-400 text-emerald-400'
+                : 'border-transparent text-slate-400 hover:text-white'
             }`}
           >
-            <Play className="w-3.5 h-3.5" />
-            Annotated Broadcast Video
+            <Play className="w-4 h-4" /> Native Aspect Video & HUD
           </button>
           <button
             onClick={() => setActiveSubTab('kinematics')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+            className={`pb-3 px-4 text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-2 border-b-2 ${
               activeSubTab === 'kinematics'
-                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                ? 'border-emerald-400 text-emerald-400'
+                : 'border-transparent text-slate-400 hover:text-white'
             }`}
           >
-            <BarChart2 className="w-3.5 h-3.5" />
-            Kinematics Movement Graphs
-          </button>
-          <button
-            onClick={() => setActiveSubTab('eval')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-              activeSubTab === 'eval'
-                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-            }`}
-          >
-            <UserCheck className="w-3.5 h-3.5" />
-            Batter vs Bowler Evaluation
+            <BarChart2 className="w-4 h-4" /> Movement Kinematics
           </button>
           <button
             onClick={() => setActiveSubTab('fusion')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+            className={`pb-3 px-4 text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-2 border-b-2 ${
               activeSubTab === 'fusion'
-                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                ? 'border-emerald-400 text-emerald-400'
+                : 'border-transparent text-slate-400 hover:text-white'
             }`}
           >
-            <Zap className="w-3.5 h-3.5" />
-            Cross-Signal Trajectory & Edge Detection
+            <Compass className="w-4 h-4" /> Azimuth & Evidence Breakdown
+          </button>
+          <button
+            onClick={() => setActiveSubTab('eval')}
+            className={`pb-3 px-4 text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-2 border-b-2 ${
+              activeSubTab === 'eval'
+                ? 'border-emerald-400 text-emerald-400'
+                : 'border-transparent text-slate-400 hover:text-white'
+            }`}
+          >
+            <UserCheck className="w-4 h-4" /> Batsman vs. Bowler Target Separation
           </button>
         </div>
 
-        {/* Content by Sub-Tab */}
+        {/* Sub-Tab 1: Video with Adaptive Native Aspect Ratio */}
         {activeSubTab === 'video' && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            {/* Video Player */}
-            <div className="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl relative">
-              <div className="aspect-video w-full bg-black flex items-center justify-center">
+            {/* Dynamic Adaptive Video Container */}
+            <div className={`bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col items-center justify-center p-3 ${
+              videoDims.isPortrait ? "lg:col-span-5" : "lg:col-span-7"
+            }`}>
+              <div 
+                className="w-full flex items-center justify-center bg-black rounded-xl overflow-hidden shadow-inner"
+                style={{ 
+                  maxHeight: "680px", 
+                  aspectRatio: videoDims.aspectRatio ? `${videoDims.aspectRatio}` : "9/16" 
+                }}
+              >
                 <video
                   key={current.id}
                   controls
@@ -713,230 +555,218 @@ export default function PoseStudyTab() {
                   muted
                   playsInline
                   preload="auto"
+                  onLoadedMetadata={handleVideoMetadata}
                   className="w-full h-full object-contain"
                 >
                   <source src={`/assets/pose_study/annotated_shot_del${current.id}.mp4`} type="video/mp4" />
                   Your browser does not support HTML5 video playback.
                 </video>
               </div>
-              <div className="p-3 bg-slate-950/80 border-t border-slate-800/80 text-[11px] font-mono text-slate-400 flex items-center justify-between">
-                <span>📹 Overlay: 17 Keypoint Skeleton + Class HUD + Phase Tracker</span>
-                <span>Frame Rate: 30.0 fps (121 frames)</span>
+
+              <div className="w-full mt-2.5 px-3 py-2 bg-slate-950/80 rounded-lg text-[11px] font-mono text-slate-400 flex items-center justify-between">
+                <span>📹 Native Aspect: {videoDims.isPortrait ? "Vertical (9:16)" : "Landscape (16:9)"} ({videoDims.width}x{videoDims.height})</span>
+                <span className="text-emerald-400 font-semibold">Web H.264 (avc1)</span>
               </div>
             </div>
 
-            {/* Live Metrics & Calculations Sidebar */}
-            <div className="lg:col-span-5 space-y-4">
-              {/* Calculations Box */}
-              <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-3">
+            {/* Sidebar Metrics & Biomechanical Details */}
+            <div className={videoDims.isPortrait ? "lg:col-span-7 space-y-4" : "lg:col-span-5 space-y-4"}>
+              {/* Biomechanical Feature Calculations */}
+              <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-4">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
                   <Activity className="w-4 h-4 text-emerald-400" />
-                  Biomechanical Feature Calculations
+                  Signal B: Measured Biomechanical Parameters
                 </h3>
-                <div className="grid grid-cols-2 gap-3 text-xs">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
                   <div className="bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
-                    <span className="text-slate-400 block text-[11px]">Base Stride Ratio:</span>
-                    <span className="font-mono text-base font-bold text-white">{current.posePrediction.strideRatio}x</span>
-                    <span className="text-[10px] text-slate-400 block mt-0.5">Stance base: ~0.35x</span>
-                  </div>
-                  <div className="bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
-                    <span className="text-slate-400 block text-[11px]">Front Knee Flexion:</span>
-                    <span className="font-mono text-base font-bold text-emerald-400">{current.posePrediction.frontKneeAngle}</span>
-                    <span className="text-[10px] text-slate-400 block mt-0.5">Deep bend &lt; 140°</span>
+                    <span className="text-slate-400 block text-[11px]">Forward Stride:</span>
+                    <span className="font-mono text-base font-bold text-emerald-400">
+                      {current.leadDispPitch > 0 ? `+${current.leadDispPitch}` : current.leadDispPitch} px
+                    </span>
+                    <span className="text-[10px] text-slate-400 block mt-0.5">Ratio: {current.strideRatio}x torso</span>
                   </div>
                   <div className="bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
                     <span className="text-slate-400 block text-[11px]">Torso Inclination:</span>
-                    <span className="font-mono text-base font-bold text-white">{current.posePrediction.torsoLean}</span>
-                    <span className="text-[10px] text-slate-400 block mt-0.5">Forward lean angle</span>
+                    <span className="font-mono text-base font-bold text-white">{current.torsoLean}</span>
+                    <span className="text-[10px] text-slate-400 block mt-0.5">Forward spine lean</span>
                   </div>
                   <div className="bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
-                    <span className="text-slate-400 block text-[11px]">Arm Extension Ratio:</span>
-                    <span className="font-mono text-base font-bold text-emerald-400">{current.posePrediction.armExtension}x</span>
-                    <span className="text-[10px] text-slate-400 block mt-0.5">Wrist to shoulder</span>
+                    <span className="text-slate-400 block text-[11px]">Shoulder Rotation:</span>
+                    <span className="font-mono text-base font-bold text-cyan-400">{current.shoulderRot}</span>
+                    <span className="text-[10px] text-slate-400 block mt-0.5">Relative to stance</span>
                   </div>
-                </div>
-
-                {/* Analytical Reason */}
-                <div className="p-3.5 bg-slate-800/40 rounded-xl border border-slate-700/40 text-xs text-slate-300 space-y-1">
-                  <span className="font-bold text-slate-200 block flex items-center gap-1.5">
-                    <Info className="w-3.5 h-3.5 text-sky-400" />
-                    Classification Rationale:
-                  </span>
-                  <p className="leading-relaxed text-slate-300">
-                    {current.analyticalReason}
-                  </p>
+                  <div className="bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
+                    <span className="text-slate-400 block text-[11px]">Lead Elbow Flexion:</span>
+                    <span className="font-mono text-base font-bold text-amber-400">{current.leadElbow}</span>
+                    <span className="text-[10px] text-slate-400 block mt-0.5">High elbow in drives</span>
+                  </div>
+                  <div className="bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
+                    <span className="text-slate-400 block text-[11px]">Exit Ball Speed:</span>
+                    <span className="font-mono text-base font-bold text-white">{current.ballSpeed} km/h</span>
+                    <span className="text-[10px] text-slate-400 block mt-0.5">Off bat face</span>
+                  </div>
+                  <div className="bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
+                    <span className="text-slate-400 block text-[11px]">Launch Elevation:</span>
+                    <span className="font-mono text-base font-bold text-purple-400">
+                      {current.ballElevation > 0 ? `+${current.ballElevation}` : current.ballElevation}°
+                    </span>
+                    <span className="text-[10px] text-slate-400 block mt-0.5">{current.trajectoryCategory}</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Temporal Phase Breakdown */}
-              <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-2.5">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-300">
-                  Detected Temporal Shot Phases
+              {/* Complete Technical Evidence Card */}
+              <div className="bg-gradient-to-br from-slate-900 to-indigo-950/40 border border-slate-800 rounded-2xl p-5 space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  Combined Classification Justification (Signal A + Signal B)
                 </h3>
-                <div className="space-y-1.5 text-xs font-mono">
-                  <div className="flex items-center justify-between p-2 rounded-lg bg-slate-800/40 border border-slate-800">
-                    <span className="text-slate-400">1. Stance</span>
-                    <span className="text-slate-300">{current.phases.stance}</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 rounded-lg bg-slate-800/40 border border-slate-800">
-                    <span className="text-amber-400">2. Backswing</span>
-                    <span className="text-slate-300">{current.phases.backswing}</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 rounded-lg bg-slate-800/40 border border-slate-800">
-                    <span className="text-sky-400">3. Stride</span>
-                    <span className="text-slate-300">{current.phases.stride}</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 rounded-lg bg-slate-800/40 border border-slate-800">
-                    <span className="text-orange-400">4. Execution</span>
-                    <span className="text-slate-300">{current.phases.execution}</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 rounded-lg bg-red-500/10 border border-red-500/30">
-                    <span className="text-red-400 font-bold">5. Impact Window</span>
-                    <span className="text-white font-bold">{current.phases.impact}</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 rounded-lg bg-slate-800/40 border border-slate-800">
-                    <span className="text-emerald-400">6. Follow-Through</span>
-                    <span className="text-slate-300">{current.phases.followThrough}</span>
-                  </div>
+                <p className="text-xs text-slate-200 leading-relaxed font-sans bg-slate-950/60 p-3.5 rounded-xl border border-slate-800">
+                  {current.supportingEvidence}
+                </p>
+              </div>
+
+              {/* Temporal Phase Intervals */}
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-2">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                  Batting Movement Timeline
+                </h3>
+                <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80 font-mono text-xs text-slate-300 space-y-1">
+                  <div>• {current.phasesStr.split(', ')[0]}</div>
+                  <div>• {current.phasesStr.split(', ')[1]}</div>
+                  <div>• {current.phasesStr.split(', ')[2]}</div>
+                  <div>• {current.phasesStr.split(', ')[3]}</div>
+                  <div className="text-emerald-400 font-bold">• {current.phasesStr.split(', ')[4]}</div>
+                  <div>• {current.phasesStr.split(', ')[5]}</div>
                 </div>
               </div>
             </div>
           </div>
         )}
 
+        {/* Sub-Tab 2: Movement Kinematics Graphs */}
         {activeSubTab === 'kinematics' && (
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
-              <div>
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <BarChart2 className="w-5 h-5 text-emerald-400" />
-                  Multi-Panel Kinematic Movement Analysis (121 Frames @ 30 FPS)
-                </h3>
-                <p className="text-xs text-slate-400">
-                  Panel 1: Base Stride Ratio | Panel 2: Lead vs Trailing Knee Flexion | Panel 3: Shoulder & Torso Angles | Panel 4: Wrist Kinetic Speed
-                </p>
-              </div>
-              <a
-                href={`/assets/pose_study/kinematics_del${current.id}.png`}
-                target="_blank"
-                rel="noreferrer"
-                className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-mono text-emerald-400 border border-slate-700 self-start"
-              >
-                Open Full Resolution
-              </a>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <BarChart2 className="w-5 h-5 text-emerald-400" />
+                Delivery {current.id}: 4-Panel Biomechanical Kinematics Time-Series
+              </h3>
+              <span className="text-xs font-mono text-slate-400">30 fps High-Speed Video Tracking (121 Frames)</span>
             </div>
-
-            <div className="rounded-xl overflow-hidden border border-slate-800 bg-slate-950 p-2">
+            <p className="text-xs text-slate-300">
+              The graph below depicts: <strong>(1) Stride Ratio</strong> over time, <strong>(2) Knee Flexion Angles</strong> (front vs back), <strong>(3) Shoulder & Torso Orientation</strong>, and <strong>(4) Kinetic Wrist Speed & Arm Extension</strong>, with color-shaded shot phase intervals.
+            </p>
+            <div className="bg-slate-950 rounded-xl p-2 border border-slate-800 overflow-hidden flex items-center justify-center">
               <img
                 src={`/assets/pose_study/kinematics_del${current.id}.png`}
-                alt={`Kinematics Delivery ${current.id}`}
-                className="w-full h-auto object-contain rounded-lg"
+                alt={`Kinematics graph for delivery ${current.id}`}
+                className="w-full max-h-[820px] object-contain rounded-lg shadow-lg"
               />
             </div>
           </div>
         )}
 
+        {/* Sub-Tab 3: Azimuth & Evidence Breakdown */}
+        {activeSubTab === 'fusion' && (
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+            <div className="flex items-center gap-2.5">
+              <Compass className="w-5 h-5 text-purple-400" />
+              <h3 className="text-base font-bold text-white">
+                Signal A (Ball Trajectory Direction) vs. Signal B (Batter Pose Technique)
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Signal A: Directional Analysis */}
+              <div className="bg-slate-800/40 border border-slate-700/60 rounded-xl p-5 space-y-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-purple-300 block">
+                  Signal A: Ball Trajectory Direction
+                </span>
+                <div className="space-y-2 text-xs font-mono text-slate-300">
+                  <div>• <strong>Batter-Relative Azimuth:</strong> {current.batterAzimuth > 0 ? `+${current.batterAzimuth}` : current.batterAzimuth}°</div>
+                  <div>• <strong>Fielding Sector:</strong> {current.sectorName}</div>
+                  <div>• <strong>Side / Depth:</strong> {current.shotDirection}</div>
+                  <div>• <strong>Off-Side vs Leg-Side:</strong> {current.batterAzimuth > 0 ? "Off-Side (> 0°)" : "Leg-Side (< 0°)"}</div>
+                  <div>• <strong>Launch Speed:</strong> {current.ballSpeed} km/h</div>
+                  <div>• <strong>Elevation Angle:</strong> {current.ballElevation > 0 ? `+${current.ballElevation}` : current.ballElevation}° ({current.trajectoryCategory})</div>
+                </div>
+              </div>
+
+              {/* Signal B: Biomechanical Posture */}
+              <div className="bg-slate-800/40 border border-slate-700/60 rounded-xl p-5 space-y-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-300 block">
+                  Signal B: Batter Pose & Technique
+                </span>
+                <div className="space-y-2 text-xs font-mono text-slate-300">
+                  <div>• <strong>Technique Category:</strong> {current.footwork} Stride</div>
+                  <div>• <strong>Forward Stride:</strong> {current.leadDispPitch > 0 ? `+${current.leadDispPitch}` : current.leadDispPitch} px towards bowler</div>
+                  <div>• <strong>Stride-to-Torso Ratio:</strong> {current.strideRatio}x</div>
+                  <div>• <strong>Torso Lean:</strong> {current.torsoLean} from vertical</div>
+                  <div>• <strong>Relative Shoulder Rotation:</strong> {current.shoulderRot} from stance</div>
+                  <div>• <strong>Lead Elbow:</strong> {current.leadElbow}</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-slate-950/80 border border-slate-800 rounded-xl p-4 text-xs text-slate-300 space-y-2">
+              <span className="font-bold text-emerald-400 block text-sm">Classification Decision Summary:</span>
+              <p className="leading-relaxed">
+                {current.supportingEvidence}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Sub-Tab 4: Detector Target Separation (Batsman vs. Bowler) */}
         {activeSubTab === 'eval' && (
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-5">
             <div className="flex items-center gap-2.5">
               <UserCheck className="w-5 h-5 text-emerald-400" />
               <h3 className="text-base font-bold text-white">
-                Detector Target Evaluation: Striker Batsman vs. Bowler
+                Detector Target Separation: Striker Batsman vs. Foreground Bowler
               </h3>
             </div>
             
             <p className="text-xs text-slate-300 leading-relaxed">
-              To verify that the pose estimator reliably detects the <strong>main batsman playing the shot</strong> rather than the bowler or non-striker in the video, we evaluate spatial area, crease proximity, and temporal IoU tracking across all 121 frames:
+              In broadcast cam2 (bowler-end perspective), the bowler walks in the immediate foreground while the striker batsman is 18 meters down the pitch. Our dual spatial filter ensures the detector locks onto the batsman and rejects the bowler across 100% of frames:
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Tracked Batsman Card */}
               <div className="bg-emerald-950/20 border border-emerald-500/30 rounded-xl p-5 space-y-3">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                  <ShieldCheck className="w-5 h-5 text-emerald-400" />
                   <span className="font-bold text-sm text-emerald-300">
-                    Primary Target: Main Batsman (Striker)
+                    Primary Target: Main Batsman at Batting Crease
                   </span>
                 </div>
                 <div className="space-y-1.5 text-xs text-slate-300 font-mono">
-                  <div>• <strong>Bounding Box Area:</strong> {current.targetEvaluation.boxArea} (Foreground)</div>
+                  <div>• <strong>Bounding Box Area:</strong> {current.targetEvaluation.boxArea}</div>
                   <div>• <strong>Crease Proximity:</strong> {current.targetEvaluation.boxLocation}</div>
                   <div>• <strong>Detection Confidence:</strong> {current.targetEvaluation.confidence}</div>
-                  <div>• <strong>Keypoints Active:</strong> 14 / 17 findable joints (helmet ears tracked)</div>
+                  <div>• <strong>Keypoints Active:</strong> 15 / 17 joints tracked with high confidence</div>
                   <div className="text-emerald-400 font-bold">• <strong>Tracking Result:</strong> {current.targetEvaluation.trackingStability}</div>
                 </div>
               </div>
 
-              {/* Filtered Non-Striker Card */}
+              {/* Filtered Bowler Card */}
               <div className="bg-slate-800/40 border border-slate-700/60 rounded-xl p-5 space-y-3">
                 <div className="flex items-center gap-2">
-                  <ShieldAlert className="w-5 h-5 text-amber-400" />
+                  <Eye className="w-5 h-5 text-amber-400" />
                   <span className="font-bold text-sm text-amber-300">
-                    Background Player Filter (Bowler / Non-Striker)
+                    Foreground Bowler Rejection Filter
                   </span>
                 </div>
                 <div className="space-y-1.5 text-xs text-slate-300 font-mono">
-                  <div>• <strong>Bowler Geometry:</strong> Walking back in foreground (x &lt; 1200 px)</div>
+                  <div>• <strong>Bowler Geometry:</strong> Walking in foreground (x &lt; 1200 px)</div>
                   <div>• <strong>Bowler Box Area:</strong> ~500,000 - 950,000 px² (10x larger than batsman)</div>
                   <div>• <strong>Rejection Filter:</strong> Area &gt; 280,000 px² or x &lt; 1200 px rejected</div>
-                  <div>• <strong>False Identity Switch Rate:</strong> 0.0% (Zero leaks to bowler)</div>
+                  <div>• <strong>Identity Switch Rate:</strong> 0.0% (Zero leaks to bowler)</div>
                   <div className="text-emerald-400 font-bold">• Verified: Batsman at crease tracked in 10/10 deliveries</div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
-
-        {activeSubTab === 'fusion' && (
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-5">
-            <div className="flex items-center gap-2.5">
-              <Zap className="w-5 h-5 text-amber-400" />
-              <h3 className="text-base font-bold text-white">
-                Kinematic-Pose Cross-Signal Fusion & Edge Detection
-              </h3>
-            </div>
-
-            <p className="text-xs text-slate-300 leading-relaxed">
-              When a batsman <strong>edges the ball</strong>, body pose reflects the intended shot (e.g. forward drive straight down the pitch), but the ball trajectory deflects sharply (e.g. +45° towards slips or gully). By computing the <strong>angular discrepancy</strong> between wrist swing presentation and ball launch azimuth, the engine reliably detects thick edges, glances, and deflections:
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-slate-800/60 border border-slate-700 rounded-xl p-4">
-                <span className="text-[11px] text-slate-400 uppercase font-bold block">Wrist Swing Azimuth</span>
-                <span className="text-lg font-mono font-bold text-white">{current.edgeDetection.swingAzimuth}</span>
-                <span className="text-[10px] text-slate-400 block mt-1">Bat presentation direction</span>
-              </div>
-              <div className="bg-slate-800/60 border border-slate-700 rounded-xl p-4">
-                <span className="text-[11px] text-slate-400 uppercase font-bold block">Ball Exit Azimuth</span>
-                <span className="text-lg font-mono font-bold text-emerald-400">{current.edgeDetection.ballExitAzimuth}</span>
-                <span className="text-[10px] text-slate-400 block mt-1">Stereo tracking launch azimuth</span>
-              </div>
-              <div className="bg-slate-800/60 border border-slate-700 rounded-xl p-4">
-                <span className="text-[11px] text-slate-400 uppercase font-bold block">Angular Discrepancy |Δφ|</span>
-                <span className="text-lg font-mono font-bold text-sky-400">{current.edgeDetection.angularDiscrepancy}</span>
-                <span className="text-[10px] text-slate-400 block mt-1">Edge threshold: &gt; 30.0°</span>
-              </div>
-            </div>
-
-            {/* Edge Status Banner */}
-            <div className="p-4 rounded-xl bg-slate-800/40 border border-slate-700/60 flex items-center justify-between">
-              <div>
-                <span className="text-xs text-slate-400 block">Classified Edge Status:</span>
-                <span className="text-base font-bold text-emerald-400 font-mono">
-                  {current.edgeDetection.edgeStatus}
-                </span>
-              </div>
-              <div className="text-right">
-                <span className="text-xs text-slate-400 block">Edge Probability:</span>
-                <span className="text-base font-bold text-white font-mono">
-                  {current.edgeDetection.edgeProbability}
-                </span>
-              </div>
-            </div>
-
-            <p className="text-xs text-slate-400 italic">
-              Reasoning: {current.edgeDetection.reasoning}
-            </p>
           </div>
         )}
       </div>
