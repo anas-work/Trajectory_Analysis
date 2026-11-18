@@ -42,7 +42,7 @@ export const Z_BAT_CREASE = 8.84; // Striker popping crease position in Three.js
 
 export function simToThreeCoords(xSim = 0, ySim = 0, zSim = 0, zBat = Z_BAT_CREASE) {
   return {
-    x: -Number(ySim || 0),
+    x: Number(ySim || 0),
     y: Math.max(0, Number(zSim || 0)),
     z: zBat - Number(xSim || 0),
   };
@@ -51,7 +51,7 @@ export function simToThreeCoords(xSim = 0, ySim = 0, zSim = 0, zBat = Z_BAT_CREA
 export function threeToSimCoords(px = 0, py = 0, pz = 0, zBat = Z_BAT_CREASE) {
   return {
     x: zBat - Number(pz || 0),
-    y: -Number(px || 0),
+    y: Number(px || 0),
     z: Math.max(0, Number(py || 0)),
   };
 }

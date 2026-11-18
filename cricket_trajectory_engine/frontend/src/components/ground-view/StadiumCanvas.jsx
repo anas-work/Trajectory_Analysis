@@ -11,7 +11,7 @@ const Z_BAT = 8.84; // Striker's popping crease position along pitch axis
 
 function simToThree(bx, by, bz) {
   return new THREE.Vector3(
-    -Number(by || 0),
+    Number(by || 0),
     Math.max(0, Number(bz || 0)),
     Z_BAT - Number(bx || 0)
   );
@@ -1098,7 +1098,7 @@ export default function StadiumCanvas() {
     threeRef.current.fielderMeshes = [];
 
     (fielders || []).forEach((f) => {
-      const posX = -f.y;
+      const posX = Number(f.y || 0);
       const posZ = Z_BAT - f.x;
       const mesh = buildPhotoFielder(f, posX, posZ, fielderTex, bowlerTex);
       scene.add(mesh);
@@ -1287,15 +1287,15 @@ export default function StadiumCanvas() {
       height: 38,
       worldHeight: 0.28,
     });
-    // Positioned safely to the off-side and mid-elevation (leaves batsman face and top toolbar completely clear)
+    // Positioned safely to the off-side (+X) and mid-elevation (leaves batsman face and top toolbar completely clear)
     const badgeY = Math.max(1.25, launchPos.y + 0.35);
-    launchBadge.position.set(launchPos.x - 1.6, badgeY, launchPos.z);
+    launchBadge.position.set(launchPos.x + 1.6, badgeY, launchPos.z);
     milestonesGroup.add(launchBadge);
 
     // Subtle dashed leader line from ball launch point to telemetry badge
     const launchPlumbGeo = new THREE.BufferGeometry().setFromPoints([
       launchPos,
-      new THREE.Vector3(launchPos.x - 1.6, badgeY, launchPos.z),
+      new THREE.Vector3(launchPos.x + 1.6, badgeY, launchPos.z),
     ]);
     const launchPlumbLine = new THREE.Line(
       launchPlumbGeo,
