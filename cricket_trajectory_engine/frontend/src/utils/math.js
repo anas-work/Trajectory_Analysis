@@ -38,6 +38,45 @@ export function calculateDerivedBallProperties(massKg = 0.156, diameterM = 0.072
   };
 }
 
+export const Z_BAT_CREASE = 8.84; // Striker popping crease position in Three.js Z-axis
+
+export function simToThreeCoords(xSim = 0, ySim = 0, zSim = 0, zBat = Z_BAT_CREASE) {
+  return {
+    x: -Number(ySim || 0),
+    y: Math.max(0, Number(zSim || 0)),
+    z: zBat - Number(xSim || 0),
+  };
+}
+
+export function threeToSimCoords(px = 0, py = 0, pz = 0, zBat = Z_BAT_CREASE) {
+  return {
+    x: zBat - Number(pz || 0),
+    y: -Number(px || 0),
+    z: Math.max(0, Number(py || 0)),
+  };
+}
+
+export function decomposeVelocity(speedMs = 0, elevDeg = 0, azimDeg = 0) {
+  const elevRad = (Number(elevDeg) * Math.PI) / 180;
+  const azimRad = (Number(azimDeg) * Math.PI) / 180;
+  const spd = Number(speedMs) || 0;
+  const vh = spd * Math.cos(elevRad);
+  const vx = vh * Math.cos(azimRad);
+  const vy = vh * Math.sin(azimRad);
+  const vz = spd * Math.sin(elevRad);
+  return {
+    speedMs: spd,
+    speedKmh: spd * 3.6,
+    vh: Math.abs(vh),
+    vhSigned: vh,
+    vz: vz,
+    vx: vx,
+    vy: vy,
+    elevDeg: Number(elevDeg),
+    azimDeg: Number(azimDeg),
+  };
+}
+
 export function normalizeTrajectory(rawPoints = []) {
   if (!rawPoints || rawPoints.length === 0) return [];
   return rawPoints.map(pt => {
@@ -52,6 +91,10 @@ export function normalizeTrajectory(rawPoints = []) {
     const vy = pt.vy !== undefined ? pt.vy : 0;
     const vz = pt.vz !== undefined ? pt.vz : 0;
     const phase = pt.phase !== undefined ? pt.phase : (z > 0.05 ? 0 : 2);
-    return [t, x, y, z, vx, vy, vz, phase];
+    const row = [t, x, y, z, vx, vy, vz, phase];
+    if (pt.event) {
+      row.push(pt.event);
+    }
+    return row;
   });
 }

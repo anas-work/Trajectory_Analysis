@@ -49,6 +49,13 @@ app.mount("/artifacts", StaticFiles(directory=experiments_dir), name="artifacts"
 frontend_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "frontend")
 os.makedirs(frontend_dir, exist_ok=True)
 
+# Mount /assets if present (for production bundle and public assets):
+dist_assets = os.path.join(frontend_dir, "dist", "assets")
+if os.path.exists(dist_assets):
+    app.mount("/assets", StaticFiles(directory=dist_assets), name="assets")
+elif os.path.exists(os.path.join(frontend_dir, "public", "assets")):
+    app.mount("/assets", StaticFiles(directory=os.path.join(frontend_dir, "public", "assets")), name="assets")
+
 
 @app.on_event("startup")
 def ensure_real_deliveries_seeded():

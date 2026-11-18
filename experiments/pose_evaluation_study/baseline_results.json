@@ -1,0 +1,272 @@
+[
+  {
+    "delivery_id": "01",
+    "folder": "01_Thebpca1_2026-08-19_cam1_d26_cam2_d27",
+    "camera": "cam1",
+    "obs_points": 39,
+    "path_length_m": 5.8695,
+    "launch_speed_kmh": 17.68,
+    "launch_elevation_deg": 4.46,
+    "launch_azimuth_deg": 10.31,
+    "initial_pos_m": [
+      0.0,
+      0.0,
+      0.506
+    ],
+    "initial_vel_m_s": [
+      4.817,
+      0.876,
+      0.382
+    ],
+    "fit_rmse_total_m": 0.518,
+    "fit_rmse_x_m": 0.0955,
+    "fit_rmse_y_m": 0.0184,
+    "fit_rmse_z_m": 0.8919,
+    "hit_frame": 61,
+    "occluded_around_hit": true,
+    "ball_detection_rate": 0.562
+  },
+  {
+    "delivery_id": "02",
+    "folder": "02_Theace1_2026-08-26_cam1_d35_cam2_d36",
+    "camera": "cam1",
+    "obs_points": 38,
+    "path_length_m": 5.5013999999999985,
+    "launch_speed_kmh": 19.16,
+    "launch_elevation_deg": -12.36,
+    "launch_azimuth_deg": 14.5,
+    "initial_pos_m": [
+      0.0,
+      0.0,
+      0.759
+    ],
+    "initial_vel_m_s": [
+      5.032,
+      1.302,
+      -1.139
+    ],
+    "fit_rmse_total_m": 0.5946,
+    "fit_rmse_x_m": 0.0969,
+    "fit_rmse_y_m": 0.0913,
+    "fit_rmse_z_m": 1.0213,
+    "hit_frame": 50,
+    "occluded_around_hit": true,
+    "ball_detection_rate": 0.413
+  },
+  {
+    "delivery_id": "03",
+    "folder": "03_Theace9_2026-07-02_cam1_d5_cam2_d6",
+    "camera": "cam1",
+    "obs_points": 21,
+    "path_length_m": 10.5809,
+    "launch_speed_kmh": 55.59,
+    "launch_elevation_deg": 12.9,
+    "launch_azimuth_deg": -3.93,
+    "initial_pos_m": [
+      0.0,
+      0.0,
+      0.524
+    ],
+    "initial_vel_m_s": [
+      15.016,
+      -1.031,
+      3.448
+    ],
+    "fit_rmse_total_m": 0.1897,
+    "fit_rmse_x_m": 0.0611,
+    "fit_rmse_y_m": 0.0188,
+    "fit_rmse_z_m": 0.3223,
+    "hit_frame": 47,
+    "occluded_around_hit": true,
+    "ball_detection_rate": 0.281
+  },
+  {
+    "delivery_id": "04",
+    "folder": "04_Theace1_2026-08-17_cam1_d41_cam2_d40",
+    "camera": "cam1",
+    "obs_points": 46,
+    "path_length_m": 7.836500000000001,
+    "launch_speed_kmh": 19.45,
+    "launch_elevation_deg": -2.52,
+    "launch_azimuth_deg": -7.76,
+    "initial_pos_m": [
+      0.0,
+      0.0,
+      0.57
+    ],
+    "initial_vel_m_s": [
+      5.349,
+      -0.729,
+      -0.237
+    ],
+    "fit_rmse_total_m": 0.7746,
+    "fit_rmse_x_m": 0.078,
+    "fit_rmse_y_m": 0.0219,
+    "fit_rmse_z_m": 1.3393,
+    "hit_frame": 55,
+    "occluded_around_hit": true,
+    "ball_detection_rate": 0.562
+  },
+  {
+    "delivery_id": "05",
+    "folder": "05_Thebpca1_2026-08-19_cam1_d31_cam2_d32",
+    "camera": "cam1",
+    "obs_points": 30,
+    "path_length_m": 9.488800000000001,
+    "launch_speed_kmh": 32.47,
+    "launch_elevation_deg": 4.69,
+    "launch_azimuth_deg": -7.08,
+    "initial_pos_m": [
+      0.0,
+      0.0,
+      0.295
+    ],
+    "initial_vel_m_s": [
+      8.922,
+      -1.109,
+      0.738
+    ],
+    "fit_rmse_total_m": 0.3679,
+    "fit_rmse_x_m": 0.1155,
+    "fit_rmse_y_m": 0.0519,
+    "fit_rmse_z_m": 0.6245,
+    "hit_frame": 55,
+    "occluded_around_hit": true,
+    "ball_detection_rate": 0.413
+  },
+  {
+    "delivery_id": "06",
+    "folder": "06_Thebpca1_2026-08-19_cam1_d23_cam2_d24",
+    "camera": "cam1",
+    "obs_points": 52,
+    "path_length_m": 9.017600000000002,
+    "launch_speed_kmh": 20.58,
+    "launch_elevation_deg": -8.56,
+    "launch_azimuth_deg": 6.79,
+    "initial_pos_m": [
+      0.0,
+      0.0,
+      0.719
+    ],
+    "initial_vel_m_s": [
+      5.613,
+      0.669,
+      -0.851
+    ],
+    "fit_rmse_total_m": 1.0183,
+    "fit_rmse_x_m": 0.1107,
+    "fit_rmse_y_m": 0.0139,
+    "fit_rmse_z_m": 1.7602,
+    "hit_frame": 60,
+    "occluded_around_hit": true,
+    "ball_detection_rate": 0.653
+  },
+  {
+    "delivery_id": "07",
+    "folder": "07_Theace1_2026-08-17_cam1_d12_cam2_d9",
+    "camera": "cam1",
+    "obs_points": 20,
+    "path_length_m": 5.9266999999999985,
+    "launch_speed_kmh": 41.49,
+    "launch_elevation_deg": -12.97,
+    "launch_azimuth_deg": 14.89,
+    "initial_pos_m": [
+      0.0,
+      0.0,
+      0.626
+    ],
+    "initial_vel_m_s": [
+      10.854,
+      2.885,
+      -2.587
+    ],
+    "fit_rmse_total_m": 0.2285,
+    "fit_rmse_x_m": 0.1369,
+    "fit_rmse_y_m": 0.0483,
+    "fit_rmse_z_m": 0.3681,
+    "hit_frame": 57,
+    "occluded_around_hit": true,
+    "ball_detection_rate": 0.364
+  },
+  {
+    "delivery_id": "08",
+    "folder": "08_Theace1_2026-08-17_cam1_d84_cam2_d78",
+    "camera": "cam1",
+    "obs_points": 46,
+    "path_length_m": 11.5487,
+    "launch_speed_kmh": 26.19,
+    "launch_elevation_deg": -3.61,
+    "launch_azimuth_deg": 0.97,
+    "initial_pos_m": [
+      0.0,
+      0.0,
+      0.782
+    ],
+    "initial_vel_m_s": [
+      7.259,
+      0.124,
+      -0.458
+    ],
+    "fit_rmse_total_m": 1.122,
+    "fit_rmse_x_m": 0.2112,
+    "fit_rmse_y_m": 0.0149,
+    "fit_rmse_z_m": 1.9318,
+    "hit_frame": 54,
+    "occluded_around_hit": true,
+    "ball_detection_rate": 0.537
+  },
+  {
+    "delivery_id": "09",
+    "folder": "09_Theace1_2026-07-02_cam1_d10_cam2_d9",
+    "camera": "cam1",
+    "obs_points": 37,
+    "path_length_m": 9.968300000000001,
+    "launch_speed_kmh": 46.0,
+    "launch_elevation_deg": 37.3,
+    "launch_azimuth_deg": -5.79,
+    "initial_pos_m": [
+      0.0,
+      0.0,
+      0.944
+    ],
+    "initial_vel_m_s": [
+      10.112,
+      -1.025,
+      7.744
+    ],
+    "fit_rmse_total_m": 0.39,
+    "fit_rmse_x_m": 0.3013,
+    "fit_rmse_y_m": 0.0259,
+    "fit_rmse_z_m": 0.6041,
+    "hit_frame": 50,
+    "occluded_around_hit": true,
+    "ball_detection_rate": 0.446
+  },
+  {
+    "delivery_id": "10",
+    "folder": "10_Theace2_2026-07-02_cam1_d2_cam2_d3",
+    "camera": "cam1",
+    "obs_points": 59,
+    "path_length_m": 16.0671,
+    "launch_speed_kmh": 32.36,
+    "launch_elevation_deg": 1.21,
+    "launch_azimuth_deg": -16.63,
+    "initial_pos_m": [
+      0.0,
+      0.0,
+      0.755
+    ],
+    "initial_vel_m_s": [
+      8.612,
+      -2.572,
+      0.19
+    ],
+    "fit_rmse_total_m": 1.4629,
+    "fit_rmse_x_m": 0.2648,
+    "fit_rmse_y_m": 0.5122,
+    "fit_rmse_z_m": 2.4674,
+    "hit_frame": 51,
+    "occluded_around_hit": true,
+    "ball_detection_rate": 0.628
+  }
+]

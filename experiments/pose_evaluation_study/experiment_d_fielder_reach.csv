@@ -1,0 +1,4 @@
+posture,static_reach_radius_m,static_max_height_m,static_volume_m3,dynamic_lateral_reach_m,dynamic_max_height_m,dynamic_volume_m3,volume_difference_m3,percentage_change,max_reach_gain_m
+Standing Set (Anticipation),1.8,2.3,13.91,1.25,2.15,5.47,-8.44,-60.7,-0.15
+Diving Extension (Horizontal Leaping),1.8,2.3,13.91,2.65,1.5,15.26,1.35,9.7,-0.8
+Vertical Leaping (Boundary Jump),1.8,2.3,13.91,1.35,2.98,9.26,-4.65,-33.4,0.68

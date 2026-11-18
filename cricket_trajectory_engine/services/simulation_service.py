@@ -45,7 +45,8 @@ class SimulationService:
         d_ball = float(ball_dict.get("diameter_m", 0.0725))
         r_ball = d_ball / 2.0
         area_ball = math.pi * (d_ball ** 2) / 4.0
-        inertia_ball = (2.0 / 3.0) * m_ball * (r_ball ** 2)
+        # Solid sphere moment of inertia: I = (2/5) * m * r^2  (NOT 2/3, which is a hollow sphere)
+        inertia_ball = (2.0 / 5.0) * m_ball * (r_ball ** 2)
         ball_cfg = BallConfig(mass_kg=m_ball, diameter_m=d_ball)
 
         # 2. Parse Environment & Aerodynamics:
@@ -118,6 +119,8 @@ class SimulationService:
         p0 = np.array(config.pos0, dtype=float)
         v0 = np.array(config.vel0, dtype=float)
         speed0 = float(np.linalg.norm(v0))
+        # Elevation angle: arctan(Vz / |Vhorizontal|). Consistent with simulation_api.py's
+        # reconstruction: vxy = spd*cos(elev), Vz = spd*sin(elev), so this is the inverse.
         elev0_deg = math.degrees(math.atan2(v0[2], math.hypot(v0[0], v0[1])))
         azim0_deg = math.degrees(math.atan2(v0[1], v0[0]))
 
@@ -286,6 +289,7 @@ class SimulationService:
                 "fielder_name": fc.role_name,
                 "catch_time_s": fc.earliest_intercept_time_s,
                 "intercept_time_s": fc.earliest_intercept_time_s,
+                "intercept_position_m": fc.intercept_position_m.tolist() if fc.intercept_position_m is not None else None,
                 "required_speed_m_s": fc.required_sprint_speed_m_s,
                 "margin_distance_m": fc.margin_distance_m,
                 "catch_type": "Direct Catch (In Hands / Stationary Zone)" if is_direct else "Sprint Interception",

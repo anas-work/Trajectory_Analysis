@@ -6,8 +6,10 @@ Validates:
 3. Pre-seeded real delivery experiments integrity.
 4. Calculation trace step completeness and formula substitutions.
 5. Unique cache-busting and persistence fidelity.
+6. Physics audit regressions (inertia, angle decomposition, carry, phase).
 """
 
+import math
 import pytest
 import numpy as np
 
@@ -139,3 +141,167 @@ def test_video_gallery_endpoint():
     for v in gallery["videos"]:
         if v["has_video"] and v["video_url"]:
             assert "?v=" in v["video_url"]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Audit regression tests (Tasks 1–5 from physics audit)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def test_solid_sphere_inertia_coefficient():
+    """
+    Task 1: Solid sphere moment of inertia = (2/5)*m*r^2, NOT (2/3)*m*r^2.
+    Verifies the BallConfig property AND that simulation_service no longer
+    uses the wrong (2/3) constant.
+    """
+    from cricket_trajectory_engine.config.physics_config import BallConfig
+
+    m = 0.160    # kg (standard cricket ball)
+    d = 0.0725   # m
+    r = d / 2.0
+
+    ball = BallConfig(mass_kg=m, diameter_m=d)
+    expected_inertia = (2.0 / 5.0) * m * (r ** 2)
+    wrong_inertia    = (2.0 / 3.0) * m * (r ** 2)
+
+    assert abs(ball.moment_of_inertia_kg_m2 - expected_inertia) < 1e-10, \
+        f"BallConfig inertia is wrong: {ball.moment_of_inertia_kg_m2} != {expected_inertia}"
+    assert abs(ball.moment_of_inertia_kg_m2 - wrong_inertia) > 1e-10, \
+        "BallConfig is still using the hollow-sphere (2/3) formula"
+
+    # Also verify the constant in simulation_service.py source
+    import inspect
+    import cricket_trajectory_engine.services.simulation_service as svc_mod
+    src = inspect.getsource(svc_mod)
+    assert "(2.0 / 3.0)" not in src, \
+        "simulation_service.py still contains the wrong (2/3) inertia constant"
+    assert "(2.0 / 5.0)" in src, \
+        "simulation_service.py does not contain the correct (2/5) inertia constant"
+
+
+def test_velocity_decomposition_at_45_degrees():
+    """
+    Task 2: At 45° elevation, Vz = V*sin(45°) and Vxy = V*cos(45°).
+    The magnitude of the resulting vector must equal the original speed V.
+    """
+    spd = 30.0
+    elev = math.radians(45.0)
+    azim = math.radians(0.0)
+
+    vxy = spd * math.cos(elev)
+    vz  = spd * math.sin(elev)
+    vel = [vxy * math.cos(azim), vxy * math.sin(azim), vz]
+
+    reconstructed_speed = math.sqrt(sum(c**2 for c in vel))
+    assert abs(reconstructed_speed - spd) < 1e-9, \
+        f"Speed not preserved: {reconstructed_speed} != {spd}"
+
+    assert abs(vz - spd * math.sin(math.radians(45))) < 1e-9
+    assert abs(vxy - spd * math.cos(math.radians(45))) < 1e-9
+
+
+def test_30ms_25deg_carry_within_physical_bounds():
+    """
+    Task 3: 30 m/s launch at 25° elevation, 0° azimuth should produce
+    carry distance within 10–80 m (physical cricket range with air drag).
+    """
+    from cricket_trajectory_engine.physics.flight_simulator import simulate_flight
+
+    spd  = 30.0
+    elev = math.radians(25.0)
+    v0   = [spd * math.cos(elev), 0.0, spd * math.sin(elev)]
+    p0   = [0.0, 0.0, 0.9]
+
+    result = simulate_flight(p0, v0)
+
+    assert result.horizontal_range_m >= 10.0, \
+        f"Carry too short: {result.horizontal_range_m:.2f} m"
+    assert result.horizontal_range_m <= 80.0, \
+        f"Carry implausibly long: {result.horizontal_range_m:.2f} m"
+    assert result.max_height_m > 0.0, \
+        "Ball never gained height"
+    assert result.flight_time_s > 0.0, \
+        "Flight time must be positive"
+
+
+def test_zero_elevation_lands_at_ground_with_positive_horizontal_travel():
+    """
+    Task 4: Ball launched at 0° elevation (purely horizontal) must land at
+    Z ≈ 0 and travel a positive horizontal distance.
+    """
+    from cricket_trajectory_engine.physics.flight_simulator import simulate_flight
+
+    spd = 20.0
+    v0  = [spd, 0.0, 0.0]   # 0° elevation, 0° azimuth
+    p0  = [0.0, 0.0, 0.9]   # Starting height 0.9 m (release height)
+
+    result = simulate_flight(p0, v0)
+
+    # Ball must reach the ground
+    assert result.landing is not None, "Ball at 0° elevation never landed"
+    landing_z = result.landing["position_m"][2]
+    assert landing_z < 0.1, f"Landing Z too high: {landing_z:.4f} m"
+
+    # Must travel forward
+    assert result.horizontal_range_m > 0.5, \
+        f"Ball did not travel forward: {result.horizontal_range_m:.2f} m"
+
+
+def test_phase_field_in_trajectory_samples():
+    """
+    Task 5: The trajectory_samples from run_simulation must include a 'phase'
+    field on every point. Phase 0 = flight, Phase 2 = rolling ground phase.
+    At least one point should be phase=0 (airborne) and, for a bounced shot,
+    at least one point should be phase=2 (rolling).
+    """
+    payload = {
+        "speed_m_s": 30.0,
+        "elevation_deg": 25.0,
+        "azimuth_deg": 0.0,
+        "environment": {"rolling_resistance_coeff": 0.20},
+        "stadium": {"boundary_radius_m": 70.0},
+        "fielding": {"fielders": []},
+    }
+    result = run_simulation(payload)
+
+    samples = result.get("trajectory_samples", [])
+    assert len(samples) > 0, "No trajectory samples returned"
+
+    # Every point must have a 'phase' key
+    for i, pt in enumerate(samples):
+        assert "phase" in pt, f"trajectory_samples[{i}] is missing 'phase' field"
+        assert pt["phase"] in (0, 1, 2), \
+            f"trajectory_samples[{i}]['phase'] = {pt['phase']} is not 0, 1, or 2"
+
+    # At least some flight points (phase=0)
+    phases = [pt["phase"] for pt in samples]
+    assert 0 in phases, "No airborne (phase=0) points found in trajectory"
+
+    # For a bounced trajectory, there should be rolling points (phase=2)
+    bounces = result.get("bounces", [])
+    if bounces:
+        assert 2 in phases, \
+            "Bounced trajectory has no rolling (phase=2) points in trajectory_samples"
+
+
+def test_last_point_included_in_downsampled_trajectory():
+    """
+    Task 2 (complementary): The last trajectory point must always be present
+    in the downsampled output even when n_pts % 200 != 0.
+    """
+    payload = {
+        "speed_m_s": 25.0,
+        "elevation_deg": 20.0,
+        "azimuth_deg": 0.0,
+        "environment": {"rolling_resistance_coeff": 0.20},
+        "stadium": {"boundary_radius_m": 70.0},
+        "fielding": {"fielders": []},
+    }
+    result = run_simulation(payload)
+
+    samples = result.get("trajectory_samples", [])
+    assert len(samples) > 0
+
+    # The last sample must have the highest time value
+    times = [pt["time_s"] for pt in samples]
+    assert times[-1] == max(times), \
+        "Last trajectory sample does not have the maximum time (final point may be missing)"

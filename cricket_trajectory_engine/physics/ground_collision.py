@@ -47,6 +47,115 @@ class MultiBounceResult:
     total_horizontal_distance_m: float
     stopped: bool
 
+    def to_sampled_points(
+        self,
+        max_points: int = 250,
+        ball_radius_m: float = 0.03625,
+        catch_time_s: Optional[float] = None,
+        catch_position_m: Optional[np.ndarray] = None,
+    ) -> List[Dict[str, Any]]:
+        """
+        Generates a keyframe-preserving downsampled trajectory for analytical visualization.
+        Guarantees that physical landmarks (launch, apex, catch, bounces, final rest)
+        are preserved with exact numerical coordinates without spatial shift.
+        """
+        n_pts = len(self.time_s)
+        if n_pts == 0:
+            return []
+
+        first_bounce_time = self.first_bounce.time_s if self.first_bounce else float("inf")
+
+        # 1. Identify keyframe landmark indices in time_s:
+        landmark_indices = set()
+        landmark_events = {}
+
+        # Landmark 0: Launch
+        landmark_indices.add(0)
+        landmark_events[0] = "launch"
+
+        # Landmark Apex: Maximum Z before first bounce
+        pre_bounce_mask = self.time_s <= first_bounce_time
+        if np.any(pre_bounce_mask):
+            pre_bounce_indices = np.where(pre_bounce_mask)[0]
+            apex_idx = pre_bounce_indices[np.argmax(self.positions_m[pre_bounce_indices, 2])]
+            landmark_indices.add(int(apex_idx))
+            if apex_idx != 0:
+                landmark_events[int(apex_idx)] = "apex"
+
+        # Landmark Catch (if caught airborne)
+        if catch_time_s is not None and catch_time_s < first_bounce_time:
+            c_idx = int(np.argmin(np.abs(self.time_s - catch_time_s)))
+            landmark_indices.add(c_idx)
+            landmark_events[c_idx] = "catch"
+
+        # Landmark Bounces (Exact landing positions)
+        for idx_b, b in enumerate(self.bounces):
+            b_idx = int(np.argmin(np.abs(self.time_s - b.time_s)))
+            landmark_indices.add(b_idx)
+            if idx_b == 0:
+                landmark_events[b_idx] = "first_impact"
+            else:
+                landmark_events[b_idx] = f"bounce_{idx_b + 1}"
+
+        # Landmark Stop
+        last_idx = n_pts - 1
+        landmark_indices.add(last_idx)
+        if last_idx not in landmark_events:
+            landmark_events[last_idx] = "stop"
+
+        # 2. Segment and sample between sorted landmarks:
+        sorted_landmarks = sorted(landmark_indices)
+        all_sampled_indices = set()
+
+        if n_pts <= max_points:
+            all_sampled_indices = set(range(n_pts))
+        else:
+            num_segments = len(sorted_landmarks) - 1
+            pts_budget = max_points - len(sorted_landmarks)
+            pts_per_seg = max(2, pts_budget // max(1, num_segments))
+
+            for i in range(num_segments):
+                idx_start = sorted_landmarks[i]
+                idx_end = sorted_landmarks[i + 1]
+                seg_span = idx_end - idx_start
+                if seg_span <= pts_per_seg:
+                    sampled_seg = range(idx_start, idx_end + 1)
+                else:
+                    sampled_seg = np.linspace(idx_start, idx_end, pts_per_seg + 1, endpoint=True, dtype=int)
+                for s_idx in sampled_seg:
+                    all_sampled_indices.add(int(s_idx))
+
+        final_indices = sorted(all_sampled_indices)
+
+        def _get_phase(t_val, z_val):
+            if t_val <= first_bounce_time:
+                return 0  # Pre-impact airborne flight
+            elif z_val > (ball_radius_m + 0.015):
+                return 1  # Post-impact rebound airborne flight
+            else:
+                return 2  # Turf rolling
+
+        result_points = []
+        for idx in final_indices:
+            t = float(self.time_s[idx])
+            p = self.positions_m[idx]
+            v = self.velocities_m_s[idx]
+            evt = landmark_events.get(idx, None)
+            result_points.append({
+                "time_s": round(t, 4),
+                "x": round(float(p[0]), 4),
+                "y": round(float(p[1]), 4),
+                "z": round(float(p[2]), 4),
+                "vx": round(float(v[0]), 2),
+                "vy": round(float(v[1]), 2),
+                "vz": round(float(v[2]), 2),
+                "speed_kmh": round(float(np.linalg.norm(v)) * 3.6, 1),
+                "phase": _get_phase(t, float(p[2])),
+                "event": evt,
+            })
+
+        return result_points
+
 
 def resolve_ground_impact(
     pre_velocity: np.ndarray,
@@ -78,6 +187,9 @@ def resolve_ground_impact(
     mu_t = collision_config.friction_tangential
 
     # Normal velocity rebound:
+    # At ground contact vz is negative (ball moving downward toward ground).
+    # -en * vz gives a positive post-bounce vz (correct upward rebound).
+    # If vz is somehow positive (edge case: ball moving away from ground), pass through unchanged.
     vz_post = -en * vz if vz < 0 else vz
 
     # Tangential friction impulse:
@@ -242,6 +354,11 @@ def simulate_multi_bounce(
     vel_concat = np.vstack(all_velocities) if all_velocities else np.array([initial_velocity_m_s])
     final_pos = pos_concat[-1]
     final_time = all_times[-1] if all_times else 0.0
+    # NOTE: This is straight-line Euclidean distance from initial position to final rest position,
+    # NOT the total arc-length of the curved rolling path. For non-zero azimuth trajectories,
+    # the ball may travel a curved path and the arc-length would be slightly larger.
+    # For cricket purposes (boundary clearance, run scoring), straight-line displacement is
+    # the physically relevant quantity and this is intentional.
     total_dist = float(np.hypot(final_pos[0] - initial_position_m[0], final_pos[1] - initial_position_m[1]))
 
     return MultiBounceResult(

@@ -1,0 +1,29 @@
+{
+  "name": "Custom Simulation",
+  "input_mode": "manual_velocity",
+  "pos0": [
+    0.0,
+    0.0,
+    0.9
+  ],
+  "vel0": [
+    27.1892336110995,
+    0.0,
+    12.678547852220984
+  ],
+  "speed0_kmh": 108.0,
+  "elevation_deg": 25.0,
+  "azimuth_deg": 0.0,
+  "ball": {},
+  "environment": {
+    "rolling_resistance_coeff": 0.2,
+    "drag_model": "constant"
+  },
+  "stadium": {
+    "boundary_radius_m": 70.0
+  },
+  "fielding": {
+    "fielders": []
+  },
+  "solver": {}
+}

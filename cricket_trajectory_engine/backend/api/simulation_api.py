@@ -165,26 +165,22 @@ def run_simulation(config_dict: Dict[str, Any]):
         )
         saved_id = exp_service.save_experiment(rec, res_multibounce, trace)
 
-        # Downsample trajectory for fast frontend WebGL rendering (max 200 points):
-        n_pts = len(res_multibounce.time_s)
-        step = max(1, n_pts // 200)
-        downsampled_points = [
-            {
-                "time_s": round(float(t), 4),
-                "x": round(float(p[0]), 3),
-                "y": round(float(p[1]), 3),
-                "z": round(float(p[2]), 3),
-                "vx": round(float(v[0]), 2),
-                "vy": round(float(v[1]), 2),
-                "vz": round(float(v[2]), 2),
-                "speed_kmh": round(float(np.linalg.norm(v)) * 3.6, 1) if 'np' in globals() else 0.0,
-            }
-            for t, p, v in zip(
-                res_multibounce.time_s[::step],
-                res_multibounce.positions_m[::step],
-                res_multibounce.velocities_m_s[::step]
-            )
-        ]
+        # Keyframe-preserving downsampling for fast, millimeter-accurate frontend WebGL rendering:
+        ball_radius_m = float(config.ball.get("diameter_m", 0.0725)) / 2.0 if config.ball else 0.03625
+        catch_time = None
+        catch_pos = None
+        if res_obj.fielder_interception and res_obj.fielder_interception.get("can_intercept"):
+            catch_time = res_obj.fielder_interception.get("catch_time_s")
+            cp = res_obj.fielder_interception.get("intercept_position_m")
+            if cp:
+                catch_pos = np.array(cp, dtype=float)
+
+        downsampled_points = res_multibounce.to_sampled_points(
+            max_points=250,
+            ball_radius_m=ball_radius_m,
+            catch_time_s=catch_time,
+            catch_position_m=catch_pos,
+        )
 
         # Bounces:
         bounces_data = [

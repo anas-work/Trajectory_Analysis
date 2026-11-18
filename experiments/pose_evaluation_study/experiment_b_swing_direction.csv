@@ -1,0 +1,11 @@
+delivery_id,folder,wrist_disp_px,swing_angle_deg,ball_exit_azimuth_deg,ball_exit_elevation_deg,angular_discrepancy_deg,correlation_valid
+01,01_Thebpca1_2026-08-19_cam1_d26_cam2_d27,"[np.float32(3.7), np.float32(-0.2)]",-3.4,6.1,-27.7,83.2,False
+02,02_Theace1_2026-08-26_cam1_d35_cam2_d36,"[np.float32(50.6), np.float32(90.5)]",60.8,21.8,-21.2,13.1,True
+03,03_Theace9_2026-07-02_cam1_d5_cam2_d6,"[np.float32(77.3), np.float32(276.5)]",74.4,-5.0,-0.2,48.8,False
+04,04_Theace1_2026-08-17_cam1_d41_cam2_d40,"[np.float32(-19.9), np.float32(-74.0)]",-105.1,-8.3,-29.7,153.2,False
+05,05_Thebpca1_2026-08-19_cam1_d31_cam2_d32,"[np.float32(25.8), np.float32(-76.6)]",-71.4,-7.0,-3.7,146.3,False
+06,06_Thebpca1_2026-08-19_cam1_d23_cam2_d24,"[np.float32(-2.7), np.float32(-5.5)]",-116.0,7.6,-18.0,165.7,False
+07,07_Theace1_2026-08-17_cam1_d12_cam2_d9,"[np.float32(-9.8), np.float32(10.2)]",133.7,15.1,-11.4,91.4,False
+08,08_Theace1_2026-08-17_cam1_d84_cam2_d78,"[np.float32(-20.8), np.float32(-83.7)]",-104.0,1.5,-26.2,169.8,False
+09,09_Theace1_2026-07-02_cam1_d10_cam2_d9,"[np.float32(-146.0), np.float32(-132.0)]",-137.9,-5.7,38.0,35.9,False
+10,10_Theace2_2026-07-02_cam1_d2_cam2_d3,"[np.float32(-69.5), np.float32(36.0)]",152.6,-12.3,-11.5,19.5,True

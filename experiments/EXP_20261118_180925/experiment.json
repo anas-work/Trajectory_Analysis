@@ -1,0 +1,101 @@
+{
+  "experiment_id": "EXP_20261118_180925",
+  "name": "Test-Execution",
+  "description": "Simulated via UI on 2026-11-18 at 18:09:25",
+  "created_at": "2026-11-18T18:09:25.926620",
+  "tags": [
+    "ui_simulation",
+    "six"
+  ],
+  "fingerprint": "a1aa4a6784da46f7",
+  "is_cached": false,
+  "config": {
+    "name": "Test-Execution",
+    "input_mode": "manual_velocity",
+    "pos0": [
+      0.0,
+      0.0,
+      0.9
+    ],
+    "vel0": [
+      27.71281292110204,
+      0.0,
+      15.999999999999998
+    ],
+    "speed0_kmh": 115.2,
+    "elevation_deg": 30.0,
+    "azimuth_deg": 0.0,
+    "ball": {
+      "mass_kg": 0.156,
+      "diameter_m": 0.072
+    },
+    "environment": {
+      "surface_preset": "natural_grass",
+      "restitution_normal": 0.45,
+      "friction_tangential": 0.38,
+      "rolling_resistance_coeff": 0.12,
+      "wind_vector": [
+        0,
+        0,
+        0
+      ],
+      "constant_cd": 0.32,
+      "drag_model": "reynolds_dependent",
+      "enable_magnus": true,
+      "spin_rad_s": [
+        0,
+        0,
+        0
+      ],
+      "wind_vector_m_s": [
+        0,
+        0,
+        0
+      ]
+    },
+    "stadium": {
+      "shape": "circle",
+      "boundary_radius": 70.0,
+      "boundary_radius_m": 70.0
+    },
+    "fielding": {
+      "fielders": []
+    },
+    "solver": {}
+  },
+  "results": {
+    "fingerprint": "a1aa4a6784da46f7",
+    "flight_time_s": 3.117012362163725,
+    "carry_distance_m": 72.08536481174879,
+    "max_height_m": 12.373611101165201,
+    "time_to_apex_s": 1.4856225004802308,
+    "first_landing_pos_m": [
+      72.08536481174879,
+      0.0,
+      0.03600000000000205
+    ],
+    "total_bounces": 6,
+    "post_bounce_roll_m": 0.0,
+    "total_distance_m": 72.08536481174879,
+    "final_stopping_pos_m": [
+      98.37259421494865,
+      0.0,
+      0.036
+    ],
+    "clears_rope": true,
+    "residual_speed_at_rope_kmh": 5.618305349691915,
+    "margin_to_rope_m": 2.0853648117487893,
+    "outcome_call": "SIX",
+    "estimated_runs": 6,
+    "fielder_interception": null,
+    "unconstrained_rollout_m": 98.37259421494865,
+    "boundary_distance_m": 70.0,
+    "warnings": [
+      "Boundary Six: Ball cleared the field boundary on the full without touching the ground."
+    ]
+  },
+  "artifacts": {
+    "trajectory_csv": "EXP_20261118_180925/trajectory.csv",
+    "calculation_trace": "EXP_20261118_180925/calculation_trace.json"
+  }
+}

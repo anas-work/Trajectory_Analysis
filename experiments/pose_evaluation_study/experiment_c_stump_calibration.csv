@@ -1,0 +1,11 @@
+delivery_id,folder,stump_mean_conf,stump_height_mean_px,stump_height_std_px,jitter_cv_percent,pixels_per_meter,estimated_focal_length_px,calibration_usable
+01,01_Thebpca1_2026-08-19_cam1_d26_cam2_d27,0.901,925.2,1.94,0.21,1301.3,25375.4,True
+02,02_Theace1_2026-08-26_cam1_d35_cam2_d36,0.905,1173.4,2.35,0.2,1650.4,32182.4,True
+03,03_Theace9_2026-07-02_cam1_d5_cam2_d6,0.941,1027.7,1.19,0.12,1445.4,28185.3,True
+04,04_Theace1_2026-08-17_cam1_d41_cam2_d40,0.927,990.3,3.87,0.39,1392.8,27160.2,True
+05,05_Thebpca1_2026-08-19_cam1_d31_cam2_d32,0.922,927.5,2.64,0.28,1304.6,25439.0,True
+06,06_Thebpca1_2026-08-19_cam1_d23_cam2_d24,0.803,749.7,64.52,8.61,1054.4,20560.9,False
+07,07_Theace1_2026-08-17_cam1_d12_cam2_d9,0.932,996.2,3.58,0.36,1401.1,27321.5,True
+08,08_Theace1_2026-08-17_cam1_d84_cam2_d78,0.903,984.9,3.05,0.31,1385.3,27012.8,True
+09,09_Theace1_2026-07-02_cam1_d10_cam2_d9,0.934,1059.4,4.18,0.39,1490.1,29056.1,True
+10,10_Theace2_2026-07-02_cam1_d2_cam2_d3,0.936,1059.7,2.88,0.27,1490.4,29062.4,True

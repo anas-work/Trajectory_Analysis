@@ -1,0 +1,76 @@
+{
+  "experiment_id": "EXP_20261118_171823",
+  "name": "Shot (108.0 km/h @ 25.0\u00b0, 0.0\u00b0 azim)",
+  "description": "Simulated via UI on 2026-11-18 at 17:18:23",
+  "created_at": "2026-11-18T17:18:23.786605",
+  "tags": [
+    "ui_simulation",
+    "four"
+  ],
+  "fingerprint": "ad75c03b61e7029a",
+  "is_cached": false,
+  "config": {
+    "name": "Custom Simulation",
+    "input_mode": "manual_velocity",
+    "pos0": [
+      0.0,
+      0.0,
+      0.9
+    ],
+    "vel0": [
+      27.1892336110995,
+      0.0,
+      12.678547852220984
+    ],
+    "speed0_kmh": 108.0,
+    "elevation_deg": 25.0,
+    "azimuth_deg": 0.0,
+    "ball": {},
+    "environment": {
+      "rolling_resistance_coeff": 0.2,
+      "drag_model": "constant"
+    },
+    "stadium": {
+      "boundary_radius_m": 70.0
+    },
+    "fielding": {
+      "fielders": []
+    },
+    "solver": {}
+  },
+  "results": {
+    "fingerprint": "ad75c03b61e7029a",
+    "flight_time_s": 2.5148160330593874,
+    "carry_distance_m": 58.41688208667034,
+    "max_height_m": 8.221471161704333,
+    "time_to_apex_s": 1.1906344559982092,
+    "first_landing_pos_m": [
+      58.41688208667034,
+      0.0,
+      0.03625000000000096
+    ],
+    "total_bounces": 7,
+    "post_bounce_roll_m": 28.774820043114318,
+    "total_distance_m": 70.0,
+    "final_stopping_pos_m": [
+      87.19170212978466,
+      0.0,
+      0.03625
+    ],
+    "clears_rope": true,
+    "residual_speed_at_rope_kmh": 44.601825543578514,
+    "margin_to_rope_m": 17.19170212978466,
+    "outcome_call": "FOUR",
+    "estimated_runs": 4,
+    "fielder_interception": null,
+    "unconstrained_rollout_m": 87.19170212978466,
+    "boundary_distance_m": 70.0,
+    "warnings": [
+      "Boundary Four: CLEARED ROPE (BOUNDARY FOUR): Pitched 58.4m (11.6m inside rope). Crossed boundary rope (70.0m) at t=3.44s with residual speed 12.4 m/s (44.6 km/h). Official match distance: 70.0m (Theoretical uninhibited rollout: 87.2m)."
+    ]
+  },
+  "artifacts": {
+    "trajectory_csv": "EXP_20261118_171823/trajectory.csv",
+    "calculation_trace": "EXP_20261118_171823/calculation_trace.json"
+  }
+}

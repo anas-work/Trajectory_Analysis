@@ -100,7 +100,10 @@ export default function PlaybackControls() {
           { id: 'side', label: 'Side Elevation' },
           { id: 'top', label: 'Top-Down Ground' },
           { id: 'rear', label: 'Batsman View' },
-          { id: 'bowler', label: 'Bowler TV Cam' },
+          { id: 'bowler', label: 'Bowler TV' },
+          { id: 'focus-pitch', label: '🎯 Pitch' },
+          { id: 'focus-impact', label: '📍 Landing' },
+          { id: 'reset', label: '🔄 Reset' },
         ].map((view) => (
           <button
             key={view.id}

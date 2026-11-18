@@ -1,0 +1,50 @@
+{
+  "fingerprint": "f8b400d2d7eee957",
+  "flight_time_s": 4.5685968142143585,
+  "carry_distance_m": 73.96697270703667,
+  "max_height_m": 26.09007694335998,
+  "time_to_apex_s": 2.1758386633918816,
+  "first_landing_pos_m": [
+    73.96697270703667,
+    0.0,
+    0.036249999999998644
+  ],
+  "total_bounces": 8,
+  "post_bounce_roll_m": 0.0,
+  "total_distance_m": 73.96697270703667,
+  "final_stopping_pos_m": [
+    75.76984951909682,
+    0.0,
+    0.03625
+  ],
+  "clears_rope": true,
+  "residual_speed_at_rope_kmh": 21.61038840326957,
+  "margin_to_rope_m": 3.9669727070366747,
+  "outcome_call": "SIX",
+  "estimated_runs": 6,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "mid_off",
+      "role_name": "Mid-Off",
+      "distance_to_landing_m": 48.48,
+      "fielder_coords": [
+        26.0,
+        7.0
+      ],
+      "spatial_relationship": "Travels Beyond Fielder by 47.0 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    },
+    "role_name": "Mid-Off",
+    "fielder_name": "Mid-Off"
+  },
+  "unconstrained_rollout_m": 75.76984951909682,
+  "boundary_distance_m": 70.0,
+  "warnings": [
+    "Boundary Six: Ball cleared the field boundary on the full without touching the ground."
+  ]
+}

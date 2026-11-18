@@ -334,8 +334,15 @@ class ExperimentService:
                         if len(row) >= 7:
                             pts.append([float(x) for x in row[:7]])
                 if pts:
-                    step = max(1, len(pts) // 200)
-                    data["trajectory"] = pts[::step]
+                    n_p = len(pts)
+                    if n_p <= 250:
+                        data["trajectory"] = pts
+                    else:
+                        step = max(1, n_p // 200)
+                        sampled = pts[::step]
+                        if (n_p - 1) % step != 0:
+                            sampled.append(pts[-1])
+                        data["trajectory"] = sampled
             except Exception:
                 data["trajectory"] = []
 

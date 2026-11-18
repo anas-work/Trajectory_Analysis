@@ -1,0 +1,11 @@
+delivery_id,folder,eval_frames,baseline_detected,baseline_recall,roi_detected,roi_recall,recovered_detections,recall_gain
+01,01_Thebpca1_2026-08-19_cam1_d26_cam2_d27,7,6,0.857,0,0.0,0,-0.857
+02,02_Theace1_2026-08-26_cam1_d35_cam2_d36,7,3,0.429,0,0.0,0,-0.429
+03,03_Theace9_2026-07-02_cam1_d5_cam2_d6,7,4,0.571,0,0.0,0,-0.571
+04,04_Theace1_2026-08-17_cam1_d41_cam2_d40,7,5,0.714,0,0.0,0,-0.714
+05,05_Thebpca1_2026-08-19_cam1_d31_cam2_d32,7,3,0.429,0,0.0,0,-0.429
+06,06_Thebpca1_2026-08-19_cam1_d23_cam2_d24,7,6,0.857,0,0.0,0,-0.857
+07,07_Theace1_2026-08-17_cam1_d12_cam2_d9,7,6,0.857,0,0.0,0,-0.857
+08,08_Theace1_2026-08-17_cam1_d84_cam2_d78,7,6,0.857,0,0.0,0,-0.857
+09,09_Theace1_2026-07-02_cam1_d10_cam2_d9,7,6,0.857,0,0.0,0,-0.857
+10,10_Theace2_2026-07-02_cam1_d2_cam2_d3,7,4,0.571,0,0.0,0,-0.571
