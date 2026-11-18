@@ -1,0 +1,191 @@
+{
+  "experiment_id": "EXP_20261112_133559",
+  "name": "Square Leg UI Azimuth Verification (-81.5 deg)",
+  "description": "Simulated via UI on 2026-11-12 at 13:35:59",
+  "created_at": "2026-11-12T13:35:59.536203",
+  "tags": [
+    "ui_simulation",
+    "three"
+  ],
+  "fingerprint": "d888afee7a2cce50",
+  "is_cached": false,
+  "config": {
+    "name": "Square Leg UI Azimuth Verification (-81.5 deg)",
+    "input_mode": "manual_velocity",
+    "pos0": [
+      0.0,
+      0.0,
+      0.9
+    ],
+    "vel0": [
+      3.135511107988144,
+      -20.98019471052838,
+      21.213203435596423
+    ],
+    "speed0_kmh": 108.0,
+    "elevation_deg": 45.0,
+    "azimuth_deg": -81.5,
+    "ball": {
+      "mass_kg": 0.156,
+      "diameter_m": 0.072
+    },
+    "environment": {
+      "surface_preset": "natural_grass",
+      "restitution_normal": 0.45,
+      "friction_tangential": 0.38,
+      "rolling_resistance_coeff": 0.12,
+      "wind_vector": [
+        0,
+        0,
+        0
+      ],
+      "constant_cd": 0.32,
+      "drag_model": "reynolds_dependent",
+      "enable_magnus": true,
+      "spin_rad_s": [
+        250,
+        0,
+        30
+      ],
+      "wind_vector_m_s": [
+        0,
+        0,
+        0
+      ]
+    },
+    "stadium": {
+      "shape": "circle",
+      "boundary_radius": 70,
+      "boundary_radius_m": 70.0
+    },
+    "fielding": {
+      "fielders": [
+        {
+          "id": "wk",
+          "name": "Wicket-Keeper",
+          "role": "wicketkeeper",
+          "x": -3.8,
+          "y": 0.2,
+          "catching_radius": 2
+        },
+        {
+          "id": "bowl",
+          "name": "Bowler",
+          "role": "bowler",
+          "x": 20.12,
+          "y": 0,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "slip1",
+          "name": "1st Slip",
+          "role": "fielder",
+          "x": -6.2,
+          "y": 2.6,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "point",
+          "name": "Point",
+          "role": "fielder",
+          "x": 4,
+          "y": 21,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "cover",
+          "name": "Cover",
+          "role": "fielder",
+          "x": 17,
+          "y": 18,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "mid_off",
+          "name": "Mid-Off",
+          "role": "fielder",
+          "x": 26,
+          "y": 7,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "mid_on",
+          "name": "Mid-On",
+          "role": "fielder",
+          "x": 26,
+          "y": -7,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "mid_wicket",
+          "name": "Mid-Wicket",
+          "role": "fielder",
+          "x": 17,
+          "y": -18,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "sq_leg",
+          "name": "Square Leg",
+          "role": "fielder",
+          "x": 3,
+          "y": -20,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "deep_mid_wicket",
+          "name": "Deep Mid-Wicket",
+          "role": "fielder",
+          "x": 46,
+          "y": -48,
+          "catching_radius": 2.2
+        },
+        {
+          "id": "third_man",
+          "name": "Third Man",
+          "role": "fielder",
+          "x": -32,
+          "y": 42,
+          "catching_radius": 2.2
+        }
+      ]
+    },
+    "solver": {}
+  },
+  "results": {
+    "fingerprint": "d888afee7a2cce50",
+    "flight_time_s": 3.2507813935941696,
+    "carry_distance_m": 62.28464548053209,
+    "max_height_m": 16.41543907650479,
+    "time_to_apex_s": 1.5409391982374665,
+    "first_landing_pos_m": [
+      10.050203807988307,
+      -61.4684509814056,
+      0.03599999999999773
+    ],
+    "total_bounces": 6,
+    "post_bounce_roll_m": 7.649640667071495,
+    "total_distance_m": 69.93428614760359,
+    "final_stopping_pos_m": [
+      11.589545146103756,
+      -68.9672880594947,
+      0.03600000000000003
+    ],
+    "clears_rope": false,
+    "residual_speed_at_rope_kmh": null,
+    "margin_to_rope_m": -0.06571385239641359,
+    "outcome_call": "THREE",
+    "estimated_runs": 3,
+    "fielder_interception": null,
+    "unconstrained_rollout_m": 69.93428614760359,
+    "boundary_distance_m": null,
+    "warnings": [
+      "PULLED UP SHORT (IN-PLAY): Pitched 62.3m (7.7m inside rope). Travelled 7.6m post-bounce and came to a stop at 69.9m, 0.1m short of the boundary rope.",
+      "Three: Cut off just inside boundary with long return throw."
+    ]
+  },
+  "artifacts": {
+    "trajectory_csv": "EXP_20261112_133559/trajectory.csv",
+    "calculation_trace": "EXP_20261112_133559/calculation_trace.json"
+  }
+}

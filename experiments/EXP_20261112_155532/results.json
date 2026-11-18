@@ -1,0 +1,56 @@
+{
+  "fingerprint": "36ca3a43a5268d4c",
+  "flight_time_s": 3.113688756769167,
+  "carry_distance_m": 43.10268881139495,
+  "max_height_m": 12.347249912353991,
+  "time_to_apex_s": 1.496267561335049,
+  "first_landing_pos_m": [
+    6.891309079877381,
+    -42.54822724788367,
+    0.03599999999999967
+  ],
+  "total_bounces": 6,
+  "post_bounce_roll_m": 5.504658308160103,
+  "total_distance_m": 48.60734711955505,
+  "final_stopping_pos_m": [
+    7.771400388023745,
+    -47.98207509070384,
+    0.036
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -21.39265288044495,
+  "outcome_call": "CAUGHT (DIVING \u2014 Deep Square Leg @ 7.0 m/s)",
+  "estimated_runs": 0,
+  "fielder_interception": {
+    "fielder_id": "deep_sq_leg",
+    "role_name": "Deep Square Leg",
+    "fielder_name": "Deep Square Leg",
+    "catch_time_s": 3.041267561335016,
+    "intercept_time_s": 3.041267561335016,
+    "required_speed_m_s": 6.980232385832612,
+    "margin_distance_m": 0.05319993877367679,
+    "catch_type": "Sprint Interception",
+    "can_intercept": true,
+    "nearest_fielder": {
+      "fielder_id": "deep_sq_leg",
+      "role_name": "Deep Square Leg",
+      "distance_to_landing_m": 19.7,
+      "fielder_coords": [
+        10.0,
+        -62.0
+      ],
+      "spatial_relationship": "Falls Short of Fielder by 19.7 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    }
+  },
+  "unconstrained_rollout_m": 48.60734711955505,
+  "boundary_distance_m": null,
+  "warnings": [
+    "Potential Catch: Interception window is physically reachable for Deep Square Leg at t = 3.04 s prior to first ground contact. Actual wicket depends on catch completion."
+  ]
+}

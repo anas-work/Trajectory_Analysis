@@ -1,0 +1,50 @@
+{
+  "fingerprint": "008f567d89e2ff99",
+  "flight_time_s": 3.0536306700162106,
+  "carry_distance_m": 69.37000308408363,
+  "max_height_m": 15.525887445660679,
+  "time_to_apex_s": 1.4357803823326016,
+  "first_landing_pos_m": [
+    11.429123371038825,
+    -68.42201741293037,
+    0.035999999999997104
+  ],
+  "total_bounces": 6,
+  "post_bounce_roll_m": 13.849696764539488,
+  "total_distance_m": 70.0,
+  "final_stopping_pos_m": [
+    14.27851699838261,
+    -81.98562310077189,
+    0.036
+  ],
+  "clears_rope": true,
+  "residual_speed_at_rope_kmh": 37.79153067854372,
+  "margin_to_rope_m": 13.219699848623122,
+  "outcome_call": "FOUR",
+  "estimated_runs": 4,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "deep_mid_wicket",
+      "role_name": "Deep Mid-Wicket",
+      "distance_to_landing_m": 40.15,
+      "fielder_coords": [
+        46.0,
+        -48.0
+      ],
+      "spatial_relationship": "Travels Beyond Fielder by 2.9 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 0.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    },
+    "role_name": "Deep Mid-Wicket",
+    "fielder_name": "Deep Mid-Wicket"
+  },
+  "unconstrained_rollout_m": 83.21969984862312,
+  "boundary_distance_m": 70.0,
+  "warnings": [
+    "Boundary Four: CLEARED ROPE (BOUNDARY FOUR): Pitched 69.4m (0.6m inside rope). Crossed boundary rope (70.0m) at t=3.14s with residual speed 10.5 m/s (37.8 km/h). Official match distance: 70.0m (Theoretical uninhibited rollout: 83.2m)."
+  ]
+}

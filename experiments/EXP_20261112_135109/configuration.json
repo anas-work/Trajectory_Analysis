@@ -1,0 +1,24 @@
+{
+  "name": "Deep Square Leg: Falls Short (95 km/h)",
+  "input_mode": "manual_velocity",
+  "pos0": [
+    0.0,
+    0.0,
+    0.9
+  ],
+  "vel0": [
+    2.970484833536297,
+    -18.4218063242667,
+    18.659762281311668
+  ],
+  "speed0_kmh": 95.0,
+  "elevation_deg": 45.0,
+  "azimuth_deg": -80.84,
+  "ball": {},
+  "environment": {
+    "drag_model": "constant"
+  },
+  "stadium": {},
+  "fielding": {},
+  "solver": {}
+}

@@ -1,0 +1,32 @@
+{
+  "fingerprint": "210961766aecd0c1",
+  "flight_time_s": 0.8198090592536523,
+  "carry_distance_m": 11.968303916240265,
+  "max_height_m": 1.119441548588042,
+  "time_to_apex_s": 0.3463181702533337,
+  "first_landing_pos_m": [
+    11.94019158963578,
+    -0.8198313450234842,
+    0.03599999999999945
+  ],
+  "total_bounces": 5,
+  "post_bounce_roll_m": 50.947132633369485,
+  "total_distance_m": 62.91543654960975,
+  "final_stopping_pos_m": [
+    62.767654598789946,
+    -4.309720686422015,
+    0.036
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -7.084563450390249,
+  "outcome_call": "THREE",
+  "estimated_runs": 3,
+  "fielder_interception": null,
+  "unconstrained_rollout_m": 62.91543654960975,
+  "boundary_distance_m": null,
+  "warnings": [
+    "PULLED UP SHORT (IN-PLAY): Pitched 12.0m (58.0m inside rope). Travelled 50.9m post-bounce and came to a stop at 62.9m, 7.1m short of the boundary rope.",
+    "Three: Cut off just inside boundary with long return throw."
+  ]
+}

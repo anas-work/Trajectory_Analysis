@@ -1,0 +1,50 @@
+{
+  "fingerprint": "76a773566ebb7920",
+  "flight_time_s": 2.821317704620827,
+  "carry_distance_m": 70.00028094099946,
+  "max_height_m": 10.234506060132201,
+  "time_to_apex_s": 1.3356640523656345,
+  "first_landing_pos_m": [
+    10.382948354978682,
+    -69.2259612809869,
+    0.036250000000000185
+  ],
+  "total_bounces": 7,
+  "post_bounce_roll_m": 0.0,
+  "total_distance_m": 70.00028094099946,
+  "final_stopping_pos_m": [
+    14.4805745597875,
+    -96.54595780798853,
+    0.03625
+  ],
+  "clears_rope": true,
+  "residual_speed_at_rope_kmh": 0.13115123414105595,
+  "margin_to_rope_m": 0.0002809409994597445,
+  "outcome_call": "SIX",
+  "estimated_runs": 6,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "deep_mid_wicket",
+      "role_name": "Deep Mid-Wicket",
+      "distance_to_landing_m": 41.46,
+      "fielder_coords": [
+        46.0,
+        -48.0
+      ],
+      "spatial_relationship": "Travels Beyond Fielder by 3.5 m",
+      "reach_radius_m": 2.2,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    },
+    "role_name": "Deep Mid-Wicket",
+    "fielder_name": "Deep Mid-Wicket"
+  },
+  "unconstrained_rollout_m": 97.62586239641352,
+  "boundary_distance_m": 70.0,
+  "warnings": [
+    "Boundary Six: Ball cleared the field boundary on the full without touching the ground."
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "fingerprint": "d26fcb5f1a690d14",
+  "flight_time_s": 6.056615946365597,
+  "carry_distance_m": 13.965899383009697,
+  "max_height_m": 45.350667295873365,
+  "time_to_apex_s": 2.898841494507337,
+  "first_landing_pos_m": [
+    2.071523286411368,
+    -13.81141328214481,
+    0.03624999999999813
+  ],
+  "total_bounces": 8,
+  "post_bounce_roll_m": 1.277333849107773,
+  "total_distance_m": 13.965899383009697,
+  "final_stopping_pos_m": [
+    2.2609866886872867,
+    -15.074617692077942,
+    0.03625
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -54.75676676788253,
+  "outcome_call": "CAUGHT (SPRINT INTERCEPTION \u2014 Wicket-Keeper @ 2.3 m/s)",
+  "estimated_runs": 0,
+  "fielder_interception": {
+    "fielder_id": "wk",
+    "role_name": "Wicket-Keeper",
+    "fielder_name": "Wicket-Keeper",
+    "catch_time_s": 5.973841494507272,
+    "intercept_time_s": 5.973841494507272,
+    "required_speed_m_s": 2.319519360070551,
+    "margin_distance_m": 26.322281237073184,
+    "catch_type": "Sprint Interception",
+    "can_intercept": true,
+    "nearest_fielder": {
+      "fielder_id": "sq_leg",
+      "role_name": "Square Leg",
+      "distance_to_landing_m": 6.26,
+      "fielder_coords": [
+        3.0,
+        -20.0
+      ],
+      "spatial_relationship": "Falls Short of Fielder by 6.3 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    }
+  },
+  "unconstrained_rollout_m": 15.24323323211747,
+  "boundary_distance_m": null,
+  "warnings": [
+    "Potential Catch: Interception window is physically reachable for Wicket-Keeper, Bowler, 1st Slip, Point, Cover, Mid-Off, Mid-On, Mid-Wicket, Square Leg at t = 5.97 s prior to first ground contact. Actual wicket depends on catch completion."
+  ]
+}

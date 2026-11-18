@@ -1,0 +1,126 @@
+{
+  "experiment_id": "Club_SquareLeg_Azimuth-81.47_LaunchSpeed-80kmph",
+  "name": "Club_SquareLeg_Azimuth-81.47_LaunchSpeed-80kmph",
+  "description": "Launch Speed vs Elevation Angle Analysis for Club Square Leg fielder.\n\n**Simulation Configuration:**\n- Launch Speed: 80 km/h\n- Azimuth: -81.47\u00b0\n- Target Fielder: Square Leg (3.0m, -20.0m), Club mobility (v_max=5.0m/s, t_react=0.45s, r_reach=1.5m)\n- Boundary Radius: 70.0 m\n\n**Elevation Outcome Ranges (Complete Sweep [0.50\u00b0\u201389.50\u00b0]):**\n- Falls Short: 0.50\u00b0\u20138.37\u00b0\n- Caught: 8.37\u00b0\u201320.43\u00b0; 57.50\u00b0\u201389.50\u00b0\n- Clears Fielder: 20.43\u00b0\u201357.50\u00b0\n- Clears Boundary: N/A\n",
+  "created_at": "2026-11-18T00:04:44.981445",
+  "tags": [
+    "elevation_sweep",
+    "club_fielder",
+    "square_leg",
+    "speed_80kmph",
+    "double"
+  ],
+  "fingerprint": "4c29acdc0e96c105",
+  "is_cached": false,
+  "config": {
+    "name": "Club_SquareLeg_Azimuth-81.47_LaunchSpeed-80kmph",
+    "input_mode": "manual_velocity",
+    "pos0": [
+      0.0,
+      0.0,
+      0.9
+    ],
+    "vel0": [
+      2.987336247486078,
+      -19.917389197317718,
+      9.391516927571098
+    ],
+    "speed0_kmh": 80.0,
+    "elevation_deg": 25.0,
+    "azimuth_deg": -81.47,
+    "ball": {
+      "mass_kg": 0.16,
+      "diameter_m": 0.0725
+    },
+    "environment": {
+      "air_density_kg_m3": 1.225,
+      "constant_cd": 0.32,
+      "drag_model": "constant",
+      "restitution_normal": 0.55,
+      "friction_tangential": 0.38,
+      "rolling_resistance_coeff": 0.2,
+      "enable_magnus": false,
+      "gravity_m_s2": 9.80665
+    },
+    "stadium": {
+      "boundary_radius_m": 70.0
+    },
+    "fielding": {
+      "fielders": [
+        {
+          "id": "sq_leg",
+          "name": "Square Leg",
+          "role": "fielder",
+          "x_m": 3.0,
+          "y_m": -20.0,
+          "max_sprint_speed_m_s": 5.0,
+          "reaction_time_s": 0.45,
+          "reach_radius_m": 1.5,
+          "min_catch_height_m": 0.3,
+          "max_catch_height_m": 2.15
+        }
+      ]
+    },
+    "solver": {
+      "method": "RK45",
+      "rtol": 1e-08,
+      "atol": 1e-10,
+      "max_step": 0.005
+    }
+  },
+  "results": {
+    "fingerprint": "4c29acdc0e96c105",
+    "flight_time_s": 1.9468937080195903,
+    "carry_distance_m": 35.65664630376316,
+    "max_height_m": 5.114533918287756,
+    "time_to_apex_s": 0.9109890906698979,
+    "first_landing_pos_m": [
+      5.288851874691178,
+      -35.262224426136854,
+      0.03625000000000085
+    ],
+    "total_bounces": 7,
+    "post_bounce_roll_m": 21.880132549651023,
+    "total_distance_m": 35.65664630376316,
+    "final_stopping_pos_m": [
+      8.534271510286588,
+      -56.90032627863746,
+      0.03625
+    ],
+    "clears_rope": false,
+    "residual_speed_at_rope_kmh": null,
+    "margin_to_rope_m": -12.463221146585816,
+    "outcome_call": "OVERHEAD CLEARANCE (CLEARS Square Leg)",
+    "estimated_runs": 2,
+    "fielder_interception": {
+      "can_intercept": false,
+      "nearest_fielder": {
+        "fielder_id": "sq_leg",
+        "role_name": "Square Leg",
+        "distance_to_landing_m": 15.43,
+        "fielder_coords": [
+          3.0,
+          -20.0
+        ],
+        "spatial_relationship": "Travels Beyond Fielder by 15.4 m",
+        "reach_radius_m": 1.5,
+        "max_sprint_speed_m_s": 5.0,
+        "reaction_time_s": 0.45,
+        "min_catch_height_m": 0.3,
+        "max_catch_height_m": 2.15
+      },
+      "role_name": "Square Leg",
+      "fielder_name": "Square Leg"
+    },
+    "unconstrained_rollout_m": 57.536778853414184,
+    "boundary_distance_m": null,
+    "warnings": [
+      "PULLED UP SHORT (IN-PLAY): Pitched 35.7m (34.3m inside rope). Travelled 21.9m post-bounce and came to a stop at 57.5m, 12.5m short of the boundary rope.",
+      "Double: Deep outfield placement allows two runs."
+    ]
+  },
+  "artifacts": {
+    "trajectory_csv": "Club_SquareLeg_Azimuth-81.47_LaunchSpeed-80kmph/trajectory.csv",
+    "calculation_trace": "Club_SquareLeg_Azimuth-81.47_LaunchSpeed-80kmph/calculation_trace.json"
+  }
+}

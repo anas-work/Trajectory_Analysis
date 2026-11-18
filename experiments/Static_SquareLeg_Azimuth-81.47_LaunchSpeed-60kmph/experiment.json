@@ -1,0 +1,131 @@
+{
+  "experiment_id": "Static_SquareLeg_Azimuth-81.47_LaunchSpeed-60kmph",
+  "name": "Static_SquareLeg_Azimuth-81.47_LaunchSpeed-60kmph",
+  "description": "Launch Speed vs Elevation Angle Analysis for Static Square Leg fielder.\n\n**Simulation Configuration:**\n- Launch Speed: 60 km/h\n- Azimuth: -81.47\u00b0\n- Target Fielder: Square Leg (3.0m, -20.0m), Static mobility (v_max=0.0m/s, t_react=0.35s, r_reach=1.8m)\n- Boundary Radius: 70.0 m\n\n**Elevation Outcome Ranges (Complete Sweep [0.50\u00b0\u201389.50\u00b0]):**\n- Falls Short: 0.50\u00b0\u201319.68\u00b0; 67.12\u00b0\u201389.50\u00b0\n- Caught: 19.68\u00b0\u201334.26\u00b0; 57.89\u00b0\u201367.12\u00b0\n- Clears Fielder: 34.26\u00b0\u201357.89\u00b0\n- Clears Boundary: N/A\n",
+  "created_at": "2026-11-18T00:15:55.849744",
+  "tags": [
+    "elevation_sweep",
+    "static_fielder",
+    "square_leg",
+    "speed_60kmph",
+    "potential_catch"
+  ],
+  "fingerprint": "6e262af0cb27cc21",
+  "is_cached": false,
+  "config": {
+    "name": "Static_SquareLeg_Azimuth-81.47_LaunchSpeed-60kmph",
+    "input_mode": "manual_velocity",
+    "pos0": [
+      0.0,
+      0.0,
+      0.9
+    ],
+    "vel0": [
+      2.2405021856145586,
+      -14.938041897988288,
+      7.043637695678324
+    ],
+    "speed0_kmh": 60.0,
+    "elevation_deg": 25.0,
+    "azimuth_deg": -81.47,
+    "ball": {
+      "mass_kg": 0.16,
+      "diameter_m": 0.0725
+    },
+    "environment": {
+      "air_density_kg_m3": 1.225,
+      "constant_cd": 0.32,
+      "drag_model": "constant",
+      "restitution_normal": 0.55,
+      "friction_tangential": 0.38,
+      "rolling_resistance_coeff": 0.2,
+      "enable_magnus": false,
+      "gravity_m_s2": 9.80665
+    },
+    "stadium": {
+      "boundary_radius_m": 70.0
+    },
+    "fielding": {
+      "fielders": [
+        {
+          "id": "sq_leg",
+          "name": "Square Leg",
+          "role": "fielder",
+          "x_m": 3.0,
+          "y_m": -20.0,
+          "max_sprint_speed_m_s": 0.0,
+          "reaction_time_s": 0.35,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        }
+      ]
+    },
+    "solver": {
+      "method": "RK45",
+      "rtol": 1e-08,
+      "atol": 1e-10,
+      "max_step": 0.005
+    }
+  },
+  "results": {
+    "fingerprint": "6e262af0cb27cc21",
+    "flight_time_s": 1.5273678079871718,
+    "carry_distance_m": 21.77856663305341,
+    "max_height_m": 3.33648172198507,
+    "time_to_apex_s": 0.6963182474982096,
+    "first_landing_pos_m": [
+      3.2303546436770434,
+      -21.5376594240512,
+      0.03625000000000076
+    ],
+    "total_bounces": 6,
+    "post_bounce_roll_m": 14.75872176362347,
+    "total_distance_m": 21.77856663305341,
+    "final_stopping_pos_m": [
+      5.419475084298723,
+      -36.13312515120446,
+      0.03625
+    ],
+    "clears_rope": false,
+    "residual_speed_at_rope_kmh": null,
+    "margin_to_rope_m": -33.46271160332312,
+    "outcome_call": "CAUGHT (IN HANDS \u2014 Square Leg)",
+    "estimated_runs": 0,
+    "fielder_interception": {
+      "fielder_id": "sq_leg",
+      "role_name": "Square Leg",
+      "fielder_name": "Square Leg",
+      "catch_time_s": 1.2813182474982039,
+      "intercept_time_s": 1.2813182474982039,
+      "required_speed_m_s": 0.0,
+      "margin_distance_m": 0.010477131879330859,
+      "catch_type": "Direct Catch (In Hands / Stationary Zone)",
+      "can_intercept": true,
+      "nearest_fielder": {
+        "fielder_id": "sq_leg",
+        "role_name": "Square Leg",
+        "distance_to_landing_m": 1.55,
+        "fielder_coords": [
+          3.0,
+          -20.0
+        ],
+        "spatial_relationship": "Directly in Catching Zone (1.55m from fielder, within 1.8m reach)",
+        "reach_radius_m": 1.8,
+        "max_sprint_speed_m_s": 0.0,
+        "reaction_time_s": 0.35,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      }
+    },
+    "unconstrained_rollout_m": 36.53728839667688,
+    "boundary_distance_m": null,
+    "warnings": [
+      "Potential Catch: Interception window is physically reachable for Square Leg at t = 1.28 s prior to first ground contact. Actual wicket depends on catch completion."
+    ]
+  },
+  "artifacts": {
+    "trajectory_csv": "Static_SquareLeg_Azimuth-81.47_LaunchSpeed-60kmph/trajectory.csv",
+    "calculation_trace": "Static_SquareLeg_Azimuth-81.47_LaunchSpeed-60kmph/calculation_trace.json"
+  }
+}

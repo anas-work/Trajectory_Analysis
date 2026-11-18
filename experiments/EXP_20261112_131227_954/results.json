@@ -1,0 +1,36 @@
+{
+  "fingerprint": "54666adead355ab6",
+  "flight_time_s": 4.532932434789025,
+  "carry_distance_m": 85.44795129798095,
+  "max_height_m": 25.719298743397122,
+  "time_to_apex_s": 2.1508116212846455,
+  "first_landing_pos_m": [
+    13.602630063600095,
+    -84.35828848652021,
+    0.036249999999994856
+  ],
+  "total_bounces": 8,
+  "post_bounce_roll_m": 0.0,
+  "total_distance_m": 85.44795129798095,
+  "final_stopping_pos_m": [
+    14.480509443421235,
+    -89.80255931010832,
+    0.03625
+  ],
+  "clears_rope": true,
+  "residual_speed_at_rope_kmh": 60.07357983944319,
+  "margin_to_rope_m": 15.44795129798095,
+  "outcome_call": "SIX",
+  "estimated_runs": 6,
+  "fielder_interception": {
+    "fielder_id": "deep_sq_leg",
+    "role_name": "Deep Square Leg",
+    "intercept_time_s": 4.420811621284598,
+    "required_speed_m_s": 4.6172683812687225
+  },
+  "unconstrained_rollout_m": 90.96254620659282,
+  "boundary_distance_m": 70.0,
+  "warnings": [
+    "Boundary Six: Ball cleared the field boundary on the full without touching the ground."
+  ]
+}

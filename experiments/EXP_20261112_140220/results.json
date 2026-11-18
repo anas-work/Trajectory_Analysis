@@ -1,0 +1,31 @@
+{
+  "fingerprint": "095121e2675bbb48",
+  "flight_time_s": 3.304331835283978,
+  "carry_distance_m": 65.1998050408353,
+  "max_height_m": 17.135353354329386,
+  "time_to_apex_s": 1.5609089817349628,
+  "first_landing_pos_m": [
+    11.250385967338271,
+    -64.221829567125,
+    0.03600000000000085
+  ],
+  "total_bounces": 6,
+  "post_bounce_roll_m": 7.896784482373548,
+  "total_distance_m": 70.0,
+  "final_stopping_pos_m": [
+    12.95021971295183,
+    -71.94027529354304,
+    0.036
+  ],
+  "clears_rope": true,
+  "residual_speed_at_rope_kmh": 18.06773761649143,
+  "margin_to_rope_m": 3.0965895232088485,
+  "outcome_call": "FOUR",
+  "estimated_runs": 4,
+  "fielder_interception": null,
+  "unconstrained_rollout_m": 73.09658952320885,
+  "boundary_distance_m": 70.0,
+  "warnings": [
+    "Boundary Four: CLEARED ROPE (BOUNDARY FOUR): Pitched 65.2m (4.8m inside rope). Crossed boundary rope (70.0m) at t=4.32s with residual speed 5.0 m/s (18.1 km/h). Official match distance: 70.0m (Theoretical uninhibited rollout: 73.1m)."
+  ]
+}

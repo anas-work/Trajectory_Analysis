@@ -1,0 +1,100 @@
+{
+  "experiment_id": "EXP_20261112_132143",
+  "name": "Lofted Straight Drive (115 km/h)",
+  "description": "Simulated via UI on 2026-11-12 at 13:21:43",
+  "created_at": "2026-11-12T13:21:43.902266",
+  "tags": [
+    "ui_simulation",
+    "in_play_fielder_data_required"
+  ],
+  "fingerprint": "170fda1d42747c53",
+  "is_cached": false,
+  "config": {
+    "name": "Lofted Straight Drive (115 km/h)",
+    "input_mode": "manual_velocity",
+    "pos0": [
+      0.0,
+      0.0,
+      0.9
+    ],
+    "vel0": [
+      12.235155124994774,
+      0.0,
+      5.705346533499442
+    ],
+    "speed0_kmh": 48.6,
+    "elevation_deg": 25.0,
+    "azimuth_deg": 0.0,
+    "ball": {
+      "mass_kg": 0.156,
+      "diameter_m": 0.072
+    },
+    "environment": {
+      "surface_preset": "natural_grass",
+      "restitution_normal": 0.45,
+      "friction_tangential": 0.38,
+      "rolling_resistance_coeff": 0.12,
+      "wind_vector": [
+        0,
+        0,
+        0
+      ],
+      "constant_cd": 0.32,
+      "drag_model": "reynolds_dependent",
+      "enable_magnus": true,
+      "spin_rad_s": [
+        250,
+        0,
+        30
+      ],
+      "wind_vector_m_s": [
+        0,
+        0,
+        0
+      ]
+    },
+    "stadium": {
+      "shape": "circle",
+      "boundary_radius": 70,
+      "boundary_radius_m": 70.0
+    },
+    "fielding": {},
+    "solver": {}
+  },
+  "results": {
+    "fingerprint": "170fda1d42747c53",
+    "flight_time_s": 1.2714326560581974,
+    "carry_distance_m": 14.96838694051979,
+    "max_height_m": 2.4977375890423192,
+    "time_to_apex_s": 0.5564043643802336,
+    "first_landing_pos_m": [
+      14.968051274636794,
+      -0.10024290981047333,
+      0.03600000000000031
+    ],
+    "total_bounces": 5,
+    "post_bounce_roll_m": 15.107667751823746,
+    "total_distance_m": 30.076054692343536,
+    "final_stopping_pos_m": [
+      30.073506504540077,
+      0.391500163761502,
+      0.036
+    ],
+    "clears_rope": false,
+    "residual_speed_at_rope_kmh": null,
+    "margin_to_rope_m": -39.92394530765647,
+    "outcome_call": "IN_PLAY_FIELDER_DATA_REQUIRED",
+    "estimated_runs": null,
+    "fielder_interception": null,
+    "unconstrained_rollout_m": 30.076054692343536,
+    "boundary_distance_m": null,
+    "warnings": [
+      "PULLED UP SHORT (IN-PLAY): Pitched 15.0m (55.0m inside rope). Travelled 15.1m post-bounce and came to a stop at 30.1m, 39.9m short of the boundary rope.",
+      "In-Play Ball: The ball remains inside the field boundary. Specific match outcome (Catch, Single, Double, or Dot) requires fielder tracking and batsman running times."
+    ]
+  },
+  "artifacts": {
+    "trajectory_csv": "EXP_20261112_132143/trajectory.csv",
+    "calculation_trace": "EXP_20261112_132143/calculation_trace.json"
+  }
+}

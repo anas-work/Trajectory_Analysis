@@ -1,0 +1,51 @@
+{
+  "fingerprint": "8966695deff0d8d3",
+  "flight_time_s": 2.411166769831655,
+  "carry_distance_m": 26.296750502463002,
+  "max_height_m": 7.591524026604633,
+  "time_to_apex_s": 1.1516891614270506,
+  "first_landing_pos_m": [
+    3.8869072063913523,
+    -26.007903401806363,
+    0.0360000000000001
+  ],
+  "total_bounces": 5,
+  "post_bounce_roll_m": 4.088926780974756,
+  "total_distance_m": 30.385677283437758,
+  "final_stopping_pos_m": [
+    4.491289066039327,
+    -30.051916852315777,
+    0.036000000000000004
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -39.61432271656224,
+  "outcome_call": "OVERHEAD CLEARANCE (CLEARS Square Leg)",
+  "estimated_runs": 1,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "sq_leg",
+      "role_name": "Square Leg",
+      "distance_to_landing_m": 6.07,
+      "fielder_coords": [
+        3.0,
+        -20.0
+      ],
+      "spatial_relationship": "Travels Beyond Fielder by 6.1 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 0.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    },
+    "role_name": "Square Leg",
+    "fielder_name": "Square Leg"
+  },
+  "unconstrained_rollout_m": 30.385677283437758,
+  "boundary_distance_m": null,
+  "warnings": [
+    "PULLED UP SHORT (IN-PLAY): Pitched 26.3m (43.7m inside rope). Travelled 4.1m post-bounce and came to a stop at 30.4m, 39.6m short of the boundary rope.",
+    "Single: Ball fielded in the inner/middle ring; time permits single run."
+  ]
+}

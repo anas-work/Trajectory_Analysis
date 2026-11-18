@@ -1,0 +1,36 @@
+{
+  "fingerprint": "bedd097d395dc0ae",
+  "flight_time_s": 1.66828414146115,
+  "carry_distance_m": 16.211862257340226,
+  "max_height_m": 3.910082447148352,
+  "time_to_apex_s": 0.7719566147336007,
+  "first_landing_pos_m": [
+    16.129169228103805,
+    -1.6353525192330063,
+    0.03600000000000096
+  ],
+  "total_bounces": 6,
+  "post_bounce_roll_m": 5.623205762151446,
+  "total_distance_m": 21.835068019491672,
+  "final_stopping_pos_m": [
+    21.723692294146023,
+    -2.202586780376347,
+    0.036
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -48.16493198050833,
+  "outcome_call": "POTENTIAL_CATCH",
+  "estimated_runs": 0,
+  "fielder_interception": {
+    "fielder_id": "bowl",
+    "role_name": "Bowler",
+    "intercept_time_s": 1.3519566147335933,
+    "required_speed_m_s": 5.25831089317538
+  },
+  "unconstrained_rollout_m": 21.835068019491672,
+  "boundary_distance_m": null,
+  "warnings": [
+    "Potential Catch: Interception window is physically reachable for Bowler at t = 1.35 s prior to first ground contact. Actual wicket depends on catch completion."
+  ]
+}

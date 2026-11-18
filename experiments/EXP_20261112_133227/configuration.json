@@ -1,0 +1,24 @@
+{
+  "name": "Test Azimuth Without Suffix",
+  "input_mode": "manual_velocity",
+  "pos0": [
+    0.0,
+    0.0,
+    0.9
+  ],
+  "vel0": [
+    3.1464958819393707,
+    -20.978550084906693,
+    21.213203435596423
+  ],
+  "speed0_kmh": 108.0,
+  "elevation_deg": 45.0,
+  "azimuth_deg": -81.47,
+  "ball": {},
+  "environment": {
+    "drag_model": "constant"
+  },
+  "stadium": {},
+  "fielding": {},
+  "solver": {}
+}

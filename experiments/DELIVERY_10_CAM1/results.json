@@ -1,0 +1,32 @@
+{
+  "fingerprint": "4325e6aaa14a68c9",
+  "flight_time_s": 0.4038189578749567,
+  "carry_distance_m": 3.5961688125488487,
+  "max_height_m": 0.7566093660390776,
+  "time_to_apex_s": 0.017184525114003677,
+  "first_landing_pos_m": [
+    3.4457812600531956,
+    -1.0290877689561795,
+    0.03599999999999996
+  ],
+  "total_bounces": 4,
+  "post_bounce_roll_m": 17.00978799744747,
+  "total_distance_m": 20.60595680999632,
+  "final_stopping_pos_m": [
+    19.744239918210564,
+    -5.896647022467455,
+    0.036
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -49.39404319000368,
+  "outcome_call": "DOUBLE",
+  "estimated_runs": 2,
+  "fielder_interception": null,
+  "unconstrained_rollout_m": 20.60595680999632,
+  "boundary_distance_m": null,
+  "warnings": [
+    "PULLED UP SHORT (IN-PLAY): Pitched 3.6m (66.4m inside rope). Travelled 17.0m post-bounce and came to a stop at 20.6m, 49.4m short of the boundary rope.",
+    "Double: Deep outfield placement allows two runs."
+  ]
+}

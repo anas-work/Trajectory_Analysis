@@ -1,0 +1,24 @@
+{
+  "name": "Square Leg: Falls Short (45 km/h)",
+  "input_mode": "manual_velocity",
+  "pos0": [
+    0.0,
+    0.0,
+    0.9
+  ],
+  "vel0": [
+    1.311039950808071,
+    -8.74106253537779,
+    8.838834764831843
+  ],
+  "speed0_kmh": 45.0,
+  "elevation_deg": 45.0,
+  "azimuth_deg": -81.47,
+  "ball": {},
+  "environment": {
+    "drag_model": "constant"
+  },
+  "stadium": {},
+  "fielding": {},
+  "solver": {}
+}

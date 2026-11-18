@@ -1,0 +1,288 @@
+{
+  "experiment_id": "EXP_20261117_100745",
+  "name": "Lofted Straight Drive (115 km/h)",
+  "description": "Simulated via UI on 2026-11-17 at 10:07:45",
+  "created_at": "2026-11-17T10:07:45.739713",
+  "tags": [
+    "ui_simulation",
+    "potential_catch"
+  ],
+  "fingerprint": "44b893f4b7c044d6",
+  "is_cached": false,
+  "config": {
+    "name": "Lofted Straight Drive (115 km/h)",
+    "input_mode": "manual_velocity",
+    "pos0": [
+      0.0,
+      0.0,
+      0.9
+    ],
+    "vel0": [
+      0.1725515321775333,
+      -1.1504483386714701,
+      33.313027567303195
+    ],
+    "speed0_kmh": 120.0,
+    "elevation_deg": 88.0,
+    "azimuth_deg": -81.47,
+    "ball": {
+      "mass_kg": 0.16,
+      "diameter_m": 0.0725
+    },
+    "environment": {
+      "surface_preset": "natural_grass",
+      "restitution_normal": 0.55,
+      "friction_tangential": 0.38,
+      "rolling_resistance_coeff": 0.2,
+      "wind_vector": [
+        0,
+        0,
+        0
+      ],
+      "constant_cd": 0.32,
+      "drag_model": "constant",
+      "enable_magnus": true,
+      "spin_rad_s": [
+        0,
+        0,
+        0
+      ],
+      "wind_vector_m_s": [
+        0,
+        0,
+        0
+      ]
+    },
+    "stadium": {
+      "shape": "circle",
+      "boundary_radius": 70,
+      "boundary_radius_m": 70.0
+    },
+    "fielding": {
+      "sprint_speed_m_s": 7,
+      "max_sprint_speed_m_s": 7,
+      "reaction_time_s": 0.35,
+      "reach_radius_m": 1.8,
+      "catching_radius": 1.8,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3,
+      "fielders": [
+        {
+          "id": "wk",
+          "name": "Wicket-Keeper",
+          "role": "wicketkeeper",
+          "x": -3.8,
+          "y": 0.2,
+          "catching_radius": 2,
+          "max_sprint_speed_m_s": 7,
+          "sprint_speed_m_s": 7,
+          "reaction_time_s": 0.35,
+          "reach_radius_m": 2,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "bowl",
+          "name": "Bowler",
+          "role": "bowler",
+          "x": 20.12,
+          "y": 0,
+          "catching_radius": 1.8,
+          "max_sprint_speed_m_s": 7,
+          "sprint_speed_m_s": 7,
+          "reaction_time_s": 0.35,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "slip1",
+          "name": "1st Slip",
+          "role": "fielder",
+          "x": -6.2,
+          "y": 2.6,
+          "catching_radius": 1.8,
+          "max_sprint_speed_m_s": 7,
+          "sprint_speed_m_s": 7,
+          "reaction_time_s": 0.35,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "point",
+          "name": "Point",
+          "role": "fielder",
+          "x": 4,
+          "y": 21,
+          "catching_radius": 1.8,
+          "max_sprint_speed_m_s": 7,
+          "sprint_speed_m_s": 7,
+          "reaction_time_s": 0.35,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "cover",
+          "name": "Cover",
+          "role": "fielder",
+          "x": 17,
+          "y": 18,
+          "catching_radius": 1.8,
+          "max_sprint_speed_m_s": 7,
+          "sprint_speed_m_s": 7,
+          "reaction_time_s": 0.35,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "mid_off",
+          "name": "Mid-Off",
+          "role": "fielder",
+          "x": 26,
+          "y": 7,
+          "catching_radius": 1.8,
+          "max_sprint_speed_m_s": 7,
+          "sprint_speed_m_s": 7,
+          "reaction_time_s": 0.35,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "mid_on",
+          "name": "Mid-On",
+          "role": "fielder",
+          "x": 26,
+          "y": -7,
+          "catching_radius": 1.8,
+          "max_sprint_speed_m_s": 7,
+          "sprint_speed_m_s": 7,
+          "reaction_time_s": 0.35,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "mid_wicket",
+          "name": "Mid-Wicket",
+          "role": "fielder",
+          "x": 17,
+          "y": -18,
+          "catching_radius": 1.8,
+          "max_sprint_speed_m_s": 7,
+          "sprint_speed_m_s": 7,
+          "reaction_time_s": 0.35,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "sq_leg",
+          "name": "Square Leg",
+          "role": "fielder",
+          "x": 3,
+          "y": -20,
+          "catching_radius": 1.8,
+          "max_sprint_speed_m_s": 7,
+          "sprint_speed_m_s": 7,
+          "reaction_time_s": 0.35,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "deep_mid_wicket",
+          "name": "Deep Mid-Wicket",
+          "role": "fielder",
+          "x": 46,
+          "y": -48,
+          "catching_radius": 2.2,
+          "max_sprint_speed_m_s": 7,
+          "sprint_speed_m_s": 7,
+          "reaction_time_s": 0.35,
+          "reach_radius_m": 2.2,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "third_man",
+          "name": "Third Man",
+          "role": "fielder",
+          "x": -32,
+          "y": 42,
+          "catching_radius": 2.2,
+          "max_sprint_speed_m_s": 7,
+          "sprint_speed_m_s": 7,
+          "reaction_time_s": 0.35,
+          "reach_radius_m": 2.2,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        }
+      ]
+    },
+    "solver": {}
+  },
+  "results": {
+    "fingerprint": "44b893f4b7c044d6",
+    "flight_time_s": 6.075723323175024,
+    "carry_distance_m": 5.625146850691588,
+    "max_height_m": 45.63183643407888,
+    "time_to_apex_s": 2.90957692675138,
+    "first_landing_pos_m": [
+      0.8343624976181093,
+      -5.562923360465607,
+      0.036250000000008734
+    ],
+    "total_bounces": 8,
+    "post_bounce_roll_m": 0.7675584141425782,
+    "total_distance_m": 5.625146850691588,
+    "final_stopping_pos_m": [
+      0.9482123174522461,
+      -6.32199130053738,
+      0.03625
+    ],
+    "clears_rope": false,
+    "residual_speed_at_rope_kmh": null,
+    "margin_to_rope_m": -63.60729473516584,
+    "outcome_call": "CAUGHT (SPRINT INTERCEPTION \u2014 Wicket-Keeper @ 0.9 m/s)",
+    "estimated_runs": 0,
+    "fielder_interception": {
+      "fielder_id": "wk",
+      "role_name": "Wicket-Keeper",
+      "fielder_name": "Wicket-Keeper",
+      "catch_time_s": 5.994576926751314,
+      "intercept_time_s": 5.994576926751314,
+      "required_speed_m_s": 0.9466485652119481,
+      "margin_distance_m": 34.168607838321606,
+      "catch_type": "Sprint Interception",
+      "can_intercept": true,
+      "nearest_fielder": {
+        "fielder_id": "wk",
+        "role_name": "Wicket-Keeper",
+        "distance_to_landing_m": 7.4,
+        "fielder_coords": [
+          -3.8,
+          0.2
+        ],
+        "spatial_relationship": "Travels Beyond Fielder by 1.8 m",
+        "reach_radius_m": 2.0,
+        "max_sprint_speed_m_s": 7.0,
+        "reaction_time_s": 0.35,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      }
+    },
+    "unconstrained_rollout_m": 6.3927052648341665,
+    "boundary_distance_m": null,
+    "warnings": [
+      "Potential Catch: Interception window is physically reachable for Wicket-Keeper, Bowler, 1st Slip, Point, Cover, Mid-Off, Mid-On, Mid-Wicket, Square Leg at t = 5.99 s prior to first ground contact. Actual wicket depends on catch completion."
+    ]
+  },
+  "artifacts": {
+    "trajectory_csv": "EXP_20261117_100745/trajectory.csv",
+    "calculation_trace": "EXP_20261117_100745/calculation_trace.json"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "experiment_id": "EXP_20261112_135109",
+  "name": "Deep Square Leg: Falls Short (95 km/h)",
+  "description": "Simulated via UI on 2026-11-12 at 13:51:09",
+  "created_at": "2026-11-12T13:51:09.095859",
+  "tags": [
+    "ui_simulation",
+    "in_play_fielder_data_required"
+  ],
+  "fingerprint": "1ce33d69d57619d2",
+  "is_cached": false,
+  "config": {
+    "name": "Deep Square Leg: Falls Short (95 km/h)",
+    "input_mode": "manual_velocity",
+    "pos0": [
+      0.0,
+      0.0,
+      0.9
+    ],
+    "vel0": [
+      2.970484833536297,
+      -18.4218063242667,
+      18.659762281311668
+    ],
+    "speed0_kmh": 95.0,
+    "elevation_deg": 45.0,
+    "azimuth_deg": -80.84,
+    "ball": {},
+    "environment": {
+      "drag_model": "constant"
+    },
+    "stadium": {},
+    "fielding": {},
+    "solver": {}
+  },
+  "results": {
+    "fingerprint": "1ce33d69d57619d2",
+    "flight_time_s": 3.608939801585668,
+    "carry_distance_m": 56.721314894189355,
+    "max_height_m": 16.439145713183876,
+    "time_to_apex_s": 1.7310676378075962,
+    "first_landing_pos_m": [
+      9.029579428253163,
+      -55.99798441617925,
+      0.03625000000000015
+    ],
+    "total_bounces": 8,
+    "post_bounce_roll_m": 6.08044208034827,
+    "total_distance_m": 62.801756974537625,
+    "final_stopping_pos_m": [
+      9.997537149716749,
+      -62.000886526153145,
+      0.03625
+    ],
+    "clears_rope": false,
+    "residual_speed_at_rope_kmh": null,
+    "margin_to_rope_m": -7.198243025462375,
+    "outcome_call": "IN_PLAY_FIELDER_DATA_REQUIRED",
+    "estimated_runs": null,
+    "fielder_interception": null,
+    "unconstrained_rollout_m": 62.801756974537625,
+    "boundary_distance_m": null,
+    "warnings": [
+      "PULLED UP SHORT (IN-PLAY): Pitched 56.7m (13.3m inside rope). Travelled 6.1m post-bounce and came to a stop at 62.8m, 7.2m short of the boundary rope.",
+      "In-Play Ball: The ball remains inside the field boundary. Specific match outcome (Catch, Single, Double, or Dot) requires fielder tracking and batsman running times."
+    ]
+  },
+  "artifacts": {
+    "trajectory_csv": "EXP_20261112_135109/trajectory.csv",
+    "calculation_trace": "EXP_20261112_135109/calculation_trace.json"
+  }
+}

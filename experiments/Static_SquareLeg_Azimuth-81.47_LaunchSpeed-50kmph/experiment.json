@@ -1,0 +1,125 @@
+{
+  "experiment_id": "Static_SquareLeg_Azimuth-81.47_LaunchSpeed-50kmph",
+  "name": "Static_SquareLeg_Azimuth-81.47_LaunchSpeed-50kmph",
+  "description": "Launch Speed vs Elevation Angle Analysis for Static Square Leg fielder.\n\n**Simulation Configuration:**\n- Launch Speed: 50 km/h\n- Azimuth: -81.47\u00b0\n- Target Fielder: Square Leg (3.0m, -20.0m), Static mobility (v_max=0.0m/s, t_react=0.35s, r_reach=1.8m)\n- Boundary Radius: 70.0 m\n\n**Elevation Outcome Ranges (Complete Sweep [0.50\u00b0\u201389.50\u00b0]):**\n- Falls Short: 0.50\u00b0\u201337.01\u00b0; 49.95\u00b0\u201389.50\u00b0\n- Caught: 37.01\u00b0\u201349.95\u00b0\n- Clears Fielder: N/A\n- Clears Boundary: N/A\n",
+  "created_at": "2026-11-18T00:15:55.801730",
+  "tags": [
+    "elevation_sweep",
+    "static_fielder",
+    "square_leg",
+    "speed_50kmph",
+    "dot"
+  ],
+  "fingerprint": "ac211e2c854df06c",
+  "is_cached": false,
+  "config": {
+    "name": "Static_SquareLeg_Azimuth-81.47_LaunchSpeed-50kmph",
+    "input_mode": "manual_velocity",
+    "pos0": [
+      0.0,
+      0.0,
+      0.9
+    ],
+    "vel0": [
+      1.8670851546787988,
+      -12.448368248323574,
+      5.869698079731937
+    ],
+    "speed0_kmh": 50.0,
+    "elevation_deg": 25.0,
+    "azimuth_deg": -81.47,
+    "ball": {
+      "mass_kg": 0.16,
+      "diameter_m": 0.0725
+    },
+    "environment": {
+      "air_density_kg_m3": 1.225,
+      "constant_cd": 0.32,
+      "drag_model": "constant",
+      "restitution_normal": 0.55,
+      "friction_tangential": 0.38,
+      "rolling_resistance_coeff": 0.2,
+      "enable_magnus": false,
+      "gravity_m_s2": 9.80665
+    },
+    "stadium": {
+      "boundary_radius_m": 70.0
+    },
+    "fielding": {
+      "fielders": [
+        {
+          "id": "sq_leg",
+          "name": "Square Leg",
+          "role": "fielder",
+          "x_m": 3.0,
+          "y_m": -20.0,
+          "max_sprint_speed_m_s": 0.0,
+          "reaction_time_s": 0.35,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        }
+      ]
+    },
+    "solver": {
+      "method": "RK45",
+      "rtol": 1e-08,
+      "atol": 1e-10,
+      "max_step": 0.005
+    }
+  },
+  "results": {
+    "fingerprint": "ac211e2c854df06c",
+    "flight_time_s": 1.3171934922000352,
+    "carry_distance_m": 15.898631702648565,
+    "max_height_m": 2.611015375598244,
+    "time_to_apex_s": 0.5865813791753206,
+    "first_landing_pos_m": [
+      2.3582001338332,
+      -15.722766364264626,
+      0.036250000000000046
+    ],
+    "total_bounces": 6,
+    "post_bounce_roll_m": 10.780151267314178,
+    "total_distance_m": 20.223748416156685,
+    "final_stopping_pos_m": [
+      3.9571902001976804,
+      -26.383671209250494,
+      0.03625
+    ],
+    "clears_rope": false,
+    "residual_speed_at_rope_kmh": null,
+    "margin_to_rope_m": -43.32121703003726,
+    "outcome_call": "FALLS SHORT (4.3 m in front)",
+    "estimated_runs": 0,
+    "fielder_interception": {
+      "can_intercept": false,
+      "nearest_fielder": {
+        "fielder_id": "sq_leg",
+        "role_name": "Square Leg",
+        "distance_to_landing_m": 4.33,
+        "fielder_coords": [
+          3.0,
+          -20.0
+        ],
+        "spatial_relationship": "Falls Short of Fielder by 4.3 m",
+        "reach_radius_m": 1.8,
+        "max_sprint_speed_m_s": 0.0,
+        "reaction_time_s": 0.35,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      },
+      "role_name": "Square Leg",
+      "fielder_name": "Square Leg"
+    },
+    "unconstrained_rollout_m": 26.678782969962743,
+    "boundary_distance_m": null,
+    "warnings": [
+      "Dot Ball: Ball fielded cleanly in the infield by Square Leg at 18.4m (t=1.66s). Boundary prevented."
+    ]
+  },
+  "artifacts": {
+    "trajectory_csv": "Static_SquareLeg_Azimuth-81.47_LaunchSpeed-50kmph/trajectory.csv",
+    "calculation_trace": "Static_SquareLeg_Azimuth-81.47_LaunchSpeed-50kmph/calculation_trace.json"
+  }
+}

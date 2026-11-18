@@ -1,0 +1,195 @@
+{
+  "experiment_id": "EXP_20261112_133756",
+  "name": "Lofted Straight Drive (115 km/h)",
+  "description": "Simulated via UI on 2026-11-12 at 13:37:56",
+  "created_at": "2026-11-12T13:37:56.167726",
+  "tags": [
+    "ui_simulation",
+    "potential_catch"
+  ],
+  "fingerprint": "80d5d95656c97554",
+  "is_cached": false,
+  "config": {
+    "name": "Lofted Straight Drive (115 km/h)",
+    "input_mode": "manual_velocity",
+    "pos0": [
+      0.0,
+      0.0,
+      0.9
+    ],
+    "vel0": [
+      1.415923146872717,
+      -9.440347538208012,
+      9.54594154601839
+    ],
+    "speed0_kmh": 48.6,
+    "elevation_deg": 45.0,
+    "azimuth_deg": -81.47,
+    "ball": {
+      "mass_kg": 0.156,
+      "diameter_m": 0.072
+    },
+    "environment": {
+      "surface_preset": "natural_grass",
+      "restitution_normal": 0.45,
+      "friction_tangential": 0.38,
+      "rolling_resistance_coeff": 0.12,
+      "wind_vector": [
+        0,
+        0,
+        0
+      ],
+      "constant_cd": 0.32,
+      "drag_model": "reynolds_dependent",
+      "enable_magnus": true,
+      "spin_rad_s": [
+        250,
+        0,
+        30
+      ],
+      "wind_vector_m_s": [
+        0,
+        0,
+        0
+      ]
+    },
+    "stadium": {
+      "shape": "circle",
+      "boundary_radius": 70,
+      "boundary_radius_m": 70.0
+    },
+    "fielding": {
+      "fielders": [
+        {
+          "id": "wk",
+          "name": "Wicket-Keeper",
+          "role": "wicketkeeper",
+          "x": -3.8,
+          "y": 0.2,
+          "catching_radius": 2
+        },
+        {
+          "id": "bowl",
+          "name": "Bowler",
+          "role": "bowler",
+          "x": 20.12,
+          "y": 0,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "slip1",
+          "name": "1st Slip",
+          "role": "fielder",
+          "x": -6.2,
+          "y": 2.6,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "point",
+          "name": "Point",
+          "role": "fielder",
+          "x": 4,
+          "y": 21,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "cover",
+          "name": "Cover",
+          "role": "fielder",
+          "x": 17,
+          "y": 18,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "mid_off",
+          "name": "Mid-Off",
+          "role": "fielder",
+          "x": 26,
+          "y": 7,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "mid_on",
+          "name": "Mid-On",
+          "role": "fielder",
+          "x": 26,
+          "y": -7,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "mid_wicket",
+          "name": "Mid-Wicket",
+          "role": "fielder",
+          "x": 17,
+          "y": -18,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "sq_leg",
+          "name": "Square Leg",
+          "role": "fielder",
+          "x": 3,
+          "y": -20,
+          "catching_radius": 1.8
+        },
+        {
+          "id": "deep_mid_wicket",
+          "name": "Deep Mid-Wicket",
+          "role": "fielder",
+          "x": 46,
+          "y": -48,
+          "catching_radius": 2.2
+        },
+        {
+          "id": "third_man",
+          "name": "Third Man",
+          "role": "fielder",
+          "x": -32,
+          "y": 42,
+          "catching_radius": 2.2
+        }
+      ]
+    },
+    "solver": {}
+  },
+  "results": {
+    "fingerprint": "80d5d95656c97554",
+    "flight_time_s": 1.897089438817294,
+    "carry_distance_m": 17.52882688704721,
+    "max_height_m": 5.116212515697972,
+    "time_to_apex_s": 0.8970844909797695,
+    "first_landing_pos_m": [
+      2.6696189172335187,
+      -17.324344341787313,
+      0.035999999999999525
+    ],
+    "total_bounces": 5,
+    "post_bounce_roll_m": 2.932170300334448,
+    "total_distance_m": 20.460997187381658,
+    "final_stopping_pos_m": [
+      3.1489370099177334,
+      -20.217235261271767,
+      0.036
+    ],
+    "clears_rope": false,
+    "residual_speed_at_rope_kmh": null,
+    "margin_to_rope_m": -49.53900281261834,
+    "outcome_call": "POTENTIAL_CATCH",
+    "estimated_runs": 0,
+    "fielder_interception": {
+      "fielder_id": "sq_leg",
+      "role_name": "Square Leg",
+      "intercept_time_s": 1.6420844909797558,
+      "required_speed_m_s": 2.4096805698960653
+    },
+    "unconstrained_rollout_m": 20.460997187381658,
+    "boundary_distance_m": null,
+    "warnings": [
+      "Potential Catch: Interception window is physically reachable for Square Leg at t = 1.64 s prior to first ground contact. Actual wicket depends on catch completion."
+    ]
+  },
+  "artifacts": {
+    "trajectory_csv": "EXP_20261112_133756/trajectory.csv",
+    "calculation_trace": "EXP_20261112_133756/calculation_trace.json"
+  }
+}

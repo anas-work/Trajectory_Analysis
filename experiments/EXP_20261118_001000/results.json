@@ -1,0 +1,56 @@
+{
+  "fingerprint": "186d60434732bd2b",
+  "flight_time_s": 1.0894331583676629,
+  "carry_distance_m": 16.715858120114113,
+  "max_height_m": 1.9491577403295155,
+  "time_to_apex_s": 0.4612427496781821,
+  "first_landing_pos_m": [
+    2.4794170714340775,
+    -16.530952896843733,
+    0.036249999999999935
+  ],
+  "total_bounces": 6,
+  "post_bounce_roll_m": 23.26679458117259,
+  "total_distance_m": 16.715858120114113,
+  "final_stopping_pos_m": [
+    5.9305164566755355,
+    -39.54037798995869,
+    0.03625
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -30.017347298713297,
+  "outcome_call": "CAUGHT (DIVING \u2014 Square Leg @ 7.0 m/s)",
+  "estimated_runs": 0,
+  "fielder_interception": {
+    "fielder_id": "sq_leg",
+    "role_name": "Square Leg",
+    "fielder_name": "Square Leg",
+    "catch_time_s": 0.9312427496781824,
+    "intercept_time_s": 0.9312427496781824,
+    "required_speed_m_s": 6.963351899787344,
+    "margin_distance_m": 0.021301442538086413,
+    "catch_type": "Sprint Interception",
+    "can_intercept": true,
+    "nearest_fielder": {
+      "fielder_id": "sq_leg",
+      "role_name": "Square Leg",
+      "distance_to_landing_m": 3.51,
+      "fielder_coords": [
+        3.0,
+        -20.0
+      ],
+      "spatial_relationship": "Falls Short of Fielder by 3.5 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    }
+  },
+  "unconstrained_rollout_m": 39.9826527012867,
+  "boundary_distance_m": null,
+  "warnings": [
+    "Potential Catch: Interception window is physically reachable for Square Leg at t = 0.93 s prior to first ground contact. Actual wicket depends on catch completion."
+  ]
+}

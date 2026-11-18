@@ -1,0 +1,49 @@
+{
+  "fielder_id": "square_leg",
+  "role_name": "Square Leg",
+  "coordinates_m": {
+    "x": 3.0,
+    "y": -20.0,
+    "z": 0.0
+  },
+  "radial_distance_m": 20.223748416156685,
+  "calibrated_azimuth_deg": -81.46923438883626,
+  "initial_uncalibrated_azimuth_deg": -90.0,
+  "launch_elevation_deg": 45.0,
+  "launch_position_m": [0.0, 0.0, 0.90],
+  "fielder_dimensions_and_reach": {
+    "body_height_m": 1.80,
+    "standing_reach_m": 2.35,
+    "max_jump_reach_m": 2.85,
+    "min_catch_height_m": 0.15,
+    "standing_forward_reach_m": 1.10,
+    "standing_lateral_reach_m": 0.95,
+    "jumping_reach_radius_m": 0.75,
+    "diving_horizontal_reach_m": 1.80,
+    "diving_max_height_m": 1.50,
+    "reaction_time_s": 0.35,
+    "max_sprint_speed_m_s": 6.80
+  },
+  "ball_properties": {
+    "mass_kg": 0.160,
+    "diameter_m": 0.0725,
+    "radius_m": 0.03625,
+    "cross_sectional_area_m2": 0.004128249398704386
+  },
+  "aerodynamics_and_environment": {
+    "drag_model": "constant",
+    "drag_coefficient_cd": 0.32,
+    "air_density_kg_m3": 1.225,
+    "gravity_m_s2": 9.80665,
+    "wind_vector_m_s": [0.0, 0.0, 0.0],
+    "spin_vector_rad_s": [0.0, 0.0, 0.0]
+  },
+  "numerical_solver": {
+    "method": "RK45",
+    "rtol": 1e-8,
+    "atol": 1e-10,
+    "max_step_s": 0.005,
+    "max_flight_time_s": 20.0
+  }
+}
+

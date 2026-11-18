@@ -1,0 +1,36 @@
+{
+  "fingerprint": "876ede18def45b57",
+  "flight_time_s": 1.8419556645967585,
+  "carry_distance_m": 16.42042790107226,
+  "max_height_m": 4.8358785436774765,
+  "time_to_apex_s": 0.8671644739915867,
+  "first_landing_pos_m": [
+    2.496998954236162,
+    -16.22946236561322,
+    0.03599999999999929
+  ],
+  "total_bounces": 5,
+  "post_bounce_roll_m": 2.7454629745179453,
+  "total_distance_m": 19.165890875590204,
+  "final_stopping_pos_m": [
+    2.9433215446159133,
+    -18.93853825774396,
+    0.03600000000000009
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -50.83410912440979,
+  "outcome_call": "POTENTIAL_CATCH",
+  "estimated_runs": 0,
+  "fielder_interception": {
+    "fielder_id": "sq_leg",
+    "role_name": "Square Leg",
+    "intercept_time_s": 1.5771644739915744,
+    "required_speed_m_s": 3.4519173084378796
+  },
+  "unconstrained_rollout_m": 19.165890875590204,
+  "boundary_distance_m": null,
+  "warnings": [
+    "Potential Catch: Interception window is physically reachable for Square Leg at t = 1.58 s prior to first ground contact. Actual wicket depends on catch completion."
+  ]
+}

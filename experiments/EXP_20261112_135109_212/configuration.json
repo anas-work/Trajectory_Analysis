@@ -1,0 +1,24 @@
+{
+  "name": "Deep Square Leg: Boundary Catch (102 km/h)",
+  "input_mode": "manual_velocity",
+  "pos0": [
+    0.0,
+    0.0,
+    0.9
+  ],
+  "vel0": [
+    3.189362663375814,
+    -19.779202579738985,
+    20.034692133618844
+  ],
+  "speed0_kmh": 102.0,
+  "elevation_deg": 45.0,
+  "azimuth_deg": -80.84,
+  "ball": {},
+  "environment": {
+    "drag_model": "constant"
+  },
+  "stadium": {},
+  "fielding": {},
+  "solver": {}
+}

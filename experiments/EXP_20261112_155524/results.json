@@ -1,0 +1,50 @@
+{
+  "fingerprint": "043075f34a6e821c",
+  "flight_time_s": 4.241542068201334,
+  "carry_distance_m": 76.3188181375789,
+  "max_height_m": 22.531865762862225,
+  "time_to_apex_s": 2.025889865706632,
+  "first_landing_pos_m": [
+    12.201943287073291,
+    -75.33707309111423,
+    0.035999999999991865
+  ],
+  "total_bounces": 6,
+  "post_bounce_roll_m": 0.0,
+  "total_distance_m": 76.3188181375789,
+  "final_stopping_pos_m": [
+    13.2487728609602,
+    -81.80039407748588,
+    0.036
+  ],
+  "clears_rope": true,
+  "residual_speed_at_rope_kmh": 27.46896592980783,
+  "margin_to_rope_m": 6.318818137578901,
+  "outcome_call": "SIX",
+  "estimated_runs": 6,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "deep_sq_leg",
+      "role_name": "Deep Square Leg",
+      "distance_to_landing_m": 13.52,
+      "fielder_coords": [
+        10.0,
+        -62.0
+      ],
+      "spatial_relationship": "Travels Beyond Fielder by 13.5 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 0.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    },
+    "role_name": "Deep Square Leg",
+    "fielder_name": "Deep Square Leg"
+  },
+  "unconstrained_rollout_m": 82.86636503161763,
+  "boundary_distance_m": 70.0,
+  "warnings": [
+    "Boundary Six: Ball cleared the field boundary on the full without touching the ground."
+  ]
+}

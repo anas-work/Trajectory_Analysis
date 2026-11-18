@@ -1,0 +1,56 @@
+{
+  "name": "Club_SquareLeg_Azimuth-81.47_LaunchSpeed-70kmph",
+  "input_mode": "manual_velocity",
+  "pos0": [
+    0.0,
+    0.0,
+    0.9
+  ],
+  "vel0": [
+    2.613919216550318,
+    -17.427715547653,
+    8.21757731162471
+  ],
+  "speed0_kmh": 70.0,
+  "elevation_deg": 25.0,
+  "azimuth_deg": -81.47,
+  "ball": {
+    "mass_kg": 0.16,
+    "diameter_m": 0.0725
+  },
+  "environment": {
+    "air_density_kg_m3": 1.225,
+    "constant_cd": 0.32,
+    "drag_model": "constant",
+    "restitution_normal": 0.55,
+    "friction_tangential": 0.38,
+    "rolling_resistance_coeff": 0.2,
+    "enable_magnus": false,
+    "gravity_m_s2": 9.80665
+  },
+  "stadium": {
+    "boundary_radius_m": 70.0
+  },
+  "fielding": {
+    "fielders": [
+      {
+        "id": "sq_leg",
+        "name": "Square Leg",
+        "role": "fielder",
+        "x_m": 3.0,
+        "y_m": -20.0,
+        "max_sprint_speed_m_s": 5.0,
+        "reaction_time_s": 0.45,
+        "reach_radius_m": 1.5,
+        "min_catch_height_m": 0.3,
+        "max_catch_height_m": 2.15
+      }
+    ]
+  },
+  "solver": {
+    "method": "RK45",
+    "rtol": 1e-08,
+    "atol": 1e-10,
+    "max_step": 0.005
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "fingerprint": "ed2a8d79c1f2cd98",
+  "flight_time_s": 3.090671382914486,
+  "carry_distance_m": 70.48330596513264,
+  "max_height_m": 12.190662790359294,
+  "time_to_apex_s": 1.4657193834207392,
+  "first_landing_pos_m": [
+    55.54564755688246,
+    43.38867890661226,
+    0.036249999999999935
+  ],
+  "total_bounces": 7,
+  "post_bounce_roll_m": 0.0,
+  "total_distance_m": 70.48330596513264,
+  "final_stopping_pos_m": [
+    72.49511309080206,
+    56.628508668914044,
+    0.03624999999999999
+  ],
+  "clears_rope": true,
+  "residual_speed_at_rope_kmh": 1.4534501886820363,
+  "margin_to_rope_m": 0.4833059651326437,
+  "outcome_call": "SIX",
+  "estimated_runs": 6,
+  "fielder_interception": null,
+  "unconstrained_rollout_m": 91.99092029169756,
+  "boundary_distance_m": 70.0,
+  "warnings": [
+    "Boundary Six: Ball cleared the field boundary on the full without touching the ground."
+  ]
+}

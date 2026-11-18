@@ -1,0 +1,34 @@
+# ==============================================================================
+# Docker Compose: Cricket Trajectory Prediction Platform
+#
+# Commands:
+#   docker compose build        # Builds the container image with all dependencies
+#   docker compose up           # Activates, feeds deliveries, tests, and serves app
+#   docker compose run app      # Runs interactive commands (e.g. bash, pytest)
+# ==============================================================================
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cricket-trajectory-engine:latest
+    container_name: cricket_trajectory_engine
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - PYTHONPATH=/app
+      - RUN_TESTS_ON_STARTUP=true
+      - RELOAD_FLAG=--reload
+    volumes:
+      # Mount project directory to ensure new experiments, videos, and CSVs persist to host
+      - .:/app
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/experiments"]
+      interval: 20s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+

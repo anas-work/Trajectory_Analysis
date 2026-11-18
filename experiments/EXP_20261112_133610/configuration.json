@@ -1,0 +1,24 @@
+{
+  "name": "Cover Boundary (+45 deg)",
+  "input_mode": "manual_velocity",
+  "pos0": [
+    0.0,
+    0.0,
+    0.9
+  ],
+  "vel0": [
+    23.905444566227676,
+    23.905444566227672,
+    9.058666578588227
+  ],
+  "speed0_kmh": 126.0,
+  "elevation_deg": 15.0,
+  "azimuth_deg": 45.0,
+  "ball": {},
+  "environment": {
+    "drag_model": "constant"
+  },
+  "stadium": {},
+  "fielding": {},
+  "solver": {}
+}

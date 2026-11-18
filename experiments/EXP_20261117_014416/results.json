@@ -1,0 +1,56 @@
+{
+  "fingerprint": "e9287d8123212c25",
+  "flight_time_s": 0.8295472709023385,
+  "carry_distance_m": 26.084497221400785,
+  "max_height_m": 1.2001938770876028,
+  "time_to_apex_s": 0.27051048753782775,
+  "first_landing_pos_m": [
+    26.026280293548464,
+    1.7417604240870945,
+    0.03599999999999996
+  ],
+  "total_bounces": 4,
+  "post_bounce_roll_m": 267.44055208607483,
+  "total_distance_m": 293.5250493074756,
+  "final_stopping_pos_m": [
+    290.7009946622198,
+    40.618792120791426,
+    0.036
+  ],
+  "clears_rope": true,
+  "residual_speed_at_rope_kmh": 82.4291653065249,
+  "margin_to_rope_m": 223.52504930747563,
+  "outcome_call": "CAUGHT (IN HANDS \u2014 Bowler)",
+  "estimated_runs": 0,
+  "fielder_interception": {
+    "fielder_id": "bowl",
+    "role_name": "Bowler",
+    "fielder_name": "Bowler",
+    "catch_time_s": 0.585510487537828,
+    "intercept_time_s": 0.585510487537828,
+    "required_speed_m_s": 0.0,
+    "margin_distance_m": 0.10713873725668521,
+    "catch_type": "Direct Catch (In Hands / Stationary Zone)",
+    "can_intercept": true,
+    "nearest_fielder": {
+      "fielder_id": "mid_off",
+      "role_name": "Mid-Off",
+      "distance_to_landing_m": 5.26,
+      "fielder_coords": [
+        26.0,
+        7.0
+      ],
+      "spatial_relationship": "Travels Beyond Fielder by -0.8 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 0.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    }
+  },
+  "unconstrained_rollout_m": 293.5250493074756,
+  "boundary_distance_m": null,
+  "warnings": [
+    "Potential Catch: Interception window is physically reachable for Bowler at t = 0.59 s prior to first ground contact. Actual wicket depends on catch completion."
+  ]
+}

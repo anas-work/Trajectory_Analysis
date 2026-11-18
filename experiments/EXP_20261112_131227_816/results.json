@@ -1,0 +1,36 @@
+{
+  "fingerprint": "185e91822f8be11d",
+  "flight_time_s": 3.8018700971318498,
+  "carry_distance_m": 62.395643612189424,
+  "max_height_m": 18.198650543992873,
+  "time_to_apex_s": 1.8210042800791697,
+  "first_landing_pos_m": [
+    9.932887152285598,
+    -61.59995206653423,
+    0.03624999999999997
+  ],
+  "total_bounces": 8,
+  "post_bounce_roll_m": 6.143392995238791,
+  "total_distance_m": 68.53903660742822,
+  "final_stopping_pos_m": [
+    10.910866155645516,
+    -67.6650023188352,
+    0.036250000000000004
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -1.4609633925717844,
+  "outcome_call": "POTENTIAL_CATCH",
+  "estimated_runs": 0,
+  "fielder_interception": {
+    "fielder_id": "deep_sq_leg",
+    "role_name": "Deep Square Leg",
+    "intercept_time_s": 3.6710042800791305,
+    "required_speed_m_s": 0.0012595047567332384
+  },
+  "unconstrained_rollout_m": 68.53903660742822,
+  "boundary_distance_m": null,
+  "warnings": [
+    "Potential Catch: Interception window is physically reachable for Deep Square Leg at t = 3.67 s prior to first ground contact. Actual wicket depends on catch completion."
+  ]
+}

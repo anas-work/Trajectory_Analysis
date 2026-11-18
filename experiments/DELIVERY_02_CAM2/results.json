@@ -1,0 +1,32 @@
+{
+  "fingerprint": "fbca61da57845377",
+  "flight_time_s": 0.28744901611724016,
+  "carry_distance_m": 1.499959239610467,
+  "max_height_m": 0.7799,
+  "time_to_apex_s": 0.0,
+  "first_landing_pos_m": [
+    1.4510296856476748,
+    0.37998759435278984,
+    0.03599999999999973
+  ],
+  "total_bounces": 4,
+  "post_bounce_roll_m": 2.618260260187652,
+  "total_distance_m": 4.118219499798119,
+  "final_stopping_pos_m": [
+    3.983880753834379,
+    1.0432765634027679,
+    0.036
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -65.88178050020188,
+  "outcome_call": "DOT",
+  "estimated_runs": 0,
+  "fielder_interception": null,
+  "unconstrained_rollout_m": 4.118219499798119,
+  "boundary_distance_m": null,
+  "warnings": [
+    "PULLED UP SHORT (IN-PLAY): Pitched 1.5m (68.5m inside rope). Travelled 2.6m post-bounce and came to a stop at 4.1m, 65.9m short of the boundary rope.",
+    "Dot Ball: Ball fielded quickly in the infield."
+  ]
+}

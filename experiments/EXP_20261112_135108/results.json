@@ -1,0 +1,32 @@
+{
+  "fingerprint": "9443149da01be934",
+  "flight_time_s": 1.8690923145859493,
+  "carry_distance_m": 15.772568129002691,
+  "max_height_m": 4.754608272677299,
+  "time_to_apex_s": 0.8822508401858465,
+  "first_landing_pos_m": [
+    2.3395014720990837,
+    -15.598097263643334,
+    0.036250000000000455
+  ],
+  "total_bounces": 7,
+  "post_bounce_roll_m": 2.5971544590873723,
+  "total_distance_m": 18.369722588090063,
+  "final_stopping_pos_m": [
+    2.7247302205570443,
+    -18.166522870064306,
+    0.03625000000000005
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -51.63027741190994,
+  "outcome_call": "IN_PLAY_FIELDER_DATA_REQUIRED",
+  "estimated_runs": null,
+  "fielder_interception": null,
+  "unconstrained_rollout_m": 18.369722588090063,
+  "boundary_distance_m": null,
+  "warnings": [
+    "PULLED UP SHORT (IN-PLAY): Pitched 15.8m (54.2m inside rope). Travelled 2.6m post-bounce and came to a stop at 18.4m, 51.6m short of the boundary rope.",
+    "In-Play Ball: The ball remains inside the field boundary. Specific match outcome (Catch, Single, Double, or Dot) requires fielder tracking and batsman running times."
+  ]
+}

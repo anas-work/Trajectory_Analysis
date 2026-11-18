@@ -1,0 +1,50 @@
+{
+  "fingerprint": "fa95e97feb60f752",
+  "flight_time_s": 0.4877746210958227,
+  "carry_distance_m": 15.622293141413772,
+  "max_height_m": 0.9171291847631599,
+  "time_to_apex_s": 0.0605941316187117,
+  "first_landing_pos_m": [
+    15.61715175354035,
+    -0.40076689378663555,
+    0.036249999999999886
+  ],
+  "total_bounces": 5,
+  "post_bounce_roll_m": 157.72482457061886,
+  "total_distance_m": 70.0,
+  "final_stopping_pos_m": [
+    173.29006816361934,
+    -4.446964685879052,
+    0.03625
+  ],
+  "clears_rope": true,
+  "residual_speed_at_rope_kmh": 72.3391231977611,
+  "margin_to_rope_m": 103.34711771203263,
+  "outcome_call": "FOUR",
+  "estimated_runs": 4,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "bowl",
+      "role_name": "Bowler",
+      "distance_to_landing_m": 4.52,
+      "fielder_coords": [
+        20.12,
+        0.0
+      ],
+      "spatial_relationship": "Falls Short of Fielder by 4.5 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    },
+    "role_name": "Bowler",
+    "fielder_name": "Bowler"
+  },
+  "unconstrained_rollout_m": 173.34711771203263,
+  "boundary_distance_m": 70.0,
+  "warnings": [
+    "Boundary Four: CLEARED ROPE (BOUNDARY FOUR): Pitched 15.6m (54.4m inside rope). Crossed boundary rope (70.0m) at t=2.84s with residual speed 20.1 m/s (72.3 km/h). Official match distance: 70.0m (Theoretical uninhibited rollout: 173.3m)."
+  ]
+}

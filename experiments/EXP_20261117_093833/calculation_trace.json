@@ -1,0 +1,218 @@
+{
+  "stages": [
+    "Initial State Estimation",
+    "Aerodynamics",
+    "Flight Dynamics",
+    "Turf Contact Mechanics",
+    "Outfield Rolling & Rope Clearance",
+    "Cricket Outcome Engine"
+  ],
+  "steps": [
+    {
+      "step_id": "step_launch_state",
+      "stage_name": "Initial State Estimation",
+      "formula_latex": "v_0 = \\sqrt{V_{x0}^2 + V_{y0}^2 + V_{z0}^2}, \\quad \\theta_0 = \\arctan\\left(\\frac{V_{z0}}{\\sqrt{V_{x0}^2 + V_{y0}^2}}\\right)",
+      "formula_text": "v0 = sqrt(Vx0^2 + Vy0^2 + Vz0^2), theta0 = arctan(Vz0 / sqrt(Vx0^2 + Vy0^2))",
+      "description": "Converts the initial velocity Cartesian vector into scalar launch speed and launch angles.",
+      "inputs": {
+        "Vx0": 4.451393232914718,
+        "Vy0": -29.678658224322298,
+        "Vz0": 14.507703312410918
+      },
+      "substitution_text": "v0 = sqrt((4.45)^2 + (-29.68)^2 + (14.51)^2)",
+      "result_value": {
+        "speed_m_s": 33.333333333333336,
+        "speed_kmh": 120.00000000000001,
+        "elevation_deg": 25.799999999999997,
+        "azimuth_deg": -81.47
+      },
+      "result_formatted": "120.0 km/h (33.33 m/s) at +25.8\u00b0 elevation, -81.5\u00b0 azimuth",
+      "units": "km/h and degrees",
+      "why_necessary": "Establishes initial conditions for numerical integration of Newton's equations of motion.",
+      "downstream_dependents": [
+        "step_reynolds_number",
+        "step_equations_of_motion"
+      ]
+    },
+    {
+      "step_id": "step_reynolds_number",
+      "stage_name": "Aerodynamics",
+      "formula_latex": "Re = \\frac{\\rho \\cdot \\|\\mathbf{v}_{rel}\\| \\cdot D}{\\mu}",
+      "formula_text": "Re = (rho * |v_rel| * D) / mu",
+      "description": "Non-dimensional ratio of inertial forces to viscous forces in surrounding airflow.",
+      "inputs": {
+        "rho": 1.225,
+        "v_rel": 33.333333333333336,
+        "D": 0.0725,
+        "mu": 1.81e-05
+      },
+      "substitution_text": "Re = (1.225 * 33.33 * 0.0725) / 1.81e-05",
+      "result_value": 163558.93186003683,
+      "result_formatted": "1.6e+05 (163558)",
+      "units": "dimensionless",
+      "why_necessary": "Identifies the boundary-layer flow regime around the cricket ball to calibrate drag coefficient Cd.",
+      "downstream_dependents": [
+        "step_aerodynamic_drag"
+      ]
+    },
+    {
+      "step_id": "step_aerodynamic_drag",
+      "stage_name": "Aerodynamics",
+      "formula_latex": "\\mathbf{F}_{drag} = -\\frac{1}{2} \\rho C_d A \\|\\mathbf{v}_{rel}\\| \\mathbf{v}_{rel}",
+      "formula_text": "F_drag = -0.5 * rho * Cd * A * |v_rel| * v_rel",
+      "description": "Aerodynamic drag opposing the cricket ball's motion relative to ambient air.",
+      "inputs": {
+        "rho": 1.225,
+        "Cd": 0.32,
+        "A": 0.004128249096357837,
+        "v_rel": 33.333333333333336,
+        "D": 0.0725
+      },
+      "substitution_text": "F_drag = -0.5 * 1.225 * 0.32 * 0.004128 * (33.33)^2",
+      "result_value": [
+        -0.12005953926324871,
+        0.8004698407717213,
+        -0.3912905655192948
+      ],
+      "result_formatted": "Magnitude = 0.90 N | Vector = [-0.12, 0.80, -0.39] N",
+      "units": "Newtons (N)",
+      "why_necessary": "Retards forward velocity and alters the trajectory arc away from a theoretical vacuum parabola.",
+      "downstream_dependents": [
+        "step_equations_of_motion"
+      ]
+    },
+    {
+      "step_id": "step_equations_of_motion",
+      "stage_name": "Flight Dynamics",
+      "formula_latex": "\\mathbf{a} = \\mathbf{g} + \\frac{1}{m}(\\mathbf{F}_{drag} + \\mathbf{F}_{magnus})",
+      "formula_text": "a = g + (F_drag + F_magnus) / m",
+      "description": "Total acceleration acting on the cricket ball center of mass.",
+      "inputs": {
+        "g": [
+          0.0,
+          0.0,
+          -9.80665
+        ],
+        "F_drag": [
+          -0.12005953926324871,
+          0.8004698407717213,
+          -0.3912905655192948
+        ],
+        "m": 0.16
+      },
+      "substitution_text": "a = [0, 0, -9.81] + [-0.12, 0.80, -0.39] / 0.160",
+      "result_value": [
+        -0.7503721203953044,
+        5.002936504823258,
+        -12.252216034495593
+      ],
+      "result_formatted": "[-0.75, 5.00, -12.25] m/s\u00b2 (Magnitude = 13.26 m/s\u00b2)",
+      "units": "m/s\u00b2",
+      "why_necessary": "Integrated via SciPy's adaptive RK45 algorithm to compute position and velocity time-series.",
+      "downstream_dependents": [
+        "step_apex_carry",
+        "step_ground_impact"
+      ]
+    },
+    {
+      "step_id": "step_apex_carry",
+      "stage_name": "Flight Dynamics",
+      "formula_latex": "Z_{max} = \\max_t Z(t), \\quad d_{carry} = \\sqrt{X(t_{pitch})^2 + Y(t_{pitch})^2}",
+      "formula_text": "Z_max = max(Z(t)), d_carry = sqrt(X(t_pitch)^2 + Y(t_pitch)^2)",
+      "description": "Peak flight altitude and horizontal carry distance to first turf pitch impact.",
+      "inputs": {
+        "Z0": 0.9,
+        "Vz0": 14.507703312410918,
+        "t_flight": 2.821317704620827
+      },
+      "substitution_text": "Apex reached at t = 1.34 s; Impact at t = 2.82 s",
+      "result_value": {
+        "apex_m": 10.234506060132201,
+        "t_apex_s": 1.3356640523656345,
+        "carry_m": 70.00028094099946,
+        "landing_pos": [
+          10.382948354978682,
+          -69.2259612809869,
+          0.036250000000000185
+        ]
+      },
+      "result_formatted": "Apex = 10.23 m at t=1.34s | Carry Distance = 70.0 m",
+      "units": "metres (m) and seconds (s)",
+      "why_necessary": "Determines whether the ball clears the boundary rope on the full (SIX) or pitches in-field.",
+      "downstream_dependents": [
+        "step_ground_impact",
+        "step_boundary_outcome"
+      ]
+    },
+    {
+      "step_id": "step_ground_impact",
+      "stage_name": "Turf Contact Mechanics",
+      "formula_latex": "v_{z}^+ = -e_n \\cdot v_{z}^-, \\quad \\Delta E_z = 1 - e_n^2",
+      "formula_text": "vz+ = -e_n * vz-, Delta_Ez = 1 - e_n^2",
+      "description": "Normal velocity rebound with energy dissipation based on Banerjee & McPhee (2012).",
+      "inputs": {
+        "en": 0.55,
+        "vz_before": 13.327422785288947
+      },
+      "substitution_text": "vz+ = -0.55 * 13.33 m/s | Energy Loss = 1 - (0.55)^2",
+      "result_value": {
+        "vz_after": 7.330082531908921,
+        "energy_loss_pct": 63.904171714713165
+      },
+      "result_formatted": "Rebound Vz = 7.33 m/s | Kinetic Energy Loss = 63.9%",
+      "units": "m/s and %",
+      "why_necessary": "Accurately models post-pitch rebound height and forward speed attenuation.",
+      "downstream_dependents": [
+        "step_rolling_clearance"
+      ]
+    },
+    {
+      "step_id": "step_rolling_clearance",
+      "stage_name": "Outfield Rolling & Rope Clearance",
+      "formula_latex": "a_{roll} = -\\mu_{roll} \\cdot g, \\quad v_{req\\_min} = \\sqrt{2 \\mu_{roll} g \\Delta d_{rope}}",
+      "formula_text": "a_roll = -mu_roll * g, v_req_min = sqrt(2 * mu_roll * g * Delta_d_rope)",
+      "description": "Deceleration across outfield grass to predict whether post-bounce momentum clears the boundary rope.",
+      "inputs": {
+        "mu_roll": 0.2,
+        "g": 9.80665,
+        "Delta_d_rope": 0.0,
+        "post_bounce_distance": 0.0
+      },
+      "substitution_text": "a_roll = -0.20 * 9.81 = -1.96 m/s\u00b2 | v_req = sqrt(2 * 1.96 * 0.0)",
+      "result_value": {
+        "a_roll_m_s2": -1.96133,
+        "min_speed_req_m_s": 0.0,
+        "residual_at_rope_kmh": 0.13115123414105595,
+        "clears_rope": true,
+        "margin_m": 0.0002809409994597445
+      },
+      "result_formatted": "Decel = -1.96 m/s\u00b2 | Min Speed Req = 0.0 km/h | Status = CLEARED ROPE ON FULL (SIX): Carried 70.0m past the 70.0m rope without pitching.",
+      "units": "m/s\u00b2 and km/h",
+      "why_necessary": "Differentiates between a Boundary Four and an in-play Single/Double that pulls up short.",
+      "downstream_dependents": [
+        "step_boundary_outcome"
+      ]
+    },
+    {
+      "step_id": "step_boundary_outcome",
+      "stage_name": "Cricket Outcome Engine",
+      "formula_latex": "\\text{Decision: } \\text{SIX} \\mid \\text{FOUR} \\mid \\text{OUT (CATCH)} \\mid \\text{IN-PLAY (RUNS)}",
+      "formula_text": "Outcome based on boundary crossing, bounce history, and fielder reachability",
+      "description": "MCC Laws of Cricket outcome determination combining flight, contact, and tactical rules.",
+      "inputs": {
+        "primary_call": "SIX",
+        "runs": 6
+      },
+      "substitution_text": "Call: SIX | Estimated Runs: 6",
+      "result_value": {
+        "call": "SIX",
+        "runs": 6
+      },
+      "result_formatted": "FINAL CALL: [SIX] \u2014 6 Runs",
+      "units": "Cricket Runs / Wicket",
+      "why_necessary": "Final match decision presented on broadcast telemetry.",
+      "downstream_dependents": []
+    }
+  ],
+  "total_steps": 8
+}

@@ -1,0 +1,71 @@
+{
+  "experiment_id": "EXP_20261112_133227_155",
+  "name": "Cover Shot 38 deg",
+  "description": "Simulated via UI on 2026-11-12 at 13:32:27",
+  "created_at": "2026-11-12T13:32:27.155316",
+  "tags": [
+    "ui_simulation",
+    "six"
+  ],
+  "fingerprint": "ed2a8d79c1f2cd98",
+  "is_cached": false,
+  "config": {
+    "name": "Cover Shot 38 deg",
+    "input_mode": "manual_velocity",
+    "pos0": [
+      0.0,
+      0.0,
+      0.9
+    ],
+    "vel0": [
+      21.84,
+      17.06,
+      16.0
+    ],
+    "speed0_kmh": 115.2,
+    "elevation_deg": 30.0,
+    "azimuth_deg": 37.99,
+    "ball": {},
+    "environment": {
+      "drag_model": "constant"
+    },
+    "stadium": {},
+    "fielding": {},
+    "solver": {}
+  },
+  "results": {
+    "fingerprint": "ed2a8d79c1f2cd98",
+    "flight_time_s": 3.090671382914486,
+    "carry_distance_m": 70.48330596513264,
+    "max_height_m": 12.190662790359294,
+    "time_to_apex_s": 1.4657193834207392,
+    "first_landing_pos_m": [
+      55.54564755688246,
+      43.38867890661226,
+      0.036249999999999935
+    ],
+    "total_bounces": 7,
+    "post_bounce_roll_m": 0.0,
+    "total_distance_m": 70.48330596513264,
+    "final_stopping_pos_m": [
+      72.49511309080206,
+      56.628508668914044,
+      0.03624999999999999
+    ],
+    "clears_rope": true,
+    "residual_speed_at_rope_kmh": 1.4534501886820363,
+    "margin_to_rope_m": 0.4833059651326437,
+    "outcome_call": "SIX",
+    "estimated_runs": 6,
+    "fielder_interception": null,
+    "unconstrained_rollout_m": 91.99092029169756,
+    "boundary_distance_m": 70.0,
+    "warnings": [
+      "Boundary Six: Ball cleared the field boundary on the full without touching the ground."
+    ]
+  },
+  "artifacts": {
+    "trajectory_csv": "EXP_20261112_133227_155/trajectory.csv",
+    "calculation_trace": "EXP_20261112_133227_155/calculation_trace.json"
+  }
+}

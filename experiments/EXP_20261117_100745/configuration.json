@@ -1,0 +1,216 @@
+{
+  "name": "Lofted Straight Drive (115 km/h)",
+  "input_mode": "manual_velocity",
+  "pos0": [
+    0.0,
+    0.0,
+    0.9
+  ],
+  "vel0": [
+    0.1725515321775333,
+    -1.1504483386714701,
+    33.313027567303195
+  ],
+  "speed0_kmh": 120.0,
+  "elevation_deg": 88.0,
+  "azimuth_deg": -81.47,
+  "ball": {
+    "mass_kg": 0.16,
+    "diameter_m": 0.0725
+  },
+  "environment": {
+    "surface_preset": "natural_grass",
+    "restitution_normal": 0.55,
+    "friction_tangential": 0.38,
+    "rolling_resistance_coeff": 0.2,
+    "wind_vector": [
+      0,
+      0,
+      0
+    ],
+    "constant_cd": 0.32,
+    "drag_model": "constant",
+    "enable_magnus": true,
+    "spin_rad_s": [
+      0,
+      0,
+      0
+    ],
+    "wind_vector_m_s": [
+      0,
+      0,
+      0
+    ]
+  },
+  "stadium": {
+    "shape": "circle",
+    "boundary_radius": 70,
+    "boundary_radius_m": 70.0
+  },
+  "fielding": {
+    "sprint_speed_m_s": 7,
+    "max_sprint_speed_m_s": 7,
+    "reaction_time_s": 0.35,
+    "reach_radius_m": 1.8,
+    "catching_radius": 1.8,
+    "min_catch_height_m": 0.25,
+    "max_catch_height_m": 2.3,
+    "fielders": [
+      {
+        "id": "wk",
+        "name": "Wicket-Keeper",
+        "role": "wicketkeeper",
+        "x": -3.8,
+        "y": 0.2,
+        "catching_radius": 2,
+        "max_sprint_speed_m_s": 7,
+        "sprint_speed_m_s": 7,
+        "reaction_time_s": 0.35,
+        "reach_radius_m": 2,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      },
+      {
+        "id": "bowl",
+        "name": "Bowler",
+        "role": "bowler",
+        "x": 20.12,
+        "y": 0,
+        "catching_radius": 1.8,
+        "max_sprint_speed_m_s": 7,
+        "sprint_speed_m_s": 7,
+        "reaction_time_s": 0.35,
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      },
+      {
+        "id": "slip1",
+        "name": "1st Slip",
+        "role": "fielder",
+        "x": -6.2,
+        "y": 2.6,
+        "catching_radius": 1.8,
+        "max_sprint_speed_m_s": 7,
+        "sprint_speed_m_s": 7,
+        "reaction_time_s": 0.35,
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      },
+      {
+        "id": "point",
+        "name": "Point",
+        "role": "fielder",
+        "x": 4,
+        "y": 21,
+        "catching_radius": 1.8,
+        "max_sprint_speed_m_s": 7,
+        "sprint_speed_m_s": 7,
+        "reaction_time_s": 0.35,
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      },
+      {
+        "id": "cover",
+        "name": "Cover",
+        "role": "fielder",
+        "x": 17,
+        "y": 18,
+        "catching_radius": 1.8,
+        "max_sprint_speed_m_s": 7,
+        "sprint_speed_m_s": 7,
+        "reaction_time_s": 0.35,
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      },
+      {
+        "id": "mid_off",
+        "name": "Mid-Off",
+        "role": "fielder",
+        "x": 26,
+        "y": 7,
+        "catching_radius": 1.8,
+        "max_sprint_speed_m_s": 7,
+        "sprint_speed_m_s": 7,
+        "reaction_time_s": 0.35,
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      },
+      {
+        "id": "mid_on",
+        "name": "Mid-On",
+        "role": "fielder",
+        "x": 26,
+        "y": -7,
+        "catching_radius": 1.8,
+        "max_sprint_speed_m_s": 7,
+        "sprint_speed_m_s": 7,
+        "reaction_time_s": 0.35,
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      },
+      {
+        "id": "mid_wicket",
+        "name": "Mid-Wicket",
+        "role": "fielder",
+        "x": 17,
+        "y": -18,
+        "catching_radius": 1.8,
+        "max_sprint_speed_m_s": 7,
+        "sprint_speed_m_s": 7,
+        "reaction_time_s": 0.35,
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      },
+      {
+        "id": "sq_leg",
+        "name": "Square Leg",
+        "role": "fielder",
+        "x": 3,
+        "y": -20,
+        "catching_radius": 1.8,
+        "max_sprint_speed_m_s": 7,
+        "sprint_speed_m_s": 7,
+        "reaction_time_s": 0.35,
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      },
+      {
+        "id": "deep_mid_wicket",
+        "name": "Deep Mid-Wicket",
+        "role": "fielder",
+        "x": 46,
+        "y": -48,
+        "catching_radius": 2.2,
+        "max_sprint_speed_m_s": 7,
+        "sprint_speed_m_s": 7,
+        "reaction_time_s": 0.35,
+        "reach_radius_m": 2.2,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      },
+      {
+        "id": "third_man",
+        "name": "Third Man",
+        "role": "fielder",
+        "x": -32,
+        "y": 42,
+        "catching_radius": 2.2,
+        "max_sprint_speed_m_s": 7,
+        "sprint_speed_m_s": 7,
+        "reaction_time_s": 0.35,
+        "reach_radius_m": 2.2,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      }
+    ]
+  },
+  "solver": {}
+}

@@ -1,0 +1,103 @@
+{
+  "experiment_id": "EXP_20261112_131227",
+  "name": "Square Leg: Falls Before (35 km/h)",
+  "description": "Simulated via UI on 2026-11-12 at 13:12:27",
+  "created_at": "2026-11-12T13:12:27.400801",
+  "tags": [
+    "ui_simulation",
+    "dot"
+  ],
+  "fingerprint": "4e4b465a0c3da646",
+  "is_cached": false,
+  "config": {
+    "name": "Square Leg: Falls Before (35 km/h)",
+    "input_mode": "manual_velocity",
+    "pos0": [
+      0.0,
+      0.0,
+      0.9
+    ],
+    "vel0": [
+      1.0196977395173887,
+      -6.798604194182725,
+      6.874649261535877
+    ],
+    "speed0_kmh": 35.0,
+    "elevation_deg": 45.0,
+    "azimuth_deg": -81.47,
+    "ball": {
+      "mass_kg": 0.16,
+      "diameter_m": 0.0725
+    },
+    "environment": {
+      "air_density_kg_m3": 1.225,
+      "dynamic_viscosity_pa_s": 1.81e-05,
+      "gravity_m_s2": 9.80665,
+      "constant_cd": 0.32,
+      "restitution_normal": 0.55,
+      "friction_tangential": 0.38,
+      "rolling_resistance_coeff": 0.2,
+      "drag_model": "constant"
+    },
+    "stadium": {
+      "boundary_radius_m": 70.0
+    },
+    "fielding": {
+      "fielders": [
+        {
+          "id": "sq_leg",
+          "name": "Square Leg",
+          "role": "fielder",
+          "x": 3.0,
+          "y": -20.0,
+          "reach_radius_m": 1.8
+        },
+        {
+          "id": "deep_sq_leg",
+          "name": "Deep Square Leg",
+          "role": "fielder",
+          "x": 10.0,
+          "y": -62.0,
+          "reach_radius_m": 2.2
+        }
+      ]
+    },
+    "solver": {}
+  },
+  "results": {
+    "fingerprint": "4e4b465a0c3da646",
+    "flight_time_s": 1.5063197848565493,
+    "carry_distance_m": 10.054937983038734,
+    "max_height_m": 3.261667516128175,
+    "time_to_apex_s": 0.6928919068796899,
+    "first_landing_pos_m": [
+      1.4914211827006703,
+      -9.943713627138845,
+      0.03625000000000027
+    ],
+    "total_bounces": 6,
+    "post_bounce_roll_m": 1.612345677845731,
+    "total_distance_m": 11.667283660884465,
+    "final_stopping_pos_m": [
+      1.7305759643444119,
+      -11.538224077178214,
+      0.03625000000000003
+    ],
+    "clears_rope": false,
+    "residual_speed_at_rope_kmh": null,
+    "margin_to_rope_m": -58.332716339115535,
+    "outcome_call": "DOT",
+    "estimated_runs": 0,
+    "fielder_interception": null,
+    "unconstrained_rollout_m": 11.667283660884465,
+    "boundary_distance_m": null,
+    "warnings": [
+      "PULLED UP SHORT (IN-PLAY): Pitched 10.1m (59.9m inside rope). Travelled 1.6m post-bounce and came to a stop at 11.7m, 58.3m short of the boundary rope.",
+      "Dot Ball: Ball fielded quickly in the infield."
+    ]
+  },
+  "artifacts": {
+    "trajectory_csv": "EXP_20261112_131227/trajectory.csv",
+    "calculation_trace": "EXP_20261112_131227/calculation_trace.json"
+  }
+}

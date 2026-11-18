@@ -1,0 +1,50 @@
+{
+  "fingerprint": "30e7b68f055ae753",
+  "flight_time_s": 2.7421306801782372,
+  "carry_distance_m": 56.49052053880316,
+  "max_height_m": 9.686810387024831,
+  "time_to_apex_s": 1.3058282735773028,
+  "first_landing_pos_m": [
+    8.379082903890428,
+    -55.86564132304106,
+    0.03624999999999918
+  ],
+  "total_bounces": 7,
+  "post_bounce_roll_m": 19.078020771679483,
+  "total_distance_m": 70.0,
+  "final_stopping_pos_m": [
+    11.208873037940288,
+    -74.73262741944416,
+    0.03625
+  ],
+  "clears_rope": true,
+  "residual_speed_at_rope_kmh": 22.572397472896057,
+  "margin_to_rope_m": 5.568541310482644,
+  "outcome_call": "FOUR",
+  "estimated_runs": 4,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "sq_leg",
+      "role_name": "Square Leg",
+      "distance_to_landing_m": 36.27,
+      "fielder_coords": [
+        3.0,
+        -20.0
+      ],
+      "spatial_relationship": "Travels Beyond Fielder by 36.3 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 0.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    },
+    "role_name": "Square Leg",
+    "fielder_name": "Square Leg"
+  },
+  "unconstrained_rollout_m": 75.56854131048264,
+  "boundary_distance_m": 70.0,
+  "warnings": [
+    "Boundary Four: CLEARED ROPE (BOUNDARY FOUR): Pitched 56.5m (13.5m inside rope). Crossed boundary rope (70.0m) at t=4.14s with residual speed 6.3 m/s (22.6 km/h). Official match distance: 70.0m (Theoretical uninhibited rollout: 75.6m)."
+  ]
+}

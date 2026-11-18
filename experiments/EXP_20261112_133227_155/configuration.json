@@ -1,0 +1,24 @@
+{
+  "name": "Cover Shot 38 deg",
+  "input_mode": "manual_velocity",
+  "pos0": [
+    0.0,
+    0.0,
+    0.9
+  ],
+  "vel0": [
+    21.84,
+    17.06,
+    16.0
+  ],
+  "speed0_kmh": 115.2,
+  "elevation_deg": 30.0,
+  "azimuth_deg": 37.99,
+  "ball": {},
+  "environment": {
+    "drag_model": "constant"
+  },
+  "stadium": {},
+  "fielding": {},
+  "solver": {}
+}

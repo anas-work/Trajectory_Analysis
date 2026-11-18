@@ -1,0 +1,55 @@
+{
+  "name": "Deep Square Leg: Falls Into Hands (101 km/h)",
+  "input_mode": "manual_velocity",
+  "pos0": [
+    0.0,
+    0.0,
+    0.9
+  ],
+  "vel0": [
+    3.158094401970169,
+    -19.58528882895723,
+    19.838273583289247
+  ],
+  "speed0_kmh": 101.0,
+  "elevation_deg": 45.0,
+  "azimuth_deg": -80.84,
+  "ball": {
+    "mass_kg": 0.16,
+    "diameter_m": 0.0725
+  },
+  "environment": {
+    "air_density_kg_m3": 1.225,
+    "dynamic_viscosity_pa_s": 1.81e-05,
+    "gravity_m_s2": 9.80665,
+    "constant_cd": 0.32,
+    "restitution_normal": 0.55,
+    "friction_tangential": 0.38,
+    "rolling_resistance_coeff": 0.2,
+    "drag_model": "constant"
+  },
+  "stadium": {
+    "boundary_radius_m": 70.0
+  },
+  "fielding": {
+    "fielders": [
+      {
+        "id": "sq_leg",
+        "name": "Square Leg",
+        "role": "fielder",
+        "x": 3.0,
+        "y": -20.0,
+        "reach_radius_m": 1.8
+      },
+      {
+        "id": "deep_sq_leg",
+        "name": "Deep Square Leg",
+        "role": "fielder",
+        "x": 10.0,
+        "y": -62.0,
+        "reach_radius_m": 2.2
+      }
+    ]
+  },
+  "solver": {}
+}

@@ -1,0 +1,56 @@
+{
+  "fingerprint": "f71a994d89114e7b",
+  "flight_time_s": 3.316606374151949,
+  "carry_distance_m": 6.280056778166288,
+  "max_height_m": 13.939782405612211,
+  "time_to_apex_s": 1.6141297095360558,
+  "first_landing_pos_m": [
+    0.9315034785216593,
+    -6.210588893695539,
+    0.03625000000000338
+  ],
+  "total_bounces": 7,
+  "post_bounce_roll_m": 0.17779736810869018,
+  "total_distance_m": 6.280056778166288,
+  "final_stopping_pos_m": [
+    0.9578756711172816,
+    -6.386419526874393,
+    0.036250000000000025
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -63.542145853725025,
+  "outcome_call": "CAUGHT (SPRINT INTERCEPTION \u2014 Wicket-Keeper @ 2.0 m/s)",
+  "estimated_runs": 0,
+  "fielder_interception": {
+    "fielder_id": "wk",
+    "role_name": "Wicket-Keeper",
+    "fielder_name": "Wicket-Keeper",
+    "catch_time_s": 3.1691297095360227,
+    "intercept_time_s": 3.1691297095360227,
+    "required_speed_m_s": 2.0352555163198716,
+    "margin_distance_m": 13.996258674197733,
+    "catch_type": "Sprint Interception",
+    "can_intercept": true,
+    "nearest_fielder": {
+      "fielder_id": "wk",
+      "role_name": "Wicket-Keeper",
+      "distance_to_landing_m": 7.97,
+      "fielder_coords": [
+        -3.8,
+        0.2
+      ],
+      "spatial_relationship": "Travels Beyond Fielder by 2.5 m",
+      "reach_radius_m": 2.0,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    }
+  },
+  "unconstrained_rollout_m": 6.457854146274978,
+  "boundary_distance_m": null,
+  "warnings": [
+    "Potential Catch: Interception window is physically reachable for Wicket-Keeper, Bowler, 1st Slip, Mid-Wicket, Square Leg at t = 3.17 s prior to first ground contact. Actual wicket depends on catch completion."
+  ]
+}

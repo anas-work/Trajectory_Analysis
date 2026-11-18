@@ -1,0 +1,50 @@
+{
+  "fingerprint": "5a7dcecb0f650eaf",
+  "flight_time_s": 1.1100241712014975,
+  "carry_distance_m": 10.862425768965839,
+  "max_height_m": 2.0052975578071845,
+  "time_to_apex_s": 0.4719757539548723,
+  "first_landing_pos_m": [
+    1.6111936159802438,
+    -10.74226925365947,
+    0.036249999999999304
+  ],
+  "total_bounces": 6,
+  "post_bounce_roll_m": 6.928470889391548,
+  "total_distance_m": 17.790896658357386,
+  "final_stopping_pos_m": [
+    2.6388745689204045,
+    -17.594099718878972,
+    0.03625
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -52.20910334164262,
+  "outcome_call": "FALLS SHORT (9.4 m in front)",
+  "estimated_runs": 0,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "sq_leg",
+      "role_name": "Square Leg",
+      "distance_to_landing_m": 9.36,
+      "fielder_coords": [
+        3.0,
+        -20.0
+      ],
+      "spatial_relationship": "Falls Short of Fielder by 9.4 m",
+      "reach_radius_m": 1.5,
+      "max_sprint_speed_m_s": 5.0,
+      "reaction_time_s": 0.45,
+      "min_catch_height_m": 0.3,
+      "max_catch_height_m": 2.15
+    },
+    "role_name": "Square Leg",
+    "fielder_name": "Square Leg"
+  },
+  "unconstrained_rollout_m": 17.790896658357386,
+  "boundary_distance_m": null,
+  "warnings": [
+    "Dot Ball: Ball fielded cleanly in the infield by Square Leg at 13.3m (t=1.53s). Boundary prevented."
+  ]
+}

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hawkeye 3D Cricket Trajectory & Stadium Visualizer</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        body { background: #080f16; color: #ecf0f1; overflow: hidden; display: flex; flex-direction: column; height: 100vh; }
+        
+        header { background: #101a24; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1f2e3d; z-index: 10; box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
+        .logo { font-size: 17px; font-weight: 800; color: #f1c40f; display: flex; align-items: center; gap: 8px; letter-spacing: 0.5px; }
+        .logo span { color: #ffffff; }
+        .controls-top { display: flex; gap: 10px; align-items: center; }
+        select, button { background: #192735; color: #fff; border: 1px solid #2d4154; padding: 7px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s; }
+        button:hover { background: #27ae60; border-color: #2ecc71; }
+        button.active { background: #2980b9; border-color: #3498db; }
+        
+        #canvas-container { flex: 1; position: relative; width: 100%; height: 100%; cursor: grab; background: radial-gradient(circle at center, #0f1c29 0%, #060a0e 100%); }
+        #canvas-container:active { cursor: grabbing; }
+        canvas { width: 100%; height: 100%; display: block; }
+        
+        /* Telemetry HUD Overlay */
+        .hud-overlay { position: absolute; top: 20px; left: 20px; background: rgba(14, 23, 33, 0.92); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 16px 20px; border-radius: 12px; min-width: 280px; pointer-events: none; z-index: 5; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+        .hud-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #f1c40f; margin-bottom: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 5px; font-weight: 800; display: flex; justify-content: space-between; }
+        .hud-row { display: flex; justify-content: space-between; margin: 5px 0; font-size: 13px; color: #bdc3c7; }
+        .hud-val { font-weight: 700; color: #2ecc71; font-family: monospace; font-size: 14px; }
+        
+        /* Callout Banner */
+        .callout-banner { position: absolute; bottom: 85px; left: 50%; transform: translateX(-50%); background: rgba(21, 32, 43, 0.95); border: 2px solid #f1c40f; padding: 12px 32px; border-radius: 30px; font-size: 15px; font-weight: 800; color: #f1c40f; text-align: center; box-shadow: 0 6px 28px rgba(241, 196, 15, 0.35); z-index: 5; pointer-events: none; letter-spacing: 0.5px; transition: all 0.3s; }
+        
+        /* Playback bar bottom */
+        footer { background: #101a24; padding: 12px 24px; display: flex; align-items: center; gap: 16px; border-top: 1px solid #1f2e3d; z-index: 10; }
+        .timeline { flex: 1; display: flex; align-items: center; gap: 12px; }
+        input[type="range"] { flex: 1; accent-color: #2ecc71; cursor: pointer; height: 6px; }
+        .time-label { font-family: monospace; font-size: 13px; min-width: 50px; font-weight: 600; color: #bdc3c7; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">🏏 <span>HAWKEYE 3D</span> STADIUM ENGINE</div>
+        <div class="controls-top">
+            <label for="scenario-select" style="font-size: 13px; color: #95a5a6; font-weight: 600;">Scenario:</label>
+            <select id="scenario-select">
+                <option value="four">1. Cover Drive Clearing Rope for FOUR (111 km/h)</option>
+                <option value="six">2. High-Lofted Shot Clearing Rope on Full for SIX (133 km/h)</option>
+                <option value="short">3. Controlled Push Pulling Up Short (2 Runs - 80 km/h)</option>
+                <option value="catch">4. Towering Skyer Caught at Deep Mid-Wicket (127 km/h)</option>
+            </select>
+            <button id="btn-cam-broadcast" class="active">Broadcast Cam</button>
+            <button id="btn-cam-bowler">Bowler POV</button>
+            <button id="btn-cam-side">Side Elevation</button>
+            <button id="btn-cam-top">Aerial Top-Down</button>
+        </div>
+    </header>
+
+    <div id="canvas-container">
+        <canvas id="stadium-canvas"></canvas>
+        <div class="hud-overlay">
+            <div class="hud-title"><span>TELEMETRY HUD</span><span id="hud-badge" style="color: #2ecc71;">LIVE</span></div>
+            <div class="hud-row"><span>Flight Time:</span><span class="hud-val" id="hud-time">0.00 s</span></div>
+            <div class="hud-row"><span>Speed:</span><span class="hud-val" id="hud-speed">0.0 km/h</span></div>
+            <div class="hud-row"><span>Height Z:</span><span class="hud-val" id="hud-height">0.00 m</span></div>
+            <div class="hud-row"><span>Ground Range:</span><span class="hud-val" id="hud-dist">0.00 m</span></div>
+            <div class="hud-row"><span>Launch:</span><span class="hud-val" id="hud-launch">--</span></div>
+            <div class="hud-row"><span>Apex:</span><span class="hud-val" id="hud-apex">--</span></div>
+            <div class="hud-row"><span>1st Pitch Bounce:</span><span class="hud-val" id="hud-bounce">--</span></div>
+        </div>
+        <div class="callout-banner" id="banner">BAT IMPACT</div>
+    </div>
+
+    <footer>
+        <button id="btn-play">Pause</button>
+        <button id="btn-reset">Replay</button>
+        <div class="timeline">
+            <span class="time-label" id="current-time">0.00s</span>
+            <input type="range" id="scrubber" min="0" max="100" value="0" step="0.1">
+            <span class="time-label" id="total-time">5.00s</span>
+        </div>
+        <div style="font-size: 12px; color: #7f8c8d; font-weight: 500;">🖱️ Drag to Orbit 3D • Scroll to Zoom</div>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('stadium-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        function resize() {
+            width = canvas.width = canvas.parentElement.clientWidth;
+            height = canvas.height = canvas.parentElement.clientHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // 3D Camera coordinates:
+        let camera = {
+            yaw: -0.62,
+            pitch: 0.36,
+            distance: 145,
+            target: { x: 32, y: 0, z: 2 }
+        };
+
+        // Standard International Fielders (Positions in metres relative to striker crease at 0,0):
+        const fieldersStandard = [
+            { id: "WK", name: "Wicket-Keeper", x: -3.8, y: 0.2 },
+            { id: "1SL", name: "First Slip", x: -6.2, y: 2.8 },
+            { id: "PT", name: "Point", x: 4.0, y: 22.0 },
+            { id: "CV", name: "Cover", x: 18.0, y: 20.0 },
+            { id: "MOF", name: "Mid-Off", x: 28.0, y: 7.5 },
+            { id: "MON", name: "Mid-On", x: 28.0, y: -7.5 },
+            { id: "MW", name: "Mid-Wicket", x: 18.0, y: -20.0 },
+            { id: "SQL", name: "Square Leg", x: 3.0, y: -22.0 },
+            { id: "DCOV", name: "Deep Cover", x: 48.0, y: 45.0 },
+            { id: "LON", name: "Long-On", x: 64.0, y: -16.0 },
+            { id: "DMW", name: "Deep Mid-Wicket", x: 45.0, y: -48.0 }
+        ];
+
+        // 4 Distinct Cricket Scenarios:
+        const scenarios = {
+            four: {
+                name: "BOUNDARY FOUR (Cover Drive Clears Rope)",
+                launchSpeed: 30.7, launchAngle: 11.6, azimuth: 19.5,
+                t_land: 1.35, d_land: 36.6, apex: 2.7,
+                totalTime: 4.5, ropeDist: 70.0,
+                clearsRope: true, ropeCrossingTime: 3.36, residualSpeed: 12.6,
+                generateTrajectory: function() {
+                    const pts = [];
+                    // Airborne flight to 36.6m:
+                    for (let t = 0; t <= 1.35; t += 0.02) {
+                        const frac = t / 1.35;
+                        const x = frac * 34.5;
+                        const y = frac * 12.3;
+                        const z = Math.max(0.04, 0.85 + 6.2*t - 0.5*9.81*t*t*0.96);
+                        const v = Math.hypot(28.0 - 1.8*t, 10.0 - 0.6*t, 6.2 - 9.81*t);
+                        pts.push({ t, x, y, z, v });
+                    }
+                    // Post-bounce roll to 74m:
+                    for (let t = 1.37; t <= 4.5; t += 0.02) {
+                        const tr = t - 1.35;
+                        const d = 36.6 + (20.5*tr - 0.5*1.96*tr*tr);
+                        const frac = Math.min(1.0, (d - 36.6) / 38.0);
+                        const x = 34.5 + frac * 35.0;
+                        const y = 12.3 + frac * 12.5;
+                        const hop = Math.max(0.04, 0.38 * Math.exp(-1.8*tr) * Math.abs(Math.sin(tr * 9)));
+                        const v = Math.max(0, 20.5 - 1.96*tr);
+                        pts.push({ t, x, y, z: hop, v });
+                    }
+                    return pts;
+                }
+            },
+            six: {
+                name: "MAXIMUM SIX (Clearing Rope on Full over Long-On)",
+                launchSpeed: 36.1, launchAngle: 33.7, azimuth: 2.8,
+                t_land: 3.76, d_land: 87.9, apex: 17.9,
+                totalTime: 5.2, ropeDist: 70.0,
+                clearsRope: true, ropeCrossingTime: 3.25, residualSpeed: 25.3,
+                generateTrajectory: function() {
+                    const pts = [];
+                    for (let t = 0; t <= 3.76; t += 0.02) {
+                        const frac = t / 3.76;
+                        const x = frac * 87.8;
+                        const y = frac * 4.4;
+                        const z = Math.max(0.04, 1.1 + 20.0*t - 0.5*9.81*t*t*0.94);
+                        const v = Math.hypot(30.0 - 1.8*t, 1.5, 20.0 - 9.81*t);
+                        pts.push({ t, x, y, z, v });
+                    }
+                    for (let t = 3.78; t <= 5.2; t += 0.02) {
+                        const tr = t - 3.76;
+                        pts.push({ t, x: 87.8 + tr * 6.0, y: 4.4 + tr * 0.3, z: Math.max(0.04, 0.3*Math.exp(-2*tr)*Math.abs(Math.sin(tr*8))), v: Math.max(0, 14.0 - 2.5*tr) });
+                    }
+                    return pts;
+                }
+            },
+            short: {
+                name: "PULLED UP SHORT (Pitched 25m, Stops at 58m - 2 Runs)",
+                launchSpeed: 23.9, launchAngle: 12.1, azimuth: 20.0,
+                t_land: 1.16, d_land: 25.4, apex: 2.1,
+                totalTime: 4.2, ropeDist: 70.0,
+                clearsRope: false, stoppingDist: 58.0, shortfall: 12.0,
+                generateTrajectory: function() {
+                    const pts = [];
+                    for (let t = 0; t <= 1.16; t += 0.02) {
+                        const frac = t / 1.16;
+                        pts.push({ t, x: frac * 23.8, y: frac * 8.7, z: Math.max(0.04, 0.9 + 5.0*t - 4.9*t*t), v: 23.9 - 2.5*t });
+                    }
+                    for (let t = 1.18; t <= 4.2; t += 0.02) {
+                        const tr = t - 1.16;
+                        const d = 25.4 + (14.2*tr - 0.5*2.1*tr*tr);
+                        const frac = Math.min(1.0, (d - 25.4) / 32.6);
+                        const v = Math.max(0, 14.2 - 2.1*tr);
+                        pts.push({ t, x: 23.8 + frac * 30.5, y: 8.7 + frac * 11.2, z: 0.04, v });
+                    }
+                    return pts;
+                }
+            },
+            catch: {
+                name: "OUT / CAUGHT IN DEEP (Lofted Skyer to Deep Mid-Wicket)",
+                launchSpeed: 35.4, launchAngle: 38.4, azimuth: -30.0,
+                t_land: 4.15, d_land: 52.0, apex: 20.8,
+                totalTime: 4.5, ropeDist: 70.0,
+                isCatch: true, catchTime: 3.85, catchFielder: "Deep Mid-Wicket",
+                generateTrajectory: function() {
+                    const pts = [];
+                    for (let t = 0; t <= 4.15; t += 0.02) {
+                        const frac = t / 4.15;
+                        const x = frac * 45.0;
+                        const y = frac * -26.0;
+                        const z = Math.max(0.04, 1.0 + 22.0*t - 0.5*9.81*t*t);
+                        pts.push({ t, x, y, z, v: Math.hypot(24.0, -14.0, 22.0 - 9.81*t) });
+                    }
+                    return pts;
+                }
+            }
+        };
+
+        let currentScenarioKey = 'four';
+        let currentScenario = scenarios.four;
+        let trajectory = currentScenario.generateTrajectory();
+        let currentTime = 0.0;
+        let isPlaying = true;
+
+        // 3D Projection Engine:
+        function project(x, y, z) {
+            const dx = x - camera.target.x;
+            const dy = y - camera.target.y;
+            const dz = z - camera.target.z;
+
+            const cosY = Math.cos(camera.yaw);
+            const sinY = Math.sin(camera.yaw);
+            const x1 = dx * cosY - dy * sinY;
+            const y1 = dx * sinY + dy * cosY;
+            const z1 = dz;
+
+            const cosP = Math.cos(camera.pitch);
+            const sinP = Math.sin(camera.pitch);
+            const y2 = y1 * cosP - z1 * sinP;
+            const z2 = y1 * sinP + z1 * cosP;
+
+            const depth = camera.distance + y2;
+            if (depth <= 1.0) return null;
+
+            const fov = 780;
+            const scale = fov / depth;
+            const sx = width / 2 + x1 * scale;
+            const sy = height / 2 - z2 * scale;
+            return { x: sx, y: sy, depth, scale };
+        }
+
+        // Draw Authentic International Cricket Ground:
+        function drawAuthenticGround() {
+            // 1. Concentric turf lawn bands:
+            const bands = [75, 60, 45, 30, 15];
+            bands.forEach((r, idx) => {
+                ctx.beginPath();
+                ctx.fillStyle = idx % 2 === 0 ? "#1b4a1e" : "#153d18";
+                for (let a = 0; a <= Math.PI * 2 + 0.1; a += 0.08) {
+                    const p = project(r * Math.cos(a), r * Math.sin(a), 0);
+                    if (p) {
+                        if (a === 0) ctx.moveTo(p.x, p.y);
+                        else ctx.lineTo(p.x, p.y);
+                    }
+                }
+                ctx.fill();
+            });
+
+            // 2. 22-Yard Pitch Strip:
+            const pCorners = [
+                project(-1.8, -1.52, 0.001),
+                project(20.2, -1.52, 0.001),
+                project(20.2, 1.52, 0.001),
+                project(-1.8, 1.52, 0.001)
+            ];
+            if (pCorners.every(Boolean)) {
+                ctx.beginPath();
+                ctx.moveTo(pCorners[0].x, pCorners[0].y);
+                pCorners.forEach(p => ctx.lineTo(p.x, p.y));
+                ctx.closePath();
+                ctx.fillStyle = "#d4b886";
+                ctx.fill();
+                ctx.strokeStyle = "#bfa068";
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+
+                // Creases:
+                const c1 = project(0.0, -1.8, 0.002);
+                const c2 = project(0.0, 1.8, 0.002);
+                if (c1 && c2) {
+                    ctx.beginPath();
+                    ctx.moveTo(c1.x, c1.y);
+                    ctx.lineTo(c2.x, c2.y);
+                    ctx.strokeStyle = "#ffffff";
+                    ctx.lineWidth = 2.2;
+                    ctx.stroke();
+                }
+                const c3 = project(17.68, -1.8, 0.002);
+                const c4 = project(17.68, 1.8, 0.002);
+                if (c3 && c4) {
+                    ctx.beginPath();
+                    ctx.moveTo(c3.x, c3.y);
+                    ctx.lineTo(c4.x, c4.y);
+                    ctx.strokeStyle = "#ffffff";
+                    ctx.lineWidth = 2.2;
+                    ctx.stroke();
+                }
+
+                // 3D Stumps (striker end and bowler end):
+                const w1 = project(-1.22, 0, 0);
+                const w2 = project(-1.22, 0, 0.71);
+                if (w1 && w2) {
+                    ctx.beginPath();
+                    ctx.moveTo(w1.x, w1.y); ctx.lineTo(w2.x, w2.y);
+                    ctx.strokeStyle = "#f39c12"; ctx.lineWidth = 3.5;
+                    ctx.stroke();
+                }
+                const w3 = project(18.90, 0, 0);
+                const w4 = project(18.90, 0, 0.71);
+                if (w3 && w4) {
+                    ctx.beginPath();
+                    ctx.moveTo(w3.x, w3.y); ctx.lineTo(w4.x, w4.y);
+                    ctx.strokeStyle = "#f39c12"; ctx.lineWidth = 3.5;
+                    ctx.stroke();
+                }
+            }
+
+            // 3. 30-Yard Circle (27.43m):
+            ctx.beginPath();
+            ctx.setLineDash([6, 6]);
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.65)";
+            ctx.lineWidth = 1.5;
+            for (let a = 0; a <= Math.PI * 2 + 0.1; a += 0.08) {
+                const p = project(27.43 * Math.cos(a), 27.43 * Math.sin(a), 0.002);
+                if (p) {
+                    if (a === 0) ctx.moveTo(p.x, p.y);
+                    else ctx.lineTo(p.x, p.y);
+                }
+            }
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // 4. Boundary Rope (70m):
+            ctx.beginPath();
+            ctx.strokeStyle = "#f8f9fa";
+            ctx.lineWidth = 4.0;
+            for (let a = 0; a <= Math.PI * 2 + 0.05; a += 0.05) {
+                const p = project(70.0 * Math.cos(a), 70.0 * Math.sin(a), 0.003);
+                if (p) {
+                    if (a === 0) ctx.moveTo(p.x, p.y);
+                    else ctx.lineTo(p.x, p.y);
+                }
+            }
+            ctx.stroke();
+
+            // Foam cushions:
+            for (let a = 0; a < Math.PI * 2; a += 0.16) {
+                const p = project(70.0 * Math.cos(a), 70.0 * Math.sin(a), 0.004);
+                if (p) {
+                    ctx.fillStyle = "#c0392b";
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 3.0, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            // 5. Fielders:
+            fieldersStandard.forEach(f => {
+                const p = project(f.x, f.y, 0.005);
+                if (p) {
+                    ctx.fillStyle = "#3498db";
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 4.5, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.strokeStyle = "#ffffff";
+                    ctx.lineWidth = 1.2;
+                    ctx.stroke();
+
+                    ctx.font = "10px sans-serif";
+                    ctx.fillStyle = "#ecf0f1";
+                    ctx.textAlign = "center";
+                    ctx.fillText(f.id, p.x, p.y - 8);
+                }
+            });
+        }
+
+        // Render Frame:
+        function render() {
+            ctx.fillStyle = "#080f16";
+            ctx.fillRect(0, 0, width, height);
+
+            drawAuthenticGround();
+
+            const history = trajectory.filter(pt => pt.t <= currentTime);
+            if (history.length > 0) {
+                const currentPt = history[history.length - 1];
+
+                // Ground Shadow:
+                ctx.beginPath();
+                ctx.strokeStyle = "rgba(0, 0, 0, 0.45)";
+                ctx.lineWidth = 2.5;
+                ctx.setLineDash([4, 4]);
+                history.forEach((pt, i) => {
+                    const p = project(pt.x, pt.y, 0.002);
+                    if (p) {
+                        if (i === 0) ctx.moveTo(p.x, p.y);
+                        else ctx.lineTo(p.x, p.y);
+                    }
+                });
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                // Altitude Ribs:
+                const step = Math.max(1, Math.floor(history.length / 16));
+                for (let i = 0; i < history.length; i += step) {
+                    const pt = history[i];
+                    if (pt.z > 0.15) {
+                        const top = project(pt.x, pt.y, pt.z);
+                        const bot = project(pt.x, pt.y, 0.002);
+                        if (top && bot) {
+                            ctx.beginPath();
+                            ctx.moveTo(top.x, top.y);
+                            ctx.lineTo(bot.x, bot.y);
+                            ctx.strokeStyle = "rgba(231, 76, 60, 0.35)";
+                            ctx.lineWidth = 1.2;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                // Flight Arc (Multi-layer glow):
+                ctx.beginPath();
+                ctx.strokeStyle = "#e74c3c";
+                ctx.lineWidth = 4.5;
+                history.forEach((pt, i) => {
+                    const p = project(pt.x, pt.y, pt.z);
+                    if (p) {
+                        if (i === 0) ctx.moveTo(p.x, p.y);
+                        else ctx.lineTo(p.x, p.y);
+                    }
+                });
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.strokeStyle = "#ffd700";
+                ctx.lineWidth = 1.8;
+                history.forEach((pt, i) => {
+                    const p = project(pt.x, pt.y, pt.z);
+                    if (p) {
+                        if (i === 0) ctx.moveTo(p.x, p.y);
+                        else ctx.lineTo(p.x, p.y);
+                    }
+                });
+                ctx.stroke();
+
+                // Ball Marker:
+                const ballP = project(currentPt.x, currentPt.y, currentPt.z);
+                if (ballP) {
+                    ctx.fillStyle = "#ffffff";
+                    ctx.beginPath();
+                    ctx.arc(ballP.x, ballP.y, 7, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.strokeStyle = "#e74c3c";
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                }
+
+                // HUD updates:
+                document.getElementById('hud-time').textContent = `${currentTime.toFixed(2)} s`;
+                document.getElementById('hud-speed').textContent = `${(currentPt.v * 3.6).toFixed(1)} km/h`;
+                document.getElementById('hud-height').textContent = `${currentPt.z.toFixed(2)} m`;
+                document.getElementById('hud-dist').textContent = `${Math.hypot(currentPt.x, currentPt.y).toFixed(1)} m`;
+                document.getElementById('hud-launch').textContent = `${(currentScenario.launchSpeed*3.6).toFixed(0)} km/h @ ${currentScenario.launchAngle}°`;
+                document.getElementById('hud-apex').textContent = `${currentScenario.apex.toFixed(1)} m`;
+                document.getElementById('hud-bounce').textContent = `${currentScenario.d_land.toFixed(1)} m`;
+
+                // Banner updates:
+                const banner = document.getElementById('banner');
+                if (currentTime <= 0.15) {
+                    banner.textContent = `BAT IMPACT: ${(currentScenario.launchSpeed*3.6).toFixed(0)} km/h @ ${currentScenario.launchAngle}°`;
+                    banner.style.color = "#2ecc71";
+                    banner.style.borderColor = "#2ecc71";
+                } else if (currentTime < currentScenario.t_land) {
+                    banner.textContent = `AIRBORNE FLIGHT ARC (Apex: ${currentScenario.apex}m)`;
+                    banner.style.color = "#f1c40f";
+                    banner.style.borderColor = "#f1c40f";
+                } else if (currentScenario.isCatch && currentTime >= currentScenario.catchTime) {
+                    banner.textContent = `✕ WICKET! CAUGHT IN DEEP BY ${currentScenario.catchFielder.toUpperCase()}`;
+                    banner.style.color = "#e74c3c";
+                    banner.style.borderColor = "#e74c3c";
+                } else if (currentScenario.clearsRope && currentTime >= currentScenario.ropeCrossingTime) {
+                    banner.textContent = currentScenario.name.includes("SIX")
+                        ? "★ MAXIMUM SIX! CLEARED ROPE ON FULL"
+                        : `★ BOUNDARY FOUR! CLEARED ROPE (${currentScenario.residualSpeed.toFixed(1)} m/s)`;
+                    banner.style.color = "#2ecc71";
+                    banner.style.borderColor = "#2ecc71";
+                } else if (!currentScenario.clearsRope && currentTime >= 2.5) {
+                    banner.textContent = `● PULLED UP SHORT (${currentScenario.shortfall}m INSIDE ROPE - 2 RUNS)`;
+                    banner.style.color = "#e67e22";
+                    banner.style.borderColor = "#e67e22";
+                } else {
+                    banner.textContent = `1st PITCH BOUNCE: ${currentScenario.d_land}m`;
+                    banner.style.color = "#e74c3c";
+                    banner.style.borderColor = "#e74c3c";
+                }
+            }
+
+            document.getElementById('current-time').textContent = `${currentTime.toFixed(2)}s`;
+            document.getElementById('scrubber').value = (currentTime / currentScenario.totalTime) * 100;
+
+            if (isPlaying) {
+                currentTime += 0.016;
+                if (currentTime > currentScenario.totalTime) {
+                    currentTime = currentScenario.totalTime;
+                    isPlaying = false;
+                    document.getElementById('btn-play').textContent = "Replay";
+                }
+            }
+
+            requestAnimationFrame(render);
+        }
+        requestAnimationFrame(render);
+
+        // Controls:
+        const btnPlay = document.getElementById('btn-play');
+        btnPlay.addEventListener('click', () => {
+            if (currentTime >= currentScenario.totalTime) {
+                currentTime = 0;
+            }
+            isPlaying = !isPlaying;
+            btnPlay.textContent = isPlaying ? "Pause" : "Play";
+        });
+        document.getElementById('btn-reset').addEventListener('click', () => {
+            currentTime = 0;
+            isPlaying = true;
+            btnPlay.textContent = "Pause";
+        });
+        document.getElementById('scrubber').addEventListener('input', (e) => {
+            currentTime = (e.target.value / 100) * currentScenario.totalTime;
+        });
+
+        document.getElementById('scenario-select').addEventListener('change', (e) => {
+            currentScenarioKey = e.target.value;
+            currentScenario = scenarios[currentScenarioKey];
+            trajectory = currentScenario.generateTrajectory();
+            document.getElementById('total-time').textContent = `${currentScenario.totalTime.toFixed(2)}s`;
+            currentTime = 0;
+            isPlaying = true;
+            btnPlay.textContent = "Pause";
+        });
+
+        // Camera Presets:
+        function setActiveBtn(btn) {
+            document.querySelectorAll('.controls-top button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+        document.getElementById('btn-cam-broadcast').addEventListener('click', function() {
+            camera.yaw = -0.62; camera.pitch = 0.36; camera.distance = 145; camera.target = { x: 32, y: 0, z: 2 };
+            setActiveBtn(this);
+        });
+        document.getElementById('btn-cam-bowler').addEventListener('click', function() {
+            camera.yaw = 0.02; camera.pitch = 0.20; camera.distance = 115; camera.target = { x: 35, y: 0, z: 2 };
+            setActiveBtn(this);
+        });
+        document.getElementById('btn-cam-side').addEventListener('click', function() {
+            camera.yaw = -1.57; camera.pitch = 0.15; camera.distance = 130; camera.target = { x: 35, y: 0, z: 5 };
+            setActiveBtn(this);
+        });
+        document.getElementById('btn-cam-top').addEventListener('click', function() {
+            camera.yaw = 0; camera.pitch = 1.52; camera.distance = 175; camera.target = { x: 30, y: 0, z: 0 };
+            setActiveBtn(this);
+        });
+
+        // Mouse Drag Orbit:
+        let isDragging = false, lastMouse = { x: 0, y: 0 };
+        canvas.addEventListener('mousedown', (e) => { isDragging = true; lastMouse = { x: e.clientX, y: e.clientY }; });
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const dx = e.clientX - lastMouse.x;
+            const dy = e.clientY - lastMouse.y;
+            camera.yaw += dx * 0.007;
+            camera.pitch = Math.max(0.04, Math.min(1.53, camera.pitch + dy * 0.007));
+            lastMouse = { x: e.clientX, y: e.clientY };
+        });
+        canvas.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            camera.distance = Math.max(35, Math.min(260, camera.distance + e.deltaY * 0.1));
+        }, { passive: false });
+    </script>
+</body>
+</html>
