@@ -299,10 +299,10 @@ export default function PoseStudyTab() {{
             }}`}}>
               <div 
                 className="w-full flex items-center justify-center bg-black rounded-xl overflow-hidden shadow-inner"
-                style={{ 
+                style={{{{ 
                   maxHeight: "680px", 
                   aspectRatio: videoDims.aspectRatio ? `${{videoDims.aspectRatio}}` : "9/16" 
-                }}
+                }}}}
               >
                 <video
                   key={{current.id}}
@@ -389,12 +389,12 @@ export default function PoseStudyTab() {{
                   Batting Movement Timeline
                 </h3>
                 <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80 font-mono text-xs text-slate-300 space-y-1">
-                  <div>• {{{{current.phasesStr.split(', ')[0]}}}}</div>
-                  <div>• {{{{current.phasesStr.split(', ')[1]}}}}</div>
-                  <div>• {{{{current.phasesStr.split(', ')[2]}}}}</div>
-                  <div>• {{{{current.phasesStr.split(', ')[3]}}}}</div>
-                  <div className="text-emerald-400 font-bold">• {{{{current.phasesStr.split(', ')[4]}}}}</div>
-                  <div>• {{{{current.phasesStr.split(', ')[5]}}}}</div>
+                  <div>• {{current.phasesStr.split(', ')[0]}}</div>
+                  <div>• {{current.phasesStr.split(', ')[1]}}</div>
+                  <div>• {{current.phasesStr.split(', ')[2]}}</div>
+                  <div>• {{current.phasesStr.split(', ')[3]}}</div>
+                  <div className="text-emerald-400 font-bold">• {{current.phasesStr.split(', ')[4]}}</div>
+                  <div>• {{current.phasesStr.split(', ')[5]}}</div>
                 </div>
               </div>
             </div>

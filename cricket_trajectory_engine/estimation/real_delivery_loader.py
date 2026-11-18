@@ -81,7 +81,7 @@ def load_real_delivery_bat_trajectory(
     # At bat hit (index 0): origin is at bat impact.
     # In stereo frame, Y decreases as ball moves back towards bowler.
     # Therefore, downfield travel X_sim = Y_hit - Y_stereo.
-    # Lateral travel Y_sim = X_stereo - X_hit.
+    # Lateral travel Y_sim = x_hit - X_stereo (+Y = Off-side, -Y = On-side / Leg-side).
     # Vertical Z_sim = Z_stereo.
     y_hit = p_stereo[0, 1]
     x_hit = p_stereo[0, 0]
@@ -89,7 +89,7 @@ def load_real_delivery_bat_trajectory(
 
     t_rel = t_arr - t_hit
     x_sim = y_hit - p_stereo[:, 1]
-    y_sim = p_stereo[:, 0] - x_hit
+    y_sim = x_hit - p_stereo[:, 0]
     z_sim = np.maximum(0.04, p_stereo[:, 2])  # Clamped above pitch ground
 
     pos_sim = np.column_stack((x_sim, y_sim, z_sim))
