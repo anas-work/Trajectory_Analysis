@@ -16,17 +16,17 @@
       "description": "Converts the initial velocity Cartesian vector into scalar launch speed and launch angles.",
       "inputs": {
         "Vx0": 15.031308193195807,
-        "Vy0": -0.9317333632512775,
+        "Vy0": 0.9317333632512775,
         "Vz0": 4.347992553061094
       },
-      "substitution_text": "v0 = sqrt((15.03)^2 + (-0.93)^2 + (4.35)^2)",
+      "substitution_text": "v0 = sqrt((15.03)^2 + (0.93)^2 + (4.35)^2)",
       "result_value": {
         "speed_m_s": 15.675247758823643,
         "speed_kmh": 56.43089193176512,
         "elevation_deg": 16.103867787873014,
-        "azimuth_deg": -3.547008227704909
+        "azimuth_deg": 3.547008227704909
       },
-      "result_formatted": "56.4 km/h (15.68 m/s) at +16.1\u00b0 elevation, -3.5\u00b0 azimuth",
+      "result_formatted": "56.4 km/h (15.68 m/s) at +16.1\u00b0 elevation, +3.5\u00b0 azimuth",
       "units": "km/h and degrees",
       "why_necessary": "Establishes initial conditions for numerical integration of Newton's equations of motion.",
       "downstream_dependents": [
@@ -71,10 +71,10 @@
       "substitution_text": "F_drag = -0.5 * 1.205 * 0.32 * 0.004072 * (15.68)^2",
       "result_value": [
         -0.1849579899856349,
-        0.011464839111443454,
+        -0.011464839111443454,
         -0.053501395404208583
       ],
-      "result_formatted": "Magnitude = 0.19 N | Vector = [-0.18, 0.01, -0.05] N",
+      "result_formatted": "Magnitude = 0.19 N | Vector = [-0.18, -0.01, -0.05] N",
       "units": "Newtons (N)",
       "why_necessary": "Retards forward velocity and alters the trajectory arc away from a theoretical vacuum parabola.",
       "downstream_dependents": [
@@ -95,18 +95,18 @@
         ],
         "F_drag": [
           -0.1849579899856349,
-          0.011464839111443454,
+          -0.011464839111443454,
           -0.053501395404208583
         ],
         "m": 0.156
       },
-      "substitution_text": "a = [0, 0, -9.81] + [-0.18, 0.01, -0.05] / 0.156",
+      "substitution_text": "a = [0, 0, -9.81] + [-0.18, -0.01, -0.05] / 0.156",
       "result_value": [
         -1.185628140933557,
-        0.07349255840668881,
+        -0.07349255840668881,
         -10.14960766284749
       ],
-      "result_formatted": "[-1.19, 0.07, -10.15] m/s\u00b2 (Magnitude = 10.22 m/s\u00b2)",
+      "result_formatted": "[-1.19, -0.07, -10.15] m/s\u00b2 (Magnitude = 10.22 m/s\u00b2)",
       "units": "m/s\u00b2",
       "why_necessary": "Integrated via SciPy's adaptive RK45 algorithm to compute position and velocity time-series.",
       "downstream_dependents": [
@@ -132,7 +132,7 @@
         "carry_m": 12.961261680299446,
         "landing_pos": [
           12.936432767463687,
-          -0.8018800397133178,
+          0.8018800397133178,
           0.03599999999999892
         ]
       },
@@ -186,7 +186,7 @@
         "clears_rope": false,
         "margin_m": -5.189031202493354
       },
-      "result_formatted": "Decel = -0.98 m/s\u00b2 | Min Speed Req = 53.8 km/h | Status = PULLED UP SHORT (IN-PLAY): Pitched 13.0m (57.0m inside rope). Travelled 51.8m post-bounce and came to a stop at 64.8m, 5.2m short of the boundary rope.",
+      "result_formatted": "Decel = -0.98 m/s\u00b2 | Min Speed Req = 53.8 km/h | Status = CUT OFF INSIDE BOUNDARY: Pitched at 13.0m. Fielded cleanly by Bowler at 14.0m (t=0.98s), preventing boundary Four.",
       "units": "m/s\u00b2 and km/h",
       "why_necessary": "Differentiates between a Boundary Four and an in-play Single/Double that pulls up short.",
       "downstream_dependents": [
@@ -200,15 +200,15 @@
       "formula_text": "Outcome based on boundary crossing, bounce history, and fielder reachability",
       "description": "MCC Laws of Cricket outcome determination combining flight, contact, and tactical rules.",
       "inputs": {
-        "primary_call": "THREE",
-        "runs": 3
+        "primary_call": "DOT",
+        "runs": 0
       },
-      "substitution_text": "Call: THREE | Estimated Runs: 3",
+      "substitution_text": "Call: DOT | Estimated Runs: 0",
       "result_value": {
-        "call": "THREE",
-        "runs": 3
+        "call": "DOT",
+        "runs": 0
       },
-      "result_formatted": "FINAL CALL: [THREE] \u2014 3 Runs",
+      "result_formatted": "FINAL CALL: [DOT] \u2014 0 Runs",
       "units": "Cricket Runs / Wicket",
       "why_necessary": "Final match decision presented on broadcast telemetry.",
       "downstream_dependents": []

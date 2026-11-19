@@ -1,36 +1,61 @@
 {
-  "fingerprint": "77eac7899d129726",
+  "fingerprint": "62c5f18aac3627c4",
   "flight_time_s": 1.8032428271229035,
   "carry_distance_m": 17.639999499964247,
   "max_height_m": 4.342615633689139,
   "time_to_apex_s": 0.8569324449341341,
   "first_landing_pos_m": [
     17.5487253353651,
-    -1.792155535285378,
+    1.792155535285378,
     0.03599999999999938
   ],
   "total_bounces": 6,
   "post_bounce_roll_m": 5.348735911203132,
-  "total_distance_m": 22.98873541116738,
+  "total_distance_m": 17.639999499964247,
   "final_stopping_pos_m": [
     22.86978542934627,
-    -2.335566359648594,
+    2.335566359648594,
     0.036
   ],
   "clears_rope": false,
   "residual_speed_at_rope_kmh": null,
   "margin_to_rope_m": -47.01126458883262,
-  "outcome_call": "POTENTIAL_CATCH",
+  "outcome_call": "CAUGHT (SPRINT INTERCEPTION \u2014 Bowler @ 3.2 m/s)",
   "estimated_runs": 0,
   "fielder_interception": {
     "fielder_id": "bowl",
     "role_name": "Bowler",
+    "fielder_name": "Bowler",
+    "catch_time_s": 1.5119324449341234,
     "intercept_time_s": 1.5119324449341234,
-    "required_speed_m_s": 3.1886595098926
+    "intercept_position_m": [
+      14.827345548805487,
+      1.5142358713273416,
+      2.269605035703128
+    ],
+    "required_speed_m_s": 3.1886595098926,
+    "margin_distance_m": 4.428520174146913,
+    "catch_type": "Sprint Interception",
+    "can_intercept": true,
+    "nearest_fielder": {
+      "fielder_id": "bowl",
+      "role_name": "Bowler",
+      "distance_to_landing_m": 3.13,
+      "fielder_coords": [
+        20.12,
+        0.0
+      ],
+      "spatial_relationship": "Falls Short of Fielder by 2.5 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    }
   },
   "unconstrained_rollout_m": 22.98873541116738,
   "boundary_distance_m": null,
   "warnings": [
-    "Potential Catch: Interception window is physically reachable for Bowler, Mid-On at t = 1.51 s prior to first ground contact. Actual wicket depends on catch completion."
+    "Potential Catch: Interception window is physically reachable for Bowler, Mid-Off at t = 1.51 s prior to first ground contact. Actual wicket depends on catch completion."
   ]
 }

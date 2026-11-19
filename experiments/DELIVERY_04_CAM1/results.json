@@ -1,32 +1,50 @@
 {
-  "fingerprint": "c0c654cba04a0191",
+  "fingerprint": "0b8fa99c8983ba19",
   "flight_time_s": 0.30719617547818684,
   "carry_distance_m": 1.6513603474228569,
   "max_height_m": 0.57,
   "time_to_apex_s": 0.0,
   "first_landing_pos_m": [
     1.636238715435983,
-    -0.22296605828902094,
+    0.22296605828902094,
     0.03600000000000032
   ],
   "total_bounces": 4,
   "post_bounce_roll_m": 4.1799759127236635,
-  "total_distance_m": 5.831336260146521,
+  "total_distance_m": 3.8052595180880893,
   "final_stopping_pos_m": [
     5.77793827160013,
-    -0.787344847241737,
+    0.787344847241737,
     0.036
   ],
   "clears_rope": false,
   "residual_speed_at_rope_kmh": null,
   "margin_to_rope_m": -64.16866373985349,
-  "outcome_call": "DOT",
+  "outcome_call": "FALLS SHORT (2.2 m in front)",
   "estimated_runs": 0,
-  "fielder_interception": null,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "wk",
+      "role_name": "Wicket-Keeper",
+      "distance_to_landing_m": 5.44,
+      "fielder_coords": [
+        -3.8,
+        0.2
+      ],
+      "spatial_relationship": "Falls Short of Fielder by 2.2 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    },
+    "role_name": "Wicket-Keeper",
+    "fielder_name": "Wicket-Keeper"
+  },
   "unconstrained_rollout_m": 5.831336260146521,
   "boundary_distance_m": null,
   "warnings": [
-    "PULLED UP SHORT (IN-PLAY): Pitched 1.7m (68.3m inside rope). Travelled 4.2m post-bounce and came to a stop at 5.8m, 64.2m short of the boundary rope.",
-    "Dot Ball: Ball fielded quickly in the infield."
+    "Dot Ball: Ball fielded cleanly in the infield by Wicket-Keeper at 4.2m (t=1.23s). Boundary prevented."
   ]
 }

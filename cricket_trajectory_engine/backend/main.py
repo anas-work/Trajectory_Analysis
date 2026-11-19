@@ -63,10 +63,10 @@ def ensure_real_deliveries_seeded():
     try:
         from cricket_trajectory_engine.import_real_deliveries import import_all_real_deliveries
         existing_deliveries = [d for d in os.listdir("experiments") if d.startswith("DELIVERY_")]
-        if len(existing_deliveries) < 20:
+        if len(existing_deliveries) < 98:
             print("[Startup] Seeding real deliveries into experiment archive...")
             import_all_real_deliveries()
-            print(f"[Startup] Real delivery seeding complete ({len(existing_deliveries)} -> 20 deliveries).")
+            print(f"[Startup] Real delivery seeding complete ({len(existing_deliveries)} -> 98 deliveries).")
     except Exception as e:
         print(f"[Startup Warning] Could not auto-seed real deliveries: {e}")
 

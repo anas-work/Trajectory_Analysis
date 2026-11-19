@@ -16,17 +16,17 @@
       "description": "Converts the initial velocity Cartesian vector into scalar launch speed and launch angles.",
       "inputs": {
         "Vx0": 7.256020591019772,
-        "Vy0": 0.11254197875892068,
+        "Vy0": -0.11254197875892068,
         "Vz0": -0.39022505524674833
       },
-      "substitution_text": "v0 = sqrt((7.26)^2 + (0.11)^2 + (-0.39)^2)",
+      "substitution_text": "v0 = sqrt((7.26)^2 + (-0.11)^2 + (-0.39)^2)",
       "result_value": {
         "speed_m_s": 7.267377526180144,
         "speed_kmh": 26.162559094248518,
         "elevation_deg": -3.078002552479164,
-        "azimuth_deg": 0.8885949710682521
+        "azimuth_deg": -0.8885949710682521
       },
-      "result_formatted": "26.2 km/h (7.27 m/s) at -3.1\u00b0 elevation, +0.9\u00b0 azimuth",
+      "result_formatted": "26.2 km/h (7.27 m/s) at -3.1\u00b0 elevation, -0.9\u00b0 azimuth",
       "units": "km/h and degrees",
       "why_necessary": "Establishes initial conditions for numerical integration of Newton's equations of motion.",
       "downstream_dependents": [
@@ -71,10 +71,10 @@
       "substitution_text": "F_drag = -0.5 * 1.205 * 0.32 * 0.004072 * (7.27)^2",
       "result_value": [
         -0.04139407019719741,
-        -0.0006420283005596515,
+        0.0006420283005596515,
         0.002226151804141858
       ],
-      "result_formatted": "Magnitude = 0.04 N | Vector = [-0.04, -0.00, 0.00] N",
+      "result_formatted": "Magnitude = 0.04 N | Vector = [-0.04, 0.00, 0.00] N",
       "units": "Newtons (N)",
       "why_necessary": "Retards forward velocity and alters the trajectory arc away from a theoretical vacuum parabola.",
       "downstream_dependents": [
@@ -95,18 +95,18 @@
         ],
         "F_drag": [
           -0.04139407019719741,
-          -0.0006420283005596515,
+          0.0006420283005596515,
           0.002226151804141858
         ],
         "m": 0.156
       },
-      "substitution_text": "a = [0, 0, -9.81] + [-0.04, -0.00, 0.00] / 0.156",
+      "substitution_text": "a = [0, 0, -9.81] + [-0.04, 0.00, 0.00] / 0.156",
       "result_value": [
         -0.26534660382818853,
-        -0.004115566029228536,
+        0.004115566029228536,
         -9.792379796127296
       ],
-      "result_formatted": "[-0.27, -0.00, -9.79] m/s\u00b2 (Magnitude = 9.80 m/s\u00b2)",
+      "result_formatted": "[-0.27, 0.00, -9.79] m/s\u00b2 (Magnitude = 9.80 m/s\u00b2)",
       "units": "m/s\u00b2",
       "why_necessary": "Integrated via SciPy's adaptive RK45 algorithm to compute position and velocity time-series.",
       "downstream_dependents": [
@@ -132,7 +132,7 @@
         "carry_m": 2.4314563173077346,
         "landing_pos": [
           2.4311639086627537,
-          0.037707720579900544,
+          -0.037707720579900544,
           0.03599999999999985
         ]
       },
@@ -186,7 +186,7 @@
         "clears_rope": false,
         "margin_m": -58.31130478054414
       },
-      "result_formatted": "Decel = -0.98 m/s\u00b2 | Min Speed Req = 58.6 km/h | Status = PULLED UP SHORT (IN-PLAY): Pitched 2.4m (67.6m inside rope). Travelled 9.3m post-bounce and came to a stop at 11.7m, 58.3m short of the boundary rope.",
+      "result_formatted": "Decel = -0.98 m/s\u00b2 | Min Speed Req = 58.6 km/h | Status = CUT OFF INSIDE BOUNDARY: Pitched at 2.4m. Fielded cleanly by Wicket-Keeper at 8.0m (t=1.79s), preventing boundary Four.",
       "units": "m/s\u00b2 and km/h",
       "why_necessary": "Differentiates between a Boundary Four and an in-play Single/Double that pulls up short.",
       "downstream_dependents": [

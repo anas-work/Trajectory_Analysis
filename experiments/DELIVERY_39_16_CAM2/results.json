@@ -1,0 +1,50 @@
+{
+  "fingerprint": "3880d9d022b57eed",
+  "flight_time_s": 1.2176618691393521,
+  "carry_distance_m": 9.64225385281428,
+  "max_height_m": 2.196088581367026,
+  "time_to_apex_s": 0.5524471055718305,
+  "first_landing_pos_m": [
+    9.248662463771815,
+    2.7267750169990346,
+    0.036
+  ],
+  "total_bounces": 5,
+  "post_bounce_roll_m": 4.651520003943688,
+  "total_distance_m": 14.293773856757968,
+  "final_stopping_pos_m": [
+    13.710310032550705,
+    4.0421986442376925,
+    0.036
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -55.706226143242034,
+  "outcome_call": "FALLS SHORT (10.5 m in front)",
+  "estimated_runs": 0,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "bowl",
+      "role_name": "Bowler",
+      "distance_to_landing_m": 11.21,
+      "fielder_coords": [
+        20.12,
+        0.0
+      ],
+      "spatial_relationship": "Falls Short of Fielder by 10.5 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    },
+    "role_name": "Bowler",
+    "fielder_name": "Bowler"
+  },
+  "unconstrained_rollout_m": 14.293773856757968,
+  "boundary_distance_m": null,
+  "warnings": [
+    "Dot Ball: Ball fielded cleanly in the infield by Bowler at 11.0m (t=1.53s). Boundary prevented."
+  ]
+}

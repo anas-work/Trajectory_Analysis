@@ -1,0 +1,5 @@
+clip_frame,session_frame,time_s,phase,event,detected,u_px,v_px,has_3d,X_m,Y_m,Z_m,ray_gap_m,source
+51,27509,1.7,post,,True,1692.0,2698.0,False,,,,,tracked
+52,27510,1.7333,post,,False,,,False,,,,,
+53,27511,1.7667,post,,False,,,False,,,,,
+54,27512,1.8,post,,True,1756.0,2638.0,False,,,,,tracked

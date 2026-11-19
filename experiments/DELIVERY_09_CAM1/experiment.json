@@ -1,15 +1,16 @@
 {
   "experiment_id": "DELIVERY_09_CAM1",
   "name": "Delivery 09 (CAM1 Tracking)",
-  "description": "Real-world match delivery from 09_Theace1_2026-07-02_cam1_d10_cam2_d9 using CAM1 stereo tracking",
-  "created_at": "2026-11-05T14:30:00",
+  "description": "Real-world match delivery from 09_Theace1_2026-07-02_cam1_d10_cam2_d9 (3d_hits_10_deliveries) using CAM1 stereo tracking",
+  "created_at": "2026-11-19T10:00:00",
   "tags": [
     "real_delivery",
+    "10_deliveries",
     "delivery_09",
     "cam1",
     "potential_catch"
   ],
-  "fingerprint": "bedd097d395dc0ae",
+  "fingerprint": "0907070cbb911fb8",
   "is_cached": false,
   "config": {
     "name": "Delivery 09 (CAM1 Tracking)",
@@ -21,12 +22,12 @@
     ],
     "vel0": [
       10.112374230833943,
-      -1.025303686751967,
+      1.025303686751967,
       7.743608161968587
     ],
     "speed0_kmh": 46.0,
     "elevation_deg": 37.3,
-    "azimuth_deg": -5.79,
+    "azimuth_deg": 5.79,
     "ball": {
       "mass_kg": 0.156,
       "diameter_m": 0.072
@@ -55,7 +56,9 @@
           "y_m": 0.2,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "bowl",
@@ -65,7 +68,9 @@
           "y_m": 0.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "slip1",
@@ -75,7 +80,9 @@
           "y_m": 2.6,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "point",
@@ -85,7 +92,9 @@
           "y_m": 21.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "cover",
@@ -95,7 +104,9 @@
           "y_m": 18.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "mid_off",
@@ -105,7 +116,9 @@
           "y_m": 7.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "mid_on",
@@ -115,7 +128,9 @@
           "y_m": -7.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "mid_wicket",
@@ -125,7 +140,9 @@
           "y_m": -18.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "sq_leg",
@@ -135,7 +152,9 @@
           "y_m": -20.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "deep_mid_wicket",
@@ -145,7 +164,9 @@
           "y_m": -48.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "third_man",
@@ -155,7 +176,9 @@
           "y_m": 42.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         }
       ],
       "rule_warnings": []
@@ -169,34 +192,59 @@
     }
   },
   "results": {
-    "fingerprint": "bedd097d395dc0ae",
+    "fingerprint": "0907070cbb911fb8",
     "flight_time_s": 1.66828414146115,
     "carry_distance_m": 16.211862257340226,
     "max_height_m": 3.910082447148352,
     "time_to_apex_s": 0.7719566147336007,
     "first_landing_pos_m": [
       16.129169228103805,
-      -1.6353525192330063,
+      1.6353525192330063,
       0.03600000000000096
     ],
     "total_bounces": 6,
     "post_bounce_roll_m": 5.623205762151446,
-    "total_distance_m": 21.835068019491672,
+    "total_distance_m": 16.211862257340226,
     "final_stopping_pos_m": [
       21.723692294146023,
-      -2.202586780376347,
+      2.202586780376347,
       0.036
     ],
     "clears_rope": false,
     "residual_speed_at_rope_kmh": null,
     "margin_to_rope_m": -48.16493198050833,
-    "outcome_call": "POTENTIAL_CATCH",
+    "outcome_call": "CAUGHT (SPRINT INTERCEPTION \u2014 Bowler @ 5.3 m/s)",
     "estimated_runs": 0,
     "fielder_interception": {
       "fielder_id": "bowl",
       "role_name": "Bowler",
+      "fielder_name": "Bowler",
+      "catch_time_s": 1.3519566147335933,
       "intercept_time_s": 1.3519566147335933,
-      "required_speed_m_s": 5.25831089317538
+      "intercept_position_m": [
+        13.178845681304512,
+        1.336216278762306,
+        2.278715168651895
+      ],
+      "required_speed_m_s": 5.25831089317538,
+      "margin_distance_m": 1.7450969213923724,
+      "catch_type": "Sprint Interception",
+      "can_intercept": true,
+      "nearest_fielder": {
+        "fielder_id": "bowl",
+        "role_name": "Bowler",
+        "distance_to_landing_m": 4.31,
+        "fielder_coords": [
+          20.12,
+          0.0
+        ],
+        "spatial_relationship": "Falls Short of Fielder by 3.9 m",
+        "reach_radius_m": 1.8,
+        "max_sprint_speed_m_s": 7.0,
+        "reaction_time_s": 0.35,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      }
     },
     "unconstrained_rollout_m": 21.835068019491672,
     "boundary_distance_m": null,

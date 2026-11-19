@@ -1,0 +1,50 @@
+{
+  "fingerprint": "64f4216480dc81ab",
+  "flight_time_s": 0.1585187909213765,
+  "carry_distance_m": 2.4920159014468344,
+  "max_height_m": 0.2902,
+  "time_to_apex_s": 0.0,
+  "first_landing_pos_m": [
+    2.182252479934194,
+    1.2032943808083458,
+    0.03599999999999997
+  ],
+  "total_bounces": 4,
+  "post_bounce_roll_m": 90.49481501572025,
+  "total_distance_m": 3.8052595180880893,
+  "final_stopping_pos_m": [
+    81.42834973580871,
+    44.89960560317477,
+    0.036
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": 24.146119758444073,
+  "margin_to_rope_m": 22.986830917167083,
+  "outcome_call": "TRAVELS BEYOND (-1.3 m over)",
+  "estimated_runs": 0,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "wk",
+      "role_name": "Wicket-Keeper",
+      "distance_to_landing_m": 6.07,
+      "fielder_coords": [
+        -3.8,
+        0.2
+      ],
+      "spatial_relationship": "Travels Beyond Fielder by -1.3 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    },
+    "role_name": "Wicket-Keeper",
+    "fielder_name": "Wicket-Keeper"
+  },
+  "unconstrained_rollout_m": 92.98683091716708,
+  "boundary_distance_m": null,
+  "warnings": [
+    "Dot Ball: Ball fielded cleanly in the infield by Cover at 18.9m (t=1.43s). Boundary prevented."
+  ]
+}

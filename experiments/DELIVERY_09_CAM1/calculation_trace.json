@@ -17,17 +17,17 @@
       "description": "Converts the initial velocity Cartesian vector into scalar launch speed and launch angles.",
       "inputs": {
         "Vx0": 10.112374230833943,
-        "Vy0": -1.025303686751967,
+        "Vy0": 1.025303686751967,
         "Vz0": 7.743608161968587
       },
-      "substitution_text": "v0 = sqrt((10.11)^2 + (-1.03)^2 + (7.74)^2)",
+      "substitution_text": "v0 = sqrt((10.11)^2 + (1.03)^2 + (7.74)^2)",
       "result_value": {
         "speed_m_s": 12.777903881333906,
         "speed_kmh": 46.00045397280206,
         "elevation_deg": 37.301953931395744,
-        "azimuth_deg": -5.789491283288974
+        "azimuth_deg": 5.789491283288974
       },
-      "result_formatted": "46.0 km/h (12.78 m/s) at +37.3\u00b0 elevation, -5.8\u00b0 azimuth",
+      "result_formatted": "46.0 km/h (12.78 m/s) at +37.3\u00b0 elevation, +5.8\u00b0 azimuth",
       "units": "km/h and degrees",
       "why_necessary": "Establishes initial conditions for numerical integration of Newton's equations of motion.",
       "downstream_dependents": [
@@ -72,10 +72,10 @@
       "substitution_text": "F_drag = -0.5 * 1.205 * 0.32 * 0.004072 * (12.78)^2",
       "result_value": [
         -0.10143192179670399,
-        0.010284283492534602,
+        -0.010284283492534602,
         -0.07767207181812756
       ],
-      "result_formatted": "Magnitude = 0.13 N | Vector = [-0.10, 0.01, -0.08] N",
+      "result_formatted": "Magnitude = 0.13 N | Vector = [-0.10, -0.01, -0.08] N",
       "units": "Newtons (N)",
       "why_necessary": "Retards forward velocity and alters the trajectory arc away from a theoretical vacuum parabola.",
       "downstream_dependents": [
@@ -96,18 +96,18 @@
         ],
         "F_drag": [
           -0.10143192179670399,
-          0.010284283492534602,
+          -0.010284283492534602,
           -0.07767207181812756
         ],
         "m": 0.156
       },
-      "substitution_text": "a = [0, 0, -9.81] + [-0.10, 0.01, -0.08] / 0.156",
+      "substitution_text": "a = [0, 0, -9.81] + [-0.10, -0.01, -0.08] / 0.156",
       "result_value": [
         -0.6502046269019487,
-        0.06592489418291411,
+        -0.06592489418291411,
         -10.304547896270048
       ],
-      "result_formatted": "[-0.65, 0.07, -10.30] m/s\u00b2 (Magnitude = 10.33 m/s\u00b2)",
+      "result_formatted": "[-0.65, -0.07, -10.30] m/s\u00b2 (Magnitude = 10.33 m/s\u00b2)",
       "units": "m/s\u00b2",
       "why_necessary": "Integrated via SciPy's adaptive RK45 algorithm to compute position and velocity time-series.",
       "downstream_dependents": [
@@ -133,7 +133,7 @@
         "carry_m": 16.211862257340226,
         "landing_pos": [
           16.129169228103805,
-          -1.6353525192330063,
+          1.6353525192330063,
           0.03600000000000096
         ]
       },
@@ -211,10 +211,35 @@
       "result_value": {
         "fielder_id": "bowl",
         "role_name": "Bowler",
+        "fielder_name": "Bowler",
+        "catch_time_s": 1.3519566147335933,
         "intercept_time_s": 1.3519566147335933,
-        "required_speed_m_s": 5.25831089317538
+        "intercept_position_m": [
+          13.178845681304512,
+          1.336216278762306,
+          2.278715168651895
+        ],
+        "required_speed_m_s": 5.25831089317538,
+        "margin_distance_m": 1.7450969213923724,
+        "catch_type": "Sprint Interception",
+        "can_intercept": true,
+        "nearest_fielder": {
+          "fielder_id": "bowl",
+          "role_name": "Bowler",
+          "distance_to_landing_m": 4.31,
+          "fielder_coords": [
+            20.12,
+            0.0
+          ],
+          "spatial_relationship": "Falls Short of Fielder by 3.9 m",
+          "reach_radius_m": 1.8,
+          "max_sprint_speed_m_s": 7.0,
+          "reaction_time_s": 0.35,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        }
       },
-      "result_formatted": "Bowler intercepts at t=1.35s",
+      "result_formatted": "Bowler intercepts at t=1.35s (Sprint Interception)",
       "units": "metres and seconds",
       "why_necessary": "Evaluates whether an airborne shot will result in a Wicket (Catch/Out).",
       "downstream_dependents": [

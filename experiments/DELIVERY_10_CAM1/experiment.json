@@ -1,15 +1,16 @@
 {
   "experiment_id": "DELIVERY_10_CAM1",
   "name": "Delivery 10 (CAM1 Tracking)",
-  "description": "Real-world match delivery from 10_Theace2_2026-07-02_cam1_d2_cam2_d3 using CAM1 stereo tracking",
-  "created_at": "2026-11-05T14:30:00",
+  "description": "Real-world match delivery from 10_Theace2_2026-07-02_cam1_d2_cam2_d3 (3d_hits_10_deliveries) using CAM1 stereo tracking",
+  "created_at": "2026-11-19T10:00:00",
   "tags": [
     "real_delivery",
+    "10_deliveries",
     "delivery_10",
     "cam1",
-    "double"
+    "dot"
   ],
-  "fingerprint": "4325e6aaa14a68c9",
+  "fingerprint": "36ba1478208d9d18",
   "is_cached": false,
   "config": {
     "name": "Delivery 10 (CAM1 Tracking)",
@@ -21,12 +22,12 @@
     ],
     "vel0": [
       8.611687781379366,
-      -2.5718935408424817,
+      2.5718935408424817,
       0.1896035719219216
     ],
     "speed0_kmh": 32.36,
     "elevation_deg": 1.21,
-    "azimuth_deg": -16.63,
+    "azimuth_deg": 16.63,
     "ball": {
       "mass_kg": 0.156,
       "diameter_m": 0.072
@@ -55,7 +56,9 @@
           "y_m": 0.2,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "bowl",
@@ -65,7 +68,9 @@
           "y_m": 0.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "slip1",
@@ -75,7 +80,9 @@
           "y_m": 2.6,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "point",
@@ -85,7 +92,9 @@
           "y_m": 21.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "cover",
@@ -95,7 +104,9 @@
           "y_m": 18.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "mid_off",
@@ -105,7 +116,9 @@
           "y_m": 7.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "mid_on",
@@ -115,7 +128,9 @@
           "y_m": -7.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "mid_wicket",
@@ -125,7 +140,9 @@
           "y_m": -18.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "sq_leg",
@@ -135,7 +152,9 @@
           "y_m": -20.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "deep_mid_wicket",
@@ -145,7 +164,9 @@
           "y_m": -48.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         },
         {
           "id": "third_man",
@@ -155,7 +176,9 @@
           "y_m": 42.0,
           "reaction_time_s": 0.35,
           "max_sprint_speed_m_s": 7.0,
-          "reach_radius_m": 1.8
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
         }
       ],
       "rule_warnings": []
@@ -169,35 +192,53 @@
     }
   },
   "results": {
-    "fingerprint": "4325e6aaa14a68c9",
+    "fingerprint": "36ba1478208d9d18",
     "flight_time_s": 0.4038189578749567,
     "carry_distance_m": 3.5961688125488487,
     "max_height_m": 0.7566093660390776,
     "time_to_apex_s": 0.017184525114003677,
     "first_landing_pos_m": [
       3.4457812600531956,
-      -1.0290877689561795,
+      1.0290877689561795,
       0.03599999999999996
     ],
     "total_bounces": 4,
     "post_bounce_roll_m": 17.00978799744747,
-    "total_distance_m": 20.60595680999632,
+    "total_distance_m": 3.8052595180880893,
     "final_stopping_pos_m": [
       19.744239918210564,
-      -5.896647022467455,
+      5.896647022467455,
       0.036
     ],
     "clears_rope": false,
     "residual_speed_at_rope_kmh": null,
     "margin_to_rope_m": -49.39404319000368,
-    "outcome_call": "DOUBLE",
-    "estimated_runs": 2,
-    "fielder_interception": null,
+    "outcome_call": "TRAVELS BEYOND (-0.2 m over)",
+    "estimated_runs": 0,
+    "fielder_interception": {
+      "can_intercept": false,
+      "nearest_fielder": {
+        "fielder_id": "wk",
+        "role_name": "Wicket-Keeper",
+        "distance_to_landing_m": 7.29,
+        "fielder_coords": [
+          -3.8,
+          0.2
+        ],
+        "spatial_relationship": "Travels Beyond Fielder by -0.2 m",
+        "reach_radius_m": 1.8,
+        "max_sprint_speed_m_s": 7.0,
+        "reaction_time_s": 0.35,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      },
+      "role_name": "Wicket-Keeper",
+      "fielder_name": "Wicket-Keeper"
+    },
     "unconstrained_rollout_m": 20.60595680999632,
     "boundary_distance_m": null,
     "warnings": [
-      "PULLED UP SHORT (IN-PLAY): Pitched 3.6m (66.4m inside rope). Travelled 17.0m post-bounce and came to a stop at 20.6m, 49.4m short of the boundary rope.",
-      "Double: Deep outfield placement allows two runs."
+      "Dot Ball: Ball fielded cleanly in the infield by Bowler at 10.4m (t=1.62s). Boundary prevented."
     ]
   },
   "artifacts": {

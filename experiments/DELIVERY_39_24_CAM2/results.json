@@ -1,0 +1,50 @@
+{
+  "fingerprint": "d8296a2d2350f676",
+  "flight_time_s": 1.7445113709549587,
+  "carry_distance_m": 43.48501783583728,
+  "max_height_m": 4.207118312578405,
+  "time_to_apex_s": 0.8057131172120714,
+  "first_landing_pos_m": [
+    43.41562304209094,
+    2.4556978743625812,
+    0.03600000000000019
+  ],
+  "total_bounces": 6,
+  "post_bounce_roll_m": 92.42802072961163,
+  "total_distance_m": 70.0,
+  "final_stopping_pos_m": [
+    135.69614415564797,
+    7.675318454814321,
+    0.036
+  ],
+  "clears_rope": true,
+  "residual_speed_at_rope_kmh": 40.85598791331712,
+  "margin_to_rope_m": 65.91303856544891,
+  "outcome_call": "FOUR",
+  "estimated_runs": 4,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "mid_off",
+      "role_name": "Mid-Off",
+      "distance_to_landing_m": 18.0,
+      "fielder_coords": [
+        26.0,
+        7.0
+      ],
+      "spatial_relationship": "Travels Beyond Fielder by 16.6 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    },
+    "role_name": "Mid-Off",
+    "fielder_name": "Mid-Off"
+  },
+  "unconstrained_rollout_m": 135.91303856544891,
+  "boundary_distance_m": 70.0,
+  "warnings": [
+    "Boundary Four: CLEARED ROPE (BOUNDARY FOUR): Pitched 43.5m (26.5m inside rope). Crossed boundary rope (70.0m) at t=3.51s with residual speed 11.3 m/s (40.9 km/h). Official match distance: 70.0m (Theoretical uninhibited rollout: 135.9m)."
+  ]
+}

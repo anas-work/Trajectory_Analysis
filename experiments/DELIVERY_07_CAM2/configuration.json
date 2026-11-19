@@ -8,12 +8,12 @@
   ],
   "vel0": [
     10.640209229225801,
-    2.8046115034917727,
+    -2.8046115034917727,
     -2.24772234951414
   ],
   "speed0_kmh": 40.43,
   "elevation_deg": -11.55,
-  "azimuth_deg": 14.77,
+  "azimuth_deg": -14.77,
   "ball": {
     "mass_kg": 0.156,
     "diameter_m": 0.072
@@ -42,7 +42,9 @@
         "y_m": 0.2,
         "reaction_time_s": 0.35,
         "max_sprint_speed_m_s": 7.0,
-        "reach_radius_m": 1.8
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
       },
       {
         "id": "bowl",
@@ -52,7 +54,9 @@
         "y_m": 0.0,
         "reaction_time_s": 0.35,
         "max_sprint_speed_m_s": 7.0,
-        "reach_radius_m": 1.8
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
       },
       {
         "id": "slip1",
@@ -62,7 +66,9 @@
         "y_m": 2.6,
         "reaction_time_s": 0.35,
         "max_sprint_speed_m_s": 7.0,
-        "reach_radius_m": 1.8
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
       },
       {
         "id": "point",
@@ -72,7 +78,9 @@
         "y_m": 21.0,
         "reaction_time_s": 0.35,
         "max_sprint_speed_m_s": 7.0,
-        "reach_radius_m": 1.8
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
       },
       {
         "id": "cover",
@@ -82,7 +90,9 @@
         "y_m": 18.0,
         "reaction_time_s": 0.35,
         "max_sprint_speed_m_s": 7.0,
-        "reach_radius_m": 1.8
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
       },
       {
         "id": "mid_off",
@@ -92,7 +102,9 @@
         "y_m": 7.0,
         "reaction_time_s": 0.35,
         "max_sprint_speed_m_s": 7.0,
-        "reach_radius_m": 1.8
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
       },
       {
         "id": "mid_on",
@@ -102,7 +114,9 @@
         "y_m": -7.0,
         "reaction_time_s": 0.35,
         "max_sprint_speed_m_s": 7.0,
-        "reach_radius_m": 1.8
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
       },
       {
         "id": "mid_wicket",
@@ -112,7 +126,9 @@
         "y_m": -18.0,
         "reaction_time_s": 0.35,
         "max_sprint_speed_m_s": 7.0,
-        "reach_radius_m": 1.8
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
       },
       {
         "id": "sq_leg",
@@ -122,7 +138,9 @@
         "y_m": -20.0,
         "reaction_time_s": 0.35,
         "max_sprint_speed_m_s": 7.0,
-        "reach_radius_m": 1.8
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
       },
       {
         "id": "deep_mid_wicket",
@@ -132,7 +150,9 @@
         "y_m": -48.0,
         "reaction_time_s": 0.35,
         "max_sprint_speed_m_s": 7.0,
-        "reach_radius_m": 1.8
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
       },
       {
         "id": "third_man",
@@ -142,7 +162,9 @@
         "y_m": 42.0,
         "reaction_time_s": 0.35,
         "max_sprint_speed_m_s": 7.0,
-        "reach_radius_m": 1.8
+        "reach_radius_m": 1.8,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
       }
     ],
     "rule_warnings": []

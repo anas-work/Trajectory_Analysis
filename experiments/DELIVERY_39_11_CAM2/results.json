@@ -1,0 +1,61 @@
+{
+  "fingerprint": "13f9ad059b691176",
+  "flight_time_s": 1.8481599131600455,
+  "carry_distance_m": 37.602459807153586,
+  "max_height_m": 4.660204787397163,
+  "time_to_apex_s": 0.8608871920407466,
+  "first_landing_pos_m": [
+    37.05117975589771,
+    -6.41522113763484,
+    0.03600000000000102
+  ],
+  "total_bounces": 6,
+  "post_bounce_roll_m": 51.76889546504825,
+  "total_distance_m": 37.602459807153586,
+  "final_stopping_pos_m": [
+    88.06110467774754,
+    -15.247327179702992,
+    0.036
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": 22.038760311228042,
+  "margin_to_rope_m": 19.37135527220184,
+  "outcome_call": "CAUGHT (SPRINT INTERCEPTION \u2014 Mid-On @ 3.5 m/s)",
+  "estimated_runs": 0,
+  "fielder_interception": {
+    "fielder_id": "mid_on",
+    "role_name": "Mid-On",
+    "fielder_name": "Mid-On",
+    "catch_time_s": 1.5658871920407347,
+    "intercept_time_s": 1.5658871920407347,
+    "intercept_position_m": [
+      31.837917675319204,
+      -5.512571631851318,
+      2.279845513457799
+    ],
+    "required_speed_m_s": 3.474358035732948,
+    "margin_distance_m": 4.286782908073646,
+    "catch_type": "Sprint Interception",
+    "can_intercept": true,
+    "nearest_fielder": {
+      "fielder_id": "mid_on",
+      "role_name": "Mid-On",
+      "distance_to_landing_m": 11.07,
+      "fielder_coords": [
+        26.0,
+        -7.0
+      ],
+      "spatial_relationship": "Travels Beyond Fielder by 10.7 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    }
+  },
+  "unconstrained_rollout_m": 89.37135527220184,
+  "boundary_distance_m": null,
+  "warnings": [
+    "Potential Catch: Interception window is physically reachable for Mid-On at t = 1.57 s prior to first ground contact. Actual wicket depends on catch completion."
+  ]
+}

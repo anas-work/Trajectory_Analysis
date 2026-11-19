@@ -1,0 +1,50 @@
+{
+  "fingerprint": "442df128fe578f67",
+  "flight_time_s": 0.0647467335215571,
+  "carry_distance_m": 0.7072088443398475,
+  "max_height_m": 0.2653,
+  "time_to_apex_s": 0.0,
+  "first_landing_pos_m": [
+    0.6802383474542372,
+    -0.19344286020742968,
+    0.03599999999999998
+  ],
+  "total_bounces": 4,
+  "post_bounce_roll_m": 29.803083238112887,
+  "total_distance_m": 3.8052595180880893,
+  "final_stopping_pos_m": [
+    29.346735172531762,
+    -8.345481272512997,
+    0.036
+  ],
+  "clears_rope": false,
+  "residual_speed_at_rope_kmh": null,
+  "margin_to_rope_m": -39.489707917547264,
+  "outcome_call": "FALLS SHORT (3.1 m in front)",
+  "estimated_runs": 0,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "wk",
+      "role_name": "Wicket-Keeper",
+      "distance_to_landing_m": 4.5,
+      "fielder_coords": [
+        -3.8,
+        0.2
+      ],
+      "spatial_relationship": "Falls Short of Fielder by 3.1 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    },
+    "role_name": "Wicket-Keeper",
+    "fielder_name": "Wicket-Keeper"
+  },
+  "unconstrained_rollout_m": 30.510292082452736,
+  "boundary_distance_m": null,
+  "warnings": [
+    "Dot Ball: Ball fielded cleanly in the infield by Bowler at 11.2m (t=1.50s). Boundary prevented."
+  ]
+}

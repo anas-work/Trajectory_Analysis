@@ -1,0 +1,248 @@
+{
+  "experiment_id": "DELIVERY_39_24_CAM1",
+  "name": "Delivery 24 (39-Set) (CAM1 Tracking)",
+  "description": "Real-world match delivery from 24_Theace1_2026-08-26_cam1_d99_cam2_d100 (3d_hits_39_more_deliveries) using CAM1 stereo tracking",
+  "created_at": "2026-11-19T10:00:00",
+  "tags": [
+    "real_delivery",
+    "39_more_deliveries",
+    "delivery_24",
+    "cam1",
+    "four"
+  ],
+  "fingerprint": "f7aa8fc098db4b16",
+  "is_cached": false,
+  "config": {
+    "name": "Delivery 24 (39-Set) (CAM1 Tracking)",
+    "input_mode": "camera_tracking",
+    "pos0": [
+      0.0,
+      0.0,
+      0.6779
+    ],
+    "vel0": [
+      29.197602928728614,
+      1.5648573205500673,
+      8.649890289300803
+    ],
+    "speed0_kmh": 109.77,
+    "elevation_deg": 16.48,
+    "azimuth_deg": 3.07,
+    "ball": {
+      "mass_kg": 0.156,
+      "diameter_m": 0.072
+    },
+    "environment": {
+      "air_density_kg_m3": 1.205,
+      "constant_cd": 0.32,
+      "restitution_normal": 0.5,
+      "friction_tangential": 0.35,
+      "rolling_resistance_coeff": 0.1,
+      "enable_magnus": false
+    },
+    "stadium": {
+      "boundary_radius_m": 70.0
+    },
+    "fielding": {
+      "total_players": 11,
+      "format_rules": "t20",
+      "active_preset": "powerplay",
+      "fielders": [
+        {
+          "id": "wk",
+          "name": "Wicket-Keeper",
+          "role": "wicketkeeper",
+          "x_m": -3.8,
+          "y_m": 0.2,
+          "reaction_time_s": 0.35,
+          "max_sprint_speed_m_s": 7.0,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "bowl",
+          "name": "Bowler",
+          "role": "bowler",
+          "x_m": 20.12,
+          "y_m": 0.0,
+          "reaction_time_s": 0.35,
+          "max_sprint_speed_m_s": 7.0,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "slip1",
+          "name": "1st Slip",
+          "role": "fielder",
+          "x_m": -6.2,
+          "y_m": 2.6,
+          "reaction_time_s": 0.35,
+          "max_sprint_speed_m_s": 7.0,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "point",
+          "name": "Point",
+          "role": "fielder",
+          "x_m": 4.0,
+          "y_m": 21.0,
+          "reaction_time_s": 0.35,
+          "max_sprint_speed_m_s": 7.0,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "cover",
+          "name": "Cover",
+          "role": "fielder",
+          "x_m": 17.0,
+          "y_m": 18.0,
+          "reaction_time_s": 0.35,
+          "max_sprint_speed_m_s": 7.0,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "mid_off",
+          "name": "Mid-Off",
+          "role": "fielder",
+          "x_m": 26.0,
+          "y_m": 7.0,
+          "reaction_time_s": 0.35,
+          "max_sprint_speed_m_s": 7.0,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "mid_on",
+          "name": "Mid-On",
+          "role": "fielder",
+          "x_m": 26.0,
+          "y_m": -7.0,
+          "reaction_time_s": 0.35,
+          "max_sprint_speed_m_s": 7.0,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "mid_wicket",
+          "name": "Mid-Wicket",
+          "role": "fielder",
+          "x_m": 17.0,
+          "y_m": -18.0,
+          "reaction_time_s": 0.35,
+          "max_sprint_speed_m_s": 7.0,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "sq_leg",
+          "name": "Square Leg",
+          "role": "fielder",
+          "x_m": 3.0,
+          "y_m": -20.0,
+          "reaction_time_s": 0.35,
+          "max_sprint_speed_m_s": 7.0,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "deep_mid_wicket",
+          "name": "Deep Mid-Wicket",
+          "role": "fielder",
+          "x_m": 46.0,
+          "y_m": -48.0,
+          "reaction_time_s": 0.35,
+          "max_sprint_speed_m_s": 7.0,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        },
+        {
+          "id": "third_man",
+          "name": "Third Man",
+          "role": "fielder",
+          "x_m": -32.0,
+          "y_m": 42.0,
+          "reaction_time_s": 0.35,
+          "max_sprint_speed_m_s": 7.0,
+          "reach_radius_m": 1.8,
+          "min_catch_height_m": 0.25,
+          "max_catch_height_m": 2.3
+        }
+      ],
+      "rule_warnings": []
+    },
+    "solver": {
+      "method": "RK45",
+      "rtol": 1e-07,
+      "atol": 1e-09,
+      "max_step": 0.02,
+      "max_duration_s": 12.0
+    }
+  },
+  "results": {
+    "fingerprint": "f7aa8fc098db4b16",
+    "flight_time_s": 1.7690803607556305,
+    "carry_distance_m": 45.896951127017346,
+    "max_height_m": 4.192881562306004,
+    "time_to_apex_s": 0.830680183003203,
+    "first_landing_pos_m": [
+      45.83117405404445,
+      2.45634028255479,
+      0.035999999999999206
+    ],
+    "total_bounces": 6,
+    "post_bounce_roll_m": 101.07039730121768,
+    "total_distance_m": 70.0,
+    "final_stopping_pos_m": [
+      146.756722629248,
+      7.865485817685059,
+      0.036
+    ],
+    "clears_rope": true,
+    "residual_speed_at_rope_kmh": 47.577535364282326,
+    "margin_to_rope_m": 76.96734842823503,
+    "outcome_call": "FOUR",
+    "estimated_runs": 4,
+    "fielder_interception": {
+      "can_intercept": false,
+      "nearest_fielder": {
+        "fielder_id": "mid_off",
+        "role_name": "Mid-Off",
+        "distance_to_landing_m": 20.35,
+        "fielder_coords": [
+          26.0,
+          7.0
+        ],
+        "spatial_relationship": "Travels Beyond Fielder by 19.0 m",
+        "reach_radius_m": 1.8,
+        "max_sprint_speed_m_s": 7.0,
+        "reaction_time_s": 0.35,
+        "min_catch_height_m": 0.25,
+        "max_catch_height_m": 2.3
+      },
+      "role_name": "Mid-Off",
+      "fielder_name": "Mid-Off"
+    },
+    "unconstrained_rollout_m": 146.96734842823503,
+    "boundary_distance_m": 70.0,
+    "warnings": [
+      "Boundary Four: CLEARED ROPE (BOUNDARY FOUR): Pitched 45.9m (24.1m inside rope). Crossed boundary rope (70.0m) at t=3.24s with residual speed 13.2 m/s (47.6 km/h). Official match distance: 70.0m (Theoretical uninhibited rollout: 147.0m)."
+    ]
+  },
+  "artifacts": {
+    "trajectory_csv": "DELIVERY_39_24_CAM1/trajectory.csv",
+    "calculation_trace": "DELIVERY_39_24_CAM1/calculation_trace.json"
+  }
+}

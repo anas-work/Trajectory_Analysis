@@ -1,32 +1,50 @@
 {
-  "fingerprint": "e80a0e53e687afab",
+  "fingerprint": "bfc209f3fe180cb7",
   "flight_time_s": 0.3173344493812783,
   "carry_distance_m": 2.832517259780904,
   "max_height_m": 0.3225084507134377,
   "time_to_apex_s": 0.0771932987066641,
   "first_landing_pos_m": [
     2.8108973476874244,
-    -0.34929948142034944,
+    0.34929948142034944,
     0.03600000000000009
   ],
   "total_bounces": 4,
   "post_bounce_roll_m": 24.10173775754252,
-  "total_distance_m": 26.934255017323423,
+  "total_distance_m": 3.8052595180880893,
   "final_stopping_pos_m": [
     26.728672430397566,
-    -3.3214700731328426,
+    3.3214700731328426,
     0.036
   ],
   "clears_rope": false,
   "residual_speed_at_rope_kmh": null,
   "margin_to_rope_m": -43.06574498267658,
-  "outcome_call": "DOUBLE",
-  "estimated_runs": 2,
-  "fielder_interception": null,
+  "outcome_call": "TRAVELS BEYOND (-1.0 m over)",
+  "estimated_runs": 0,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "wk",
+      "role_name": "Wicket-Keeper",
+      "distance_to_landing_m": 6.61,
+      "fielder_coords": [
+        -3.8,
+        0.2
+      ],
+      "spatial_relationship": "Travels Beyond Fielder by -1.0 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    },
+    "role_name": "Wicket-Keeper",
+    "fielder_name": "Wicket-Keeper"
+  },
   "unconstrained_rollout_m": 26.934255017323423,
   "boundary_distance_m": null,
   "warnings": [
-    "PULLED UP SHORT (IN-PLAY): Pitched 2.8m (67.2m inside rope). Travelled 24.1m post-bounce and came to a stop at 26.9m, 43.1m short of the boundary rope.",
-    "Double: Deep outfield placement allows two runs."
+    "Dot Ball: Ball fielded cleanly in the infield by Bowler at 10.7m (t=1.54s). Boundary prevented."
   ]
 }

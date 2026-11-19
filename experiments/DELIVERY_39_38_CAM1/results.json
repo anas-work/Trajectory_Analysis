@@ -1,0 +1,50 @@
+{
+  "fingerprint": "7bc337e09bb60828",
+  "flight_time_s": 0.005619840171019555,
+  "carry_distance_m": 0.31666966136472346,
+  "max_height_m": 0.04,
+  "time_to_apex_s": 0.0,
+  "first_landing_pos_m": [
+    0.31587424388481905,
+    -0.022430703935509777,
+    0.036
+  ],
+  "total_bounces": 2,
+  "post_bounce_roll_m": 1521.9743299723475,
+  "total_distance_m": 70.0,
+  "final_stopping_pos_m": [
+    1518.4672772556623,
+    -107.82863937555227,
+    0.036
+  ],
+  "clears_rope": true,
+  "residual_speed_at_rope_kmh": 192.0071528555071,
+  "margin_to_rope_m": 1452.2909996337123,
+  "outcome_call": "FOUR",
+  "estimated_runs": 4,
+  "fielder_interception": {
+    "can_intercept": false,
+    "nearest_fielder": {
+      "fielder_id": "wk",
+      "role_name": "Wicket-Keeper",
+      "distance_to_landing_m": 4.12,
+      "fielder_coords": [
+        -3.8,
+        0.2
+      ],
+      "spatial_relationship": "Falls Short of Fielder by 3.5 m",
+      "reach_radius_m": 1.8,
+      "max_sprint_speed_m_s": 7.0,
+      "reaction_time_s": 0.35,
+      "min_catch_height_m": 0.25,
+      "max_catch_height_m": 2.3
+    },
+    "role_name": "Wicket-Keeper",
+    "fielder_name": "Wicket-Keeper"
+  },
+  "unconstrained_rollout_m": 1522.2909996337123,
+  "boundary_distance_m": 70.0,
+  "warnings": [
+    "Boundary Four: CLEARED ROPE (BOUNDARY FOUR): Pitched 0.3m (69.7m inside rope). Crossed boundary rope (70.0m) at t=1.29s with residual speed 53.3 m/s (192.0 km/h). Official match distance: 70.0m (Theoretical uninhibited rollout: 1522.3m)."
+  ]
+}
